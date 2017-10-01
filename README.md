@@ -43,3 +43,9 @@ There are command line options to specify different paths to the configfile, the
 * `-f FILE` - Custom configfile. If not given, it takes the isoident.xml from the running dir.
 * `-g FILE` - If this option is given, logging via the amcanlogger is enabled. The path to the amcanlogger configfile needs to be provided.
 * `-h` - Shows the help prompt.
+
+If used with other software using the CAN devices, the loopback option has to be enabled resend the messages to the buffer after receiving them. On Linux systems, this can be done with:
+
+`$ ip link set down [CAN-DEVICE]
+$ ip link set [CAN-DEVICE] type [CAN-TYPE] loopback on
+$ ip link set up [CAN-DEVICE]`
