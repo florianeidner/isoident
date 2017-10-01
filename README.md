@@ -1,7 +1,7 @@
 # isoident
 This module identifies participants and message on the ISOBUS network utilizing the address-claim procedure defined in ISO 11783-5. The detected participants and their messages will be saved in the configfile. Furthermore it can be an addition to the existing amcanlogger to adjust the CAN logging profile dynamically to the active devices.
 
-## Compiling
+## Build
 
 The module uses the Mini-XML library which is included in the repo or can be found there: https://michaelrsweet.github.io/mxml/mxml.html
 
