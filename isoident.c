@@ -83,19 +83,19 @@ int kill(pid_t pid, int sig);
 
 
 void show_help(void) {
-   printf("\n\trun: isoident -f CONFIG-PATH\n\n"\
+   printf("\n\trun: ./isoident\n\n"\
           "The isoident analyzes the ISOBUS traffic"\
           "and identifies devices as well as ISOBUS messages by their PGNs."\
-          "This information is saved within the isoident.xml."\
+          "The detected entities are saved within the isoident.xml."\
           "The software can adjust the amcanloggers config file (canlogger.xml) to"\
-          "log ISOBUS signals as manually defined in the isoident.xml for each signal.\n\n"\
+          "log ISOBUS signals. The signals to log can be manually defined in the isoident.xml for each signal.\n\n"\
           "The following options are accepted:\n\n"\
 
-          "\t-f  Path to configfile. i.e.: /home/usr/isoident.xml\n\n"\
+          "\t-f  OPTIONAL Path to configfile. i.e.: /home/usr/isoident.xml\n\n"\
           
           "\t-d  OPTIONAL Path to datasets from ISO11783. i.e. datasets/\n"\
           "\t-g  OPTIONAL Path to canlogger configfile i.e.: /home/usr/canlogger.xml, enables logging via amcanlogger\n"\
-          "\t-h  OPTIONAL This argument is optional and shows this message.\n\n");}
+          "\t-h  OPTIONAL This argument shows this message.\n\n");}
 
 
 int handle_command_line_arguments(int argc, char *argv[]) {
