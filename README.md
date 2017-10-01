@@ -29,7 +29,7 @@ The software loads the config parameters from the given configfile (default: iso
 
 Within the `<devicelog>` section in the config file, the identified devices, messages and signals will be saved. If used in combination with the amcanlogger, the "log" attribute of the "signal" nodes can be set to have the signal logged via the amcanlogger.
 
-## Running
+## Run
 
 The module can be executed with the following line:
 
