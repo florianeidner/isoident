@@ -1,0 +1,583 @@
+65254;959;UTC Time in seconds;1;8
+65254;960;UTC Time in minutes;9;8
+65254;961;UTC Time in hours;17;8
+65254;962;UTC Date in 0.25 days;33;8
+65254;963;UTC Date in months;25;8
+65254;964;UTC Date in years;41;8
+65242;965;Number of software identification fields;1;8
+65226;1215;Failure Mode Identifier;41;5
+65227;1215;Failure Mode Identifier;41;5
+65226;1216;Occurrence Count;49;7
+65227;1216;Occurrence Count;49;7
+53248;1487;Background illumination level - command;1;8
+65254;1601;Local time offset in minutes;49;8
+65254;1602;Local time offset in hours;57;8
+65226;1706;SPN Conversion Method;56;1
+65227;1706;SPN Conversion Method;56;1
+65097;1859;Ground-based machine speed;1;16
+65097;1860;Ground-based machine distance;17;32
+65097;1861;Ground-based machine direction;65;2
+65096;1862;Wheel-based machine speed;1;16
+65096;1863;Wheel-based machine distance;17;32
+65096;1864;Wheel-based machine direction;65;2
+65096;1865;Key switch state;67;2
+65096;1866;Maximum time of tractor power;49;8
+65095;1867;Maintain ECU power;15;2
+65095;1868;Maintain actuator power;13;2
+65095;1869;Implement transport state;23;2
+65095;1870;Implement park state;21;2
+65095;1871;Implement work state;19;2
+65094;1872;Front hitch position;1;8
+65093;1873;Rear hitch position;1;8
+65090;1874;Front hitch position - command;1;8
+65090;1875;Rear hitch position - command;9;8
+65094;1876;Front hitch in-work indication;23;2
+65093;1877;Rear hitch in-work indication;23;2
+65094;1878;Front draft;25;16
+65093;1879;Rear draft;25;16
+65094;1880;Front nominal lower link force;17;8
+65093;1881;Rear nominal lower link force;17;8
+65092;1882;Front PTO output shaft speed;1;16
+65091;1883;Rear PTO output shaft speed;1;16
+65092;1884;Front PTO output shaft speed set point;17;16
+65091;1885;Rear PTO output shaft speed set point;17;16
+65090;1886;Front PTO output shaft speed set point - command;17;16
+65090;1887;Rear PTO output shaft speed set point - command;33;16
+65092;1888;Front PTO engagement;47;2
+65092;1889;Front PTO mode;47;2
+65091;1890;Rear PTO mode;45;2
+65092;1891;Front PTO economy mode;43;2
+65091;1892;Rear PTO economy mode;43;2
+65090;1893;Front PTO engagement - command;63;2
+65090;1894;Rear PTO engagement - command;61;2
+65090;1895;Front PTO mode - command;70;2
+65090;1896;Rear PTO mode - command;69;2
+65090;1897;Front PTO economy mode - command;67;2
+65090;1898;Rear PTO economy mode - command;65;2
+65056;1899;Auxiliary valve number 0 extend port measured flow;1;8
+65056;1900;Auxiliary valve number 0 retract port measured flow;9;8
+65040;1901;Auxiliary valve number 0 extend port estimated flow;1;8
+65040;1902;Auxiliary valve number 0 retract port estimated flow;9;8
+65040;1903;Auxiliary valve number 0 valve state;25;4
+65056;1904;Auxiliary valve number 0 extend port pressure;17;16
+65056;1905;Auxiliary valve number 0 retract port pressure;33;16
+65056;1906;Auxiliary valve number 0 return port pressure;49;8
+65072;1907;Auxiliary valve number 0 port flow - command;1;8
+65072;1908;Auxiliary valve number 0 state - command;25;4
+65072;1909;Auxiliary valve number 0 fail safe mode - command;31;2
+65040;1910;Auxiliary valve number 0 fail safe mode;31;2
+65057;1911;Auxiliary valve number 1 extend port measured flow;1;8
+65057;1912;Auxiliary valve number 1 retract port measured flow;9;8
+65041;1913;Auxiliary valve number 1 extend port estimated flow;1;8
+65041;1914;Auxiliary valve number 1 retract port estimated flow;9;8
+65041;1915;Auxiliary valve number 1 valve state;25;4
+65057;1916;Auxiliary valve number 1 extend port pressure;17;16
+65057;1917;Auxiliary valve number 1 retract port pressure;33;16
+65057;1918;Auxiliary valve number 1 return port pressure;49;8
+65073;1919;Auxiliary valve number 1 port flow - command;1;8
+65073;1920;Auxiliary valve number 1 state - command;25;4
+65073;1921;Auxiliary valve number 1 fail safe mode - command;31;2
+65041;1922;Auxiliary valve number 1 fail safe mode;31;2
+65058;1923;Auxiliary valve number 2 extend port measured flow;1;8
+65058;1924;Auxiliary valve number 2 retract port measured flow;9;8
+65042;1925;Auxiliary valve number 2 extend port estimated flow;1;8
+65042;1926;Auxiliary valve number 2 retract port estimated flow;9;8
+65042;1927;Auxiliary valve number 2 valve state;25;4
+65058;1928;Auxiliary valve number 2 extend port pressure;17;16
+65058;1929;Auxiliary valve number 2 retract port pressure;33;16
+65058;1930;Auxiliary valve number 2 return port pressure;49;8
+65074;1931;Auxiliary valve number 2 port flow - command;1;8
+65074;1932;Auxiliary valve number 2 state - command;25;4
+65074;1933;Auxiliary valve number 2 fail safe mode - command;31;2
+65042;1934;Auxiliary valve number 2 fail safe mode;31;2
+65059;1935;Auxiliary valve number 3 extend port measured flow;1;8
+65059;1936;Auxiliary valve number 3 retract port measured flow;9;8
+65043;1937;Auxiliary valve number 3 extend port estimated flow;1;8
+65043;1938;Auxiliary valve number 3 retract port estimated flow;9;8
+65043;1939;Auxiliary valve number 3 valve state;25;4
+65059;1940;Auxiliary valve number 3 extend port pressure;17;16
+65059;1941;Auxiliary valve number 3 retract port pressure;33;16
+65059;1942;Auxiliary valve number 3 return port pressure;49;8
+65075;1943;Auxiliary valve number 3 port flow - command;1;8
+65075;1944;Auxiliary valve number 3 state - command;25;4
+65075;1945;Auxiliary valve number 3 fail safe mode - command;31;2
+65043;1946;Auxiliary valve number 3 fail safe mode;31;2
+65060;1947;Auxiliary valve number 4 extend port measured flow;1;8
+65060;1948;Auxiliary valve number 4 retract port measured flow;9;8
+65044;1949;Auxiliary valve number 4 extend port estimated flow;1;8
+65044;1950;Auxiliary valve number 4 retract port estimated flow;9;8
+65044;1951;Auxiliary valve number 4 valve state;25;4
+65060;1952;Auxiliary valve number 4 extend port pressure;17;16
+65060;1953;Auxiliary valve number 4 retract port pressure;33;16
+65060;1954;Auxiliary valve number 4 return port pressure;49;8
+65076;1955;Auxiliary valve number 4 port flow - command;1;8
+65076;1956;Auxiliary valve number 4 state - command;25;4
+65076;1957;Auxiliary valve number 4 fail safe mode - command;31;2
+65044;1958;Auxiliary valve number 4 fail safe mode;31;2
+65061;1959;Auxiliary valve number 5 extend port measured flow;1;8
+65061;1960;Auxiliary valve number 5 retract port measured flow;9;8
+65045;1961;Auxiliary valve number 5 extend port estimated flow;1;8
+65045;1962;Auxiliary valve number 5 retract port estimated flow;9;8
+65045;1963;Auxiliary valve number 5 valve state;25;4
+65061;1964;Auxiliary valve number 5 extend port pressure;17;16
+65061;1965;Auxiliary valve number 5 retract port pressure;33;16
+65061;1966;Auxiliary valve number 5 return port pressure;49;8
+65077;1967;Auxiliary valve number 5 port flow - command;1;8
+65077;1968;Auxiliary valve number 5 state - command;25;4
+65077;1969;Auxiliary valve number 5 fail safe mode - command;31;2
+65045;1970;Auxiliary valve number 5 fail safe mode;31;2
+65062;1971;Auxiliary valve number 6 extend port measured flow;1;8
+65062;1972;Auxiliary valve number 6 retract port measured flow;9;8
+65046;1973;Auxiliary valve number 6 extend port estimated flow;1;8
+65046;1974;Auxiliary valve number 6 retract port estimated flow;9;8
+65046;1975;Auxiliary valve number 6 valve state;25;4
+65062;1976;Auxiliary valve number 6 extend port pressure;17;16
+65062;1977;Auxiliary valve number 6 retract port pressure;33;16
+65062;1978;Auxiliary valve number 6 return port pressure;49;8
+65078;1979;Auxiliary valve number 6 port flow - command;1;8
+65078;1980;Auxiliary valve number 6 state - command;25;4
+65078;1981;Auxiliary valve number 6 fail safe mode - command;31;2
+65046;1982;Auxiliary valve number 6 fail safe mode;31;2
+65063;1983;Auxiliary valve number 7 extend port measured flow;1;8
+65063;1984;Auxiliary valve number 7 retract port measured flow;9;8
+65047;1985;Auxiliary valve number 7 extend port estimated flow;1;8
+65047;1986;Auxiliary valve number 7 retract port estimated flow;9;8
+65047;1987;Auxiliary valve number 7 valve state;25;4
+65063;1988;Auxiliary valve number 7 extend port pressure;17;16
+65063;1989;Auxiliary valve number 7 retract port pressure;33;16
+65063;1990;Auxiliary valve number 7 return port pressure;49;8
+65079;1991;Auxiliary valve number 7 port flow - command;1;8
+65079;1992;Auxiliary valve number 7 state - command;25;4
+65079;1993;Auxiliary valve number 7 fail safe mode - command;31;2
+65047;1994;Auxiliary valve number 7 fail safe mode;31;2
+65064;1995;Auxiliary valve number 8 extend port measured flow;1;8
+65064;1996;Auxiliary valve number 8 retract port measured flow;9;8
+65048;1997;Auxiliary valve number 8 extend port estimated flow;1;8
+65048;1998;Auxiliary valve number 8 retract port estimated flow;9;8
+65048;1999;Auxiliary valve number 8 valve state;25;4
+65064;2256;Auxiliary valve number 8 extend port pressure;17;16
+65064;2257;Auxiliary valve number 8 retract port pressure;33;16
+65064;2258;Auxiliary valve number 8 return port pressure;49;8
+65080;2259;Auxiliary valve number 8 port flow - command;1;8
+65080;2260;Auxiliary valve number 8 state - command;25;4
+65080;2261;Auxiliary valve number 8 fail safe mode - command;31;2
+65048;2262;Auxiliary valve number 8 fail safe mode;31;2
+65065;2263;Auxiliary valve number 9 extend port measured flow;1;8
+65065;2264;Auxiliary valve number 9 retract port measured flow;9;8
+65049;2265;Auxiliary valve number 9 extend port estimated flow;1;8
+65049;2266;Auxiliary valve number 9 retract port estimated flow;9;8
+65049;2267;Auxiliary valve number 9 valve state;25;4
+65065;2268;Auxiliary valve number 9 extend port pressure;17;16
+65065;2269;Auxiliary valve number 9 retract port pressure;33;16
+65065;2270;Auxiliary valve number 9 return port pressure;49;8
+65081;2271;Auxiliary valve number 9 port flow - command;1;8
+65081;2272;Auxiliary valve number 9 state - command;25;4
+65081;2273;Auxiliary valve number 9 fail safe mode - command;31;2
+65049;2274;Auxiliary valve number 9 fail safe mode;31;2
+65066;2275;Auxiliary valve number 10 extend port measured flow;1;8
+65066;2276;Auxiliary valve number 10 retract port measured flow;9;8
+65050;2277;Auxiliary valve number 10 extend port estimated flow;1;8
+65050;2278;Auxiliary valve number 10 retract port estimated flow;9;8
+65050;2279;Auxiliary valve number 10 valve state;25;4
+65066;2280;Auxiliary valve number 10 extend port pressure;17;16
+65066;2281;Auxiliary valve number 10 retract port pressure;33;16
+65066;2282;Auxiliary valve number 10 return port pressure;49;8
+65082;2283;Auxiliary valve number 10 port flow - command;1;8
+65082;2284;Auxiliary valve number 10 state - command;25;4
+65082;2285;Auxiliary valve number 10 fail safe mode - command;31;2
+65050;2286;Auxiliary valve number 10 fail safe mode;31;2
+65067;2287;Auxiliary valve number 11 extend port measured flow;1;8
+65067;2288;Auxiliary valve number 11 retract port measured flow;9;8
+65051;2289;Auxiliary valve number 11 extend port estimated flow;1;8
+65051;2290;Auxiliary valve number 11 retract port estimated flow;9;8
+65051;2291;Auxiliary valve number 11 valve state;25;4
+65067;2292;Auxiliary valve number 11 extend port pressure;17;16
+65067;2293;Auxiliary valve number 11 retract port pressure;33;16
+65067;2294;Auxiliary valve number 11 return port pressure;49;8
+65083;2295;Auxiliary valve number 11 port flow - command;1;8
+65083;2296;Auxiliary valve number 11 state - command;25;4
+65083;2297;Auxiliary valve number 11 fail safe mode - command;31;2
+65051;2298;Auxiliary valve number 11 fail safe mode;31;2
+65068;2299;Auxiliary valve number 12 extend port measured flow;1;8
+65068;2300;Auxiliary valve number 12 retract port measured flow;9;8
+65052;2301;Auxiliary valve number 12 extend port estimated flow;1;8
+65052;2302;Auxiliary valve number 12 retract port estimated flow;9;8
+65052;2303;Auxiliary valve number 12 valve state;25;4
+65068;2304;Auxiliary valve number 12 extend port pressure;17;16
+65068;2305;Auxiliary valve number 12 retract port pressure;33;16
+65068;2306;Auxiliary valve number 12 return port pressure;49;8
+65084;2307;Auxiliary valve number 12 port flow - command;1;8
+65084;2308;Auxiliary valve number 12 state - command;25;4
+65084;2309;Auxiliary valve number 12 fail safe mode - command;31;2
+65052;2310;Auxiliary valve number 12 fail safe mode;31;2
+65069;2311;Auxiliary valve number 13 extend port measured flow;1;8
+65069;2312;Auxiliary valve number 13 retract port measured flow;9;8
+65053;2313;Auxiliary valve number 13 extend port estimated flow;1;8
+65053;2314;Auxiliary valve number 13 retract port estimated flow;9;8
+65053;2315;Auxiliary valve number 13 valve state;25;4
+65069;2316;Auxiliary valve number 13 extend port pressure;17;16
+65069;2317;Auxiliary valve number 13 retract port pressure;33;16
+65069;2318;Auxiliary valve number 13 return port pressure;49;8
+65085;2319;Auxiliary valve number 13 port flow - command;1;8
+65085;2320;Auxiliary valve number 13 state - command;25;4
+65085;2321;Auxiliary valve number 13 fail safe mode - command;31;2
+65053;2322;Auxiliary valve number 13 fail safe mode;31;2
+65070;2323;Auxiliary valve number 14 extend port measured flow;1;8
+65070;2324;Auxiliary valve number 14 retract port measured flow;9;8
+65054;2325;Auxiliary valve number 14 extend port estimated flow;1;8
+65054;2326;Auxiliary valve number 14 retract port estimated flow;9;8
+65054;2327;Auxiliary valve number 14 valve state;25;4
+65070;2328;Auxiliary valve number 14 extend port pressure;17;16
+65070;2329;Auxiliary valve number 14 retract port pressure;33;16
+65070;2330;Auxiliary valve number 14 return port pressure;49;8
+65086;2331;Auxiliary valve number 14 port flow - command;1;8
+65086;2332;Auxiliary valve number 14 state - command;25;4
+65086;2333;Auxiliary valve number 14 fail safe mode - command;31;2
+65054;2334;Auxiliary valve number 14 fail safe mode;31;2
+65071;2335;Auxiliary valve number 15 extend port measured flow;1;8
+65071;2336;Auxiliary valve number 15 retract port measured flow;9;8
+65055;2337;Auxiliary valve number 15 extend port estimated flow;1;8
+65055;2338;Auxiliary valve number 15 retract port estimated flow;9;8
+65055;2339;Auxiliary valve number 15 valve state;25;4
+65071;2340;Auxiliary valve number 15 extend port pressure;17;16
+65071;2341;Auxiliary valve number 15 retract port pressure;33;16
+65071;2342;Auxiliary valve number 15 return port pressure;49;8
+65087;2343;Auxiliary valve number 15 port flow - command;1;8
+65087;2344;Auxiliary valve number 15 state - command;25;4
+65087;2345;Auxiliary valve number 15 fail safe mode - command;31;2
+65055;2346;Auxiliary valve number 15 fail safe mode;31;2
+65089;2347;High-beam head lights - command;15;2
+65088;2348;High beam head lights;15;2
+65089;2349;Low beam head light - command;13;2
+65088;2350;Low-beam head lights;13;2
+65089;2351;Alternate head lights - command;11;2
+65088;2352;Alternate head lights;11;2
+65089;2353;Tractor front low-mounted work lights - command;53;2
+65088;2354;Tractor front low-mounted work lights;53;2
+65089;2355;Tractor front high-mounted work lights - Command;55;2
+65088;2356;Tractor front high-mounted work lights;55;2
+65089;2357;Tractor underside-mounted work lights - Command;43;2
+65088;2358;Tractor underside-mounted work lights;43;2
+65089;2359;Tractor rear low-mounted work lights - command;45;2
+65088;2360;Tractor rear low-mounted work lights;45;2
+65089;2361;Tractor rear high-mounted work lights - command;47;2
+65088;2362;Tractor rear high-mounted work lights;47;2
+65089;2363;Tractor side low-mounted work lights - command;49;2
+65088;2364;Tractor side low mounted work lights;49;2
+65089;2365;Tractor side high-mounted work lights - command;51;2
+65088;2366;Tractor side high-mounted work lights;51;2
+65089;2367;Left-turn signal Lights - command;23;2
+65088;2368;Left-turn signal lights;23;2
+65089;2369;Right-turn signal lights - command;21;2
+65088;2370;Right-turn signal lights;21;2
+65089;2371;Left stop lights - command;31;2
+65088;2372;Left stop lights;31;2
+65089;2373;Right stop lights - command;29;2
+65088;2374;Right stop lights;29;2
+65089;2375;Centre stop lights - command;27;2
+65088;2376;Centre stop lights;27;2
+65089;2377;Tractor marker (position) lights - command;39;2
+65088;2378;Tractor marker (position) lights;39;2
+65089;2379;Implement marker (position) lights - command;37;2
+65088;2380;Implement marker (position) lights;37;2
+65089;2381;Tractor clearance lights - command;35;2
+65088;2382;Tractor clearance lights;35;2
+65089;2383;Implement clearance lights - Command;33;2
+65088;2384;Implement clearance lights;33;2
+65089;2385;Rotating beacon light - command;19;2
+65088;2386;Rotating beacon light;19;2
+65089;2387;Tractor front fog lights - command;17;2
+65088;2388;Tractor front fog lights;17;2
+65089;2389;Rear fog lights - command;41;2
+65088;2390;Rear fog lights;41;2
+65089;2391;Back-up lights and alarm horn - command;25;2
+65088;2392;Back-up lights and alarm horn;25;2
+65088;2393;Lighting data message request;65;2
+65088;2394;Implement rear work lights;71;2
+65089;2395;Implement OEM option 1 light - command;59;2
+65088;2396;Implement OEM option 1 light;59;2
+65089;2397;Implement OEM option 2 light - command;57;2
+65088;2398;Implement OEM option 2 light;57;2
+65089;2399;Implement left-facing work lights - command;69;2
+65088;2400;Implement left-facing work lights;69;2
+65089;2401;Implement right-facing work lights - command;67;2
+65088;2402;Implement right-facing work lights;67;2
+65089;2403;Daytime running lights - command;9;2
+65088;2404;Running light;9;2
+65088;2405;Implement rear work lights - command;71;2
+65089;2406;Implement right forward work lights - command;61;2
+65088;2407;Implement right forward work lights;61;2
+65091;2408;Rear PTO engagement;47;2
+64975;2409;Number of members in working set;1;8
+65037;2409;Number of members in working set;1;8
+65039;2410;Language code;1;16
+65039;2411;Decimal symbol;31;2
+65039;2412;Date format;25;8
+65039;2413;Time format;29;2
+65039;2414;Distance units;47;2
+65039;2415;Area unit;45;2
+65039;2416;Volume units;43;2
+65039;2417;Mass units;41;2
+52224;2418;Repetition rate - command;25;16
+65038;2418;Repetition rate - resonse;25;16
+51968;2419;Data Format/Error Condition (Superceded, No longer used);14;2
+52224;2419;Data Format/Error Condition (Superceded, No longer used);54;2
+51968;2420;Process Data Type (Superceded, No longer used);12;2
+52224;2420;Process Data Type (Superceded, No longer used);52;2
+65038;2420;Process Data Type (Superceded, No longer used);52;2
+51968;2421;Process Data Modifier (Superceded, No longer used);9;3
+52224;2421;Process Data Modifier (Superceded, No longer used);49;3
+65038;2421;Process Data Modifier (Superceded, No longer used);49;3
+51968;2422;Count Number (Superceded, No longer used);9;8
+51968;2425;Implement Type (Superceded, No longer used);29;4
+52224;2425;Implement Type (Superceded, No longer used);61;4
+65038;2425;Implement Type (Superceded, No longer used);61;4
+51968;2426;Implement Position (Superceded, No longer used);25;4
+52224;2426;Implement Position (Superceded, No longer used);57;4
+65038;2426;Implement Position (Superceded, No longer used);57;4
+51968;2427;Data Dictionary Row (Superceded, No longer used);37;4
+52224;2427;Data Dictionary Row (Superceded, No longer used);69;4
+65038;2427;Data Dictionary Row (Superceded, No longer used);69;4
+51968;2428;Data Dictionary Column (Superceded, No longer used);33;4
+52224;2428;Data Dictionary Column (Superceded, No longer used);65;4
+65038;2428;Data Dictionary Column (Superceded, No longer used);65;4
+51968;2429;Process Variable Value (Superceded, No longer used);33;32
+59904;2540;Parameter Group Number (RQST)1;1;24
+52224;2540;Parameter Group Number (RQST)1;1;24
+65038;2540;Parameter Group Number (RQST)1;1;24
+59392;2541;Control Byte (ACKM);1;8
+59392;2542;Group Function Value (ACK);9;8
+59392;2543;Parameter Group Number (ACK);41;24
+59392;2544;Group Function Value (NACK);9;8
+59392;2545;Parameter Group Number (NACK);41;24
+59392;2546;Group Function Value (NACK_AD);9;8
+59392;2547;Parameter Group Number (NACK_AD);41;24
+59392;2548;Group Function Value (NACK_Busy);9;8
+59392;2549;Parameter Group Number (NACK_Busy);41;24
+61184;2550;Manufacturer Specific Information (PropA_PDU1);1;14280
+65535";2551;Manufacturer Defined Usage (PropB_PDU2)1;1;14280
+51712;2552;Parameter Group Number of Requested Information (XFER);1;24
+51712;2553;Length of data for the reported PGN (XFER);25;8
+51712;2554;Control function identification;33;32
+60416;2556;Control Byte (TP.CM);1;8
+60416;2557;Total Message Size (TP.CM_RTS)1;9;16
+60416;2557;Total Message Size (TP.CM_RTS)1;9;16
+60416;2558;Total Number of Packets (TP.CM_RTS);25;8
+60416;2559;Maximum Number of Packets (TP.CM_RTS);33;8
+60416;2560;Parameter Group Number of the packeted message (TP.CM_RTS);41;24
+60416;2561;Number of Packets that can be sent (TP.CM_CTS);9;8
+60416;2562;Next Packet Number to be sent (TP.CM_CTS);17;8
+60416;2563;Parameter Group Number of the packeted message (TP.CM_CTS);41;24
+60416;2564;Total Message Size (TP.CM_EndofMsgACK);9;16
+60416;2565;Total Number of Packets (TP.CM_EndofMsgACK);25;8
+60416;2566;Parameter Group Number of the packeted message (TP.CM_EndofMsgACK);41;24
+60416;2567;Total Message Size (TP.CM_BAM);9;16
+60416;2568;Total Number of Packets (TP.CM_BAM);25;8
+60416;2569;Parameter Group Number of the packeted message (TP.CM_BAM);41;24
+60416;2570;Connection Abort Reason;9;8
+60416;2571;Parameter Group Number of packeted message (TP.CM_Conn_Abort);41;24
+60160;2572;Sequence Number (TP.DT);1;8
+51456;2575;Use Transfer Mode;33;2
+65089;2597;Implement left forward work lights - command;63;2
+65088;2598;Implement left forward work light;63;2
+65240;2847;Address Assignment (new source address);9;8
+64965;2901;ECU serial number;1;1600
+50688;2932;General purpose valve state;25;4
+50176;2933;General purpose valve state - Command;25;4
+50688;2934;General purpose valve fail safe mode;31;2
+50176;2935;General purpose valve fail safe mode - command;31;2
+50432;2937;General purpose valve extend port measured flow;1;8
+50432;2938;General purpose valve retract port measured flow;9;8
+50688;2939;General purpose valve extend port estimated flow;1;8
+50688;2940;General purpose valve retract port estimated flow;9;8
+50432;2941;General purpose valve extend port pressure;17;16
+50432;2942;General purpose valve return port pressure;33;16
+50432;2943;General purpose valve retract port pressure;49;8
+50176;2944;General purpose valve port flow - Command;1;8
+1792;4086;General purpose valve load sense pressure;1;16
+1792;4087;General purpose valve pilot pressure;17;8
+1792;4088;General purpose valve assembly load sense pressure;25;16
+1792;4089;General purpose valve assembly supply pressure;41;16
+61474;4305;Machine selected speed;1;16
+61474;4306;Machine selected distance;17;32
+61474;4307;Machine selected speed limit Measured;70;3
+61474;4308;Machine selected speed source;67;3
+61474;4309;Machine selected direction;65;2
+64835;4310;Machine selected speed set point command;1;16
+64835;4311;Machine selected speed set point limit;17;16
+64835;4312;Machine selected direction command;65;2
+64834;4313;ISOBUS compliance certification year;15;6
+64834;4314;ISOBUS compliance certification revision;9;3
+64834;4315;ISOBUS compliance certification laboratory type;15;3
+64834;4317;Compliance certification type – Minimum ECU;40;1
+64834;4318;Compliance certification type – TECU Class 1;39;1
+64834;4319;Compliance certification type – TECU Class 2;38;1
+64834;4320;Compliance certification type – TECU Class 3;37;1
+64834;4321;Compliance certification type – Class 3 ECU;36;1
+64834;4322;Compliance certification type – Virtual Terminal;35;1
+64834;4323;Compliance certification type – VT working set master;34;1
+64834;4324;Compliance certification type – VT working set member;33;1
+64834;4325;Compliance certification type – Task Controller;48;1
+64834;4326;Compliance certification type – TC working set master;47;1
+64834;4327;Compliance certification type – TC working set member;46;1
+64834;4328;Compliance certification type – File Server;45;1
+64834;4329;Compliance certification type – GPS receiver;44;1
+64834;4330;Compliance certification reference number;49;16
+64771;5139;Implement operating state – command;65;2
+64770;5140;Stop all Implement operations;65;2
+65094;5150;Front Hitch Position Limit status;20;3
+65093;5151;Rear Hitch Position Limit status;20;3
+65092;5152;Front PTO engagement request status;41;2
+65092;5153;Front PTO mode request status;55;2
+65092;5154;Front PTO Economy mode request status;53;2
+65092;5155;Front PTO shaft speed limit status;50;2
+65091;5156;Rear PTO engagement request status;41;2
+65091;5157;Rear PTO mode request status;55;2
+65091;5158;Rear PTO Economy mode request status;53;2
+65091;5159;Rear PTO shaft speed limit status;50;3
+65056;5160;Auxiliary valve number 0 measured flow limit status;70;3
+65040;5161;Auxiliary  valve number 0 estimated flow limit status;38;3
+65057;5162;Auxiliary valve number 1 measured flow limit status;70;3
+65041;5163;Auxiliary  valve number 1 estimated flow limit status;38;3
+65058;5164;Auxiliary valve number 2 measured flow limit status;70;3
+65042;5165;Auxiliary  valve number 2 estimated flow limit status;38;3
+65059;5166;Auxiliary valve number 3 measured flow limit status;70;3
+65043;5167;Auxiliary  valve number 3 estimated flow limit status;38;3
+65060;5168;Auxiliary valve number 4 measured flow limit status;70;3
+65044;5169;Auxiliary  valve number 4 estimated flow limit status;38;3
+65061;5170;Auxiliary valve number 5 measured flow limit status;70;3
+65045;5171;Auxiliary  valve number 5 estimated flow limit status;38;3
+65062;5172;Auxiliary valve number 6 measured flow limit status;70;3
+65046;5173;Auxiliary  valve number 6 estimated flow limit status;38;3
+65063;5174;Auxiliary valve number 7 measured flow limit status;70;3
+65047;5175;Auxiliary  valve number 7 estimated flow limit status;38;3
+65064;5176;Auxiliary valve number 8 measured flow limit status;70;3
+65048;5177;Auxiliary  valve number 8 estimated flow limit status;38;3
+65065;5178;Auxiliary valve number 9 measured flow limit status;70;3
+65049;5179;Auxiliary  valve number 9 estimated flow limit status;38;3
+65066;5180;Auxiliary valve number 10 measured flow limit status;70;3
+65050;5181;Auxiliary  valve number 10 estimated flow limit status;38;3
+65067;5182;Auxiliary valve number 11 measured flow limit status;70;3
+65051;5183;Auxiliary  valve number 11 estimated flow limit status;38;3
+65068;5184;Auxiliary valve number 12 measured flow limit status;70;3
+65052;5185;Auxiliary  valve number 12 estimated flow limit status;38;3
+65069;5186;Auxiliary valve number 13 measured flow limit status;70;3
+65053;5187;Auxiliary  valve number 13 estimated flow limit status;38;3
+65070;5188;Auxiliary valve number 14 measured flow limit status;70;3
+65054;5189;Auxiliary  valve number 14 estimated flow limit status;38;3
+65071;5190;Auxiliary valve number 15 measured flow limit status;70;3
+65055;5191;Auxiliary valve number 15 estimated flow limit status;38;3
+50432;5192;General purpose valve measured limit status;70;3
+50688;5193;General purpose valve estimated limit status;38;3
+65039;5194;Temperature units;55;2
+65039;5195;Pressure units;53;2
+65039;5196;Force units;51;2
+65039;5197;Units system;49;2
+65038;5198;Repetition rate;25;16
+51968;5199;Process data command;9;4
+51968;5201;Process data data dictionary identifier;17;16
+51968;5202;Process data variable value;33;32
+65096;5203;Implement Start/Stop operations;69;2
+65034;5214a;Tractor control vehicle speed set point value response;17;16
+65034;5214b;Tractor control vehicle speed set point value response;41;8
+65034;5215a;Tractor control PTO speed set point value response;17;8
+65034;5215b;Tractor control PTO speed set point value response;41;8
+65034;5216a;Tractor control hitch position set point value response;17;8
+65034;5216b;Tractor control hitch position set point value response;41;8
+65034;5217a;Tractor control PTO torque set point value response;17;8
+65034;5217b;Tractor control PTO torque set point value response;41;8
+65034;5218a;Tractor control maximum slip set point value response;17;8
+65034;5218b;Tractor control maximum slip set point value response;41;8
+65034;5219;Tractor control auxiliary valve flow set point value response;41;8
+65034;5220a;Tractor control auxiliary valve state response;37;4
+65034;5220b;Tractor control auxiliary valve state response;61;4
+65034;5221;Tractor control auxiliary valve number response;33;4
+65034;5222;Tractor control draft force set point value response;33;8
+65034;5223;Tractor Control draft force limit set point;33;8
+65034;5224;Tractor Control PTO torque limit set point;33;8
+65034;5225;Tractor Control Absolute maximum PTO torque limit set point 540 rpm;33;8
+65034;5226;Tractor Control auxiliary valve flow limit set point;33;8
+65034;5227;Tractor Control limit status;9;3
+65035;5228;Tractor control draft force limit set point command;33;8
+65035;5229;Tractor control PTO torque limit set point command;33;8
+65035;5230;Tractor control absolute maximum PTO torque limit set point 540 rpm command;33;8
+65035;5231;Tractor control auxiliary valve flow limit set point command;33;8
+65032;5232;Tractor ECU class request;15;2
+65032;5233;Tractor facility request;9;1
+65033;5234;Tractor ECU class response;15;2
+65033;5235;Tractor facility response;9;1
+65033;5236;Tractor facility reserved bit indicator;65;1
+44288;5237;Guidance curvature command;1;16
+44032;5238;Guidance estimated curvature;1;16
+44288;5239;Guidance curvature command status;25;2
+44032;5240;Guidance request reset command status;31;2
+44032;5241;Guidance steering input position status;29;2
+44032;5242;Guidance steering system readiness;27;2
+44032;5243;Mechanical system lockout;25;2
+65096;5244;Operator direction reversed;71;2
+51968;5247;Command - Process Data;9;4
+51968;5248;Sub-command - Process Data;9;4
+51968;5249;Command specific parameters - Process Data;9;4
+51968;5251;Data Dictionary Identifier;17;16
+60672;5592;Network Message Control Byte;1;8
+60672;5594;To Port;17;4
+60672;5595;From Port;21;4
+60672;5596;Filter Mode;17;8
+60672;5602;Number of SA/NAME Pairs;17;8
+37632;5657;NAME Checksum / Error Code;1;8
+37632;5658;Manufacturer Code Qualifier Flag;17;1
+37632;5659;ECU Instance Qualifier Flag;18;1
+37632;5660;Function Instance Qualifier Flag;19;1
+37632;5661;Function Qualifier Flag;20;1
+37632;5662;Device Class Qualifier Flag;21;1
+37632;5663;Device Class Instance Qualifier Flag;22;1
+37632;5664;Industry Group Qualifier Flag;23;1
+37632;5665;Self-Configurable Address Capable Qualifier Flag;24;1
+37632;5666;NM Control Mode Indicator;25;4
+37632;5668;Commanded ECU Instance;41;3
+37632;5669;Commanded Function Instance;44;5
+37632;5670;Commanded Function;41;8
+37632;5671;Commanded Device Class;58;7
+37632;5672;Commanded Device Class Instance;65;4
+37632;5673;Commanded Industry Group;69;3
+37632;5674;Commanded Self-Configurable Address Capable;72;1
+44032;5725;Guidance system command exit/reason code;33;6
+44032;5726;Guidance Limit Status;41;3
+64717;5727;Drive Strategy Priority 1;9;8
+64717;5728;Drive Strategy Priority 2;17;8
+64717;5729;Drive Strategy Priority 3;25;8
+64717;5730;Drive Strategy Priority 4;33;8
+64717;5731;Drive Strategy Request State;65;2
+64717;5732;Drive Strategy Exit/Reason Code;67;6
+64718;5733;Drive Strategy Priority 1 Request;9;8
+64718;5734;Drive Strategy Priority 2 Request;17;8
+64718;5735;Drive Strategy Priority 3 Request;25;8
+64718;5736;Drive Strategy Priority 4 Request;33;8
+64718;5737;Restore Operator Drive Strategy Setting Request;65;2
+65040;5800;Auxiliary valve 0 exit/reason code;41;6
+65041;5801;Auxiliary valve 1 exit/reason code;41;6
+65042;5802;Auxiliary valve 2 exit/reason code;41;6
+65043;5803;Auxiliary valve 2 exit/reason code;41;6
+65044;5804;Auxiliary valve 4 exit/reason code;41;6
+65045;5805;Auxiliary valve 5 exit/reason code;41;6
+65046;5806;Auxiliary valve 6 exit/reason code;41;6
+65047;5807;Auxiliary valve 7 exit/reason code;41;6
+65048;5808;Auxiliary valve 8 exit/reason code;41;6
+65049;5809;Auxiliary valve 9 exit/reason code;41;6
+65050;5810;Auxiliary valve 10exit/reason code;41;6
+65051;5811;Auxiliary valve 11 exit/reason code;41;6
+65052;5812;Auxiliary valve 12 exit/reason code;41;6
+65053;5813;Auxiliary valve 13 exit/reason code;41;6
+65054;5814;Auxiliary valve 14 exit/reason code;41;6
+65055;5815;Auxiliary valve 15 exit/reason code;41;6
+65092;5816;Front hitch exit/reason code;49;6
+65092;5817;Front PTO exit/reason code;57;6
+64835;5818;Machine selected speed exit/reason code;57;6
+65093;5819;Rear hitch exit/reason code;49;6
+65091;5820;Rear PTO exit/reason code;57;6
+61668;7345;Heartbeat Sequence Number;1;8
+64770;7443;Stop All Implement Operations Transition Number;49;8
+65033;7444;Tractor Facility Response - Limit/Request Status Reporting;36;1
+65032;7445;Tractor Facility Request - Limit/Request Status Reporting;36;1
+64834;7446;ISOBUS Compliance Certification Message Revision;56;1
+65095;7447;Implement In-Work State;17;2

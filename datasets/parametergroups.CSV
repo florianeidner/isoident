@@ -1,0 +1,368 @@
+1792;General Purpose Valve Load Sense Pressure
+36096;Sequence Control Client-to-Sequence Control Master
+36352;Sequence Control Master-to-Sequence Control Client
+37632;NAME Management Message
+43520;Client to File Server message
+43776;File Server to client message
+44032;Guidance System Machine Information
+44288;Guidance System Command
+50176;General Purpose Valve Command
+50432;General Purpose Valve Measured Flow
+50688;General Purpose Valve Estimated Flow
+50944;Extended Transport Protocol – Data Transfer
+51200;Extended Transport Protocol - Connection Mgt
+51456;Request 2
+51712;Transfer
+51968;Process Data Message
+52224;Request for Repetition Rate
+58880;Virtual Terminal-to-Working Set
+59136;Working Set-to-Virtual Terminal
+59392;Acknowledgment Message
+59904;Request
+60160;Transport Protocol - Data Transfer
+60416;Transport Protocol – Connection Mgmt
+60672;Network Layer
+60928;Address Claimed Message
+61184;Proprietary A
+61474;Machine selected speed
+61668;Heartbeat Message
+64653;Product Identification Information
+64654;Control Function Functionalities
+64717;Drive Strategy Status
+64718;Drive Strategy Command
+64770;All implements stop operations switch state
+64771;Implement operating state command
+64818;ECU diagnostic protocol
+64834;ISOBUS compliance certification message
+64835;Machine selected speed command
+64965;ECU Identification Information
+65032;Required Tractor Facilities message
+65033;Tractor Facilities response message
+65034;Implement Remote Control Tractor Response
+65035;Implement Remote Control Command
+65036;Working Set Member
+65037;Working Set Master
+65038;Response for Repetition Rate
+65039;Language Command
+65040;Auxiliary Valve Number 0 Estimated Flow
+65041;Auxiliary Valve Number 1 Estimated Flow
+65042;Auxiliary Valve Number 2 Estimated Flow
+65043;Auxiliary Valve Number 3 Estimated Flow
+65044;Auxiliary Valve Number 4 Estimated Flow
+65045;Auxiliary Valve Number 5 Estimated Flow
+65046;Auxiliary Valve Number 6 Estimated Flow
+65047;Auxiliary Valve Number 7 Estimated Flow
+65048;Auxiliary Valve Number 8 Estimated Flow
+65049;Auxiliary Valve Number 9 Estimated Flow
+65050;Auxiliary Valve Number 10 Estimated Flow
+65051;Auxiliary Valve Number 11 Estimated Flow
+65052;Auxiliary Valve Number 12 Estimated Flow
+65053;Auxiliary Valve Number 13 Estimated Flow
+65054;Auxiliary Valve Number 14 Estimated Flow
+65055;Auxiliary Valve Number 15 Estimated Flow
+65056;Auxiliary Valve Number 0 Measured Flow
+65057;Auxiliary Valve Number 1 Measured Flow
+65058;Auxiliary Valve Number 2 Measured Flow
+65059;Auxiliary Valve Number 3 Measured Flow
+65060;Auxiliary Valve Number 4 Measured Flow
+65061;Auxiliary Valve Number 5 Measured Flow
+65062;Auxiliary Valve Number 6 Measured Flow
+65063;Auxiliary Valve Number 7 Measured Flow
+65064;Auxiliary Valve Number 8 Measured Flow
+65065;Auxiliary Valve Number 9 Measured Flow
+65066;Auxiliary Valve Number 10 Measured Flow
+65067;Auxiliary Valve Number 11 Measured Flow
+65068;Auxiliary Valve Number 12 Measured Flow
+65069;Auxiliary Valve Number 13 Measured Flow
+65070;Auxiliary Valve Number 14 Measured Flow
+65071;Auxiliary Valve Number 15 Measured Flow
+65072;Auxiliary Valve Number 0 Command
+65073;Auxiliary Valve Number 1 Command
+65074;Auxiliary Valve Number 2 Command
+65075;Auxiliary Valve Number 3 Command
+65076;Auxiliary Valve Number 4 Command
+65077;Auxiliary Valve Number 5 Command
+65078;Auxiliary Valve Number 6 Command
+65079;Auxiliary Valve Number 7 Command
+65080;Auxiliary Valve Number 8 Command
+65081;Auxiliary Valve Number 9 Command
+65082;Auxiliary Valve Number 10 Command
+65083;Auxiliary Valve Number 11 Command
+65084;Auxiliary Valve Number 12 Command
+65085;Auxiliary Valve Number 13 Command
+65086;Auxiliary Valve Number 14 Command
+65087;Auxiliary Valve Number 15 Command
+65088;Lighting Data
+65089;Lighting Command
+65090;Hitch and PTO Commands
+65091;Primary or Rear Power Take off Output Shaft
+65092;Secondary or Front Power Take off Output Shaft
+65093;Primary or Rear Hitch Status
+65094;Secondary or Front Hitch Status
+65095;Maintain Power
+65096;Wheel-based Speed and Distance
+65097;Ground-based Speed and Distance
+65226;Diagnostic Message #1 Active Diagnostic Trouble Codes
+65227;Diagnostic Message #2 Previously Active Diagnostic Trouble Codes
+65228;Diagnostic Message #3 Clear or reset Previously Active Diagnostic Trouble Codes
+65238;Reserved for Network Management
+65239;Reserved
+65240;Commanded Address
+65242;Software Identification
+65280;Proprietary B
+65281;Proprietary B
+65282;Proprietary B
+65283;Proprietary B
+65284;Proprietary B
+65285;Proprietary B
+65286;Proprietary B
+65287;Proprietary B
+65288;Proprietary B
+65289;Proprietary B
+65290;Proprietary B
+65291;Proprietary B
+65292;Proprietary B
+65293;Proprietary B
+65294;Proprietary B
+65295;Proprietary B
+65296;Proprietary B
+65297;Proprietary B
+65298;Proprietary B
+65299;Proprietary B
+65300;Proprietary B
+65301;Proprietary B
+65302;Proprietary B
+65303;Proprietary B
+65304;Proprietary B
+65305;Proprietary B
+65306;Proprietary B
+65307;Proprietary B
+65308;Proprietary B
+65309;Proprietary B
+65310;Proprietary B
+65311;Proprietary B
+65312;Proprietary B
+65313;Proprietary B
+65314;Proprietary B
+65315;Proprietary B
+65316;Proprietary B
+65317;Proprietary B
+65318;Proprietary B
+65319;Proprietary B
+65320;Proprietary B
+65321;Proprietary B
+65322;Proprietary B
+65323;Proprietary B
+65324;Proprietary B
+65325;Proprietary B
+65326;Proprietary B
+65327;Proprietary B
+65328;Proprietary B
+65329;Proprietary B
+65330;Proprietary B
+65331;Proprietary B
+65332;Proprietary B
+65333;Proprietary B
+65334;Proprietary B
+65335;Proprietary B
+65336;Proprietary B
+65337;Proprietary B
+65338;Proprietary B
+65339;Proprietary B
+65340;Proprietary B
+65341;Proprietary B
+65342;Proprietary B
+65343;Proprietary B
+65344;Proprietary B
+65345;Proprietary B
+65346;Proprietary B
+65347;Proprietary B
+65348;Proprietary B
+65349;Proprietary B
+65350;Proprietary B
+65351;Proprietary B
+65352;Proprietary B
+65353;Proprietary B
+65354;Proprietary B
+65355;Proprietary B
+65356;Proprietary B
+65357;Proprietary B
+65358;Proprietary B
+65359;Proprietary B
+65360;Proprietary B
+65361;Proprietary B
+65362;Proprietary B
+65363;Proprietary B
+65364;Proprietary B
+65365;Proprietary B
+65366;Proprietary B
+65367;Proprietary B
+65368;Proprietary B
+65369;Proprietary B
+65370;Proprietary B
+65371;Proprietary B
+65372;Proprietary B
+65373;Proprietary B
+65374;Proprietary B
+65375;Proprietary B
+65376;Proprietary B
+65377;Proprietary B
+65379;Proprietary B
+65380;Proprietary B
+65381;Proprietary B
+65382;Proprietary B
+65383;Proprietary B
+65384;Proprietary B
+65385;Proprietary B
+65386;Proprietary B
+65387;Proprietary B
+65388;Proprietary B
+65389;Proprietary B
+65390;Proprietary B
+65391;Proprietary B
+65392;Proprietary B
+65393;Proprietary B
+65394;Proprietary B
+65395;Proprietary B
+65396;Proprietary B
+65397;Proprietary B
+65398;Proprietary B
+65399;Proprietary B
+65400;Proprietary B
+65401;Proprietary B
+65402;Proprietary B
+65403;Proprietary B
+65404;Proprietary B
+65405;Proprietary B
+65406;Proprietary B
+65407;Proprietary B
+65408;Proprietary B
+65409;Proprietary B
+65410;Proprietary B
+65411;Proprietary B
+65412;Proprietary B
+65413;Proprietary B
+65414;Proprietary B
+65415;Proprietary B
+65416;Proprietary B
+65417;Proprietary B
+65418;Proprietary B
+65419;Proprietary B
+65420;Proprietary B
+65421;Proprietary B
+65422;Proprietary B
+65423;Proprietary B
+65424;Proprietary B
+65425;Proprietary B
+65426;Proprietary B
+65427;Proprietary B
+65428;Proprietary B
+65429;Proprietary B
+65430;Proprietary B
+65431;Proprietary B
+65432;Proprietary B
+65433;Proprietary B
+65434;Proprietary B
+65435;Proprietary B
+65436;Proprietary B
+65437;Proprietary B
+65438;Proprietary B
+65439;Proprietary B
+65440;Proprietary B
+65441;Proprietary B
+65442;Proprietary B
+65443;Proprietary B
+65444;Proprietary B
+65445;Proprietary B
+65446;Proprietary B
+65447;Proprietary B
+65448;Proprietary B
+65449;Proprietary B
+65450;Proprietary B
+65451;Proprietary B
+65452;Proprietary B
+65453;Proprietary B
+65454;Proprietary B
+65455;Proprietary B
+65456;Proprietary B
+65457;Proprietary B
+65458;Proprietary B
+65459;Proprietary B
+65460;Proprietary B
+65461;Proprietary B
+65462;Proprietary B
+65463;Proprietary B
+65464;Proprietary B
+65465;Proprietary B
+65466;Proprietary B
+65467;Proprietary B
+65468;Proprietary B
+65469;Proprietary B
+65470;Proprietary B
+65471;Proprietary B
+65472;Proprietary B
+65473;Proprietary B
+65474;Proprietary B
+65475;Proprietary B
+65476;Proprietary B
+65477;Proprietary B
+65478;Proprietary B
+65479;Proprietary B
+65480;Proprietary B
+65481;Proprietary B
+65482;Proprietary B
+65483;Proprietary B
+65484;Proprietary B
+65485;Proprietary B
+65486;Proprietary B
+65487;Proprietary B
+65488;Proprietary B
+65489;Proprietary B
+65490;Proprietary B
+65491;Proprietary B
+65492;Proprietary B
+65493;Proprietary B
+65494;Proprietary B
+65495;Proprietary B
+65496;Proprietary B
+65497;Proprietary B
+65498;Proprietary B
+65499;Proprietary B
+65500;Proprietary B
+65501;Proprietary B
+65502;Proprietary B
+65503;Proprietary B
+65504;Proprietary B
+65505;Proprietary B
+65506;Proprietary B
+65507;Proprietary B
+65508;Proprietary B
+65509;Proprietary B
+65510;Proprietary B
+65511;Proprietary B
+65512;Proprietary B
+65513;Proprietary B
+65514;Proprietary B
+65515;Proprietary B
+65516;Proprietary B
+65517;Proprietary B
+65518;Proprietary B
+65519;Proprietary B
+65520;Proprietary B
+65521;Proprietary B
+65522;Proprietary B
+65523;Proprietary B
+65524;Proprietary B
+65525;Proprietary B
+65526;Proprietary B
+65527;Proprietary B
+65528;Proprietary B
+65529;Proprietary B
+65530;Proprietary B
+65531;Proprietary B
+65532;Proprietary B
+65533;Proprietary B
+65534;Proprietary B
+65535;Proprietary B
+126464;PGN List - Transmit/Receive PGN’s group function
+126720;Proprietary A2
