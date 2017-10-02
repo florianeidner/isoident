@@ -619,6 +619,24 @@ int handle_address_claim_message() {
 	return EXIT_SUCCESS;
 }
 
+int quit_isoident() {
+	can_close_socket(socket);
+	exit(EXIT_SUCCESS);
+}
+
+void SIGTERMHandler(int nr) {
+
+  	fprintf(stdout, "SIGTERM received: %d\n", nr);
+
+  	fflush(stdout);
+  	fflush(stderr);
+	//if (pthread_join (p_sync, NULL))
+	quit_isoident();
+
+	// Should never be reached
+  	exit(EXIT_SUCCESS);
+}
+
 
 int init(int argc, char *argv[]) {
 	/* Handle the command line arguments */
@@ -653,6 +671,8 @@ int init(int argc, char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
+
+	signal(SIGTERM, SIGTERMHandler);
 	
 	int address_claim_timeout = 3; //How long to wait for address-claimed messages before updating device list in [s]
 	time_t time_last_claim;
@@ -754,9 +774,8 @@ int main(int argc, char *argv[]) {
 	}
 
 
-	printf("\n----------Programmende----------\n\n");
-
-	can_close_socket();
-	return EXIT_SUCCESS;
+	printf("\n---------------End----------------\n");
+	printf("---This should never be reached---");
+	return EXIT_FAILURE;
 
 }
