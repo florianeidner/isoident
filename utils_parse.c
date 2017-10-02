@@ -106,26 +106,26 @@ int parse_get_function_id(u_int64_t can_data) {
 	return function_id;
 }
 
-//NOT USED ATM
-// int parse_get_industry_id(u_int64_t can_data) {
 
-// 	int industry_id;
-// 	u_int64_t mask = create_mask(0,2);
-// 	industry_id = mask & (can_data >> 60);
-// 	printf("mask: 0x%" PRIx64 " - industry_id: %d\n",mask, industry_id );
+int parse_get_industry_id(u_int64_t can_data) {
 
-// 	return industry_id;
-// }
+	int industry_id;
+ 	u_int64_t mask = create_mask(0,2);
+ 	industry_id = mask & (can_data >> 60);
+ 	printf("mask: 0x%" PRIx64 " - industry_id: %d\n",mask, industry_id );
 
-// int parse_get_class_id(u_int64_t can_data) {
+ 	return industry_id;
+}
 
-// 	int class_id;
-// 	u_int64_t mask = create_mask(0,6);
-// 	class_id = mask & (can_data >> 49);
-// 	printf("mask: 0x%" PRIx64 " - class_id: %d\n",mask, class_id );
+int parse_get_class_id(u_int64_t can_data) {
 
-// 	return class_id;
-// }
+ 	int class_id;
+ 	u_int64_t mask = create_mask(0,6);
+ 	class_id = mask & (can_data >> 49);
+ 	printf("mask: 0x%" PRIx64 " - class_id: %d\n",mask, class_id );
+
+ 	return class_id;
+}
 
 
 /*
@@ -192,7 +192,9 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 
 int parse_get_function(u_int64_t can_data, char* func_name) {
 	int func_id = parse_get_function_id(can_data);
-
+	if (func_id > 127) {
+		func_id = str_to_int(concat(concat(int_to_string(parse_get_industry_id(can_data)),int_to_string(parse_get_class_id(can_data))),int_to_string(func_id)));
+	}
 	//printf("Function ID: %d\n",func_id);
 
 	FILE *file;

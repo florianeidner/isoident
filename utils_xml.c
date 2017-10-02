@@ -97,7 +97,7 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 // *	Takes the current tree and save it in file.
 // */
 
-int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1, mxml_node_t* node2) {
+int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1, mxml_node_t* node2,mxml_node_t* node3) {
 	
 	fprintf(stdout, "Writing isoident.xml...");
 	
@@ -111,6 +111,7 @@ int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1,
 
 	mxmlAdd(parent,MXML_ADD_AFTER,MXML_ADD_TO_PARENT,node1);
 	mxmlAdd(parent,MXML_ADD_AFTER,MXML_ADD_TO_PARENT,node2);
+	mxmlAdd(parent,MXML_ADD_AFTER,MXML_ADD_TO_PARENT,node3);
 
 	xmlFile = fopen(path,"w");
 	mxmlSaveFile(xml,xmlFile,MXML_NO_CALLBACK);

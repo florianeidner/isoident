@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?><isoident><config
-can_interface="vcan0" canlogger_path="" address_claim_cycle="3600" /><devicelog><device
-UUID="545259521" manufacturer="Reichhardt GmbH Steuerungstechnik"
+can_interface="vcan0" canlogger_path="" address_claim_cycle="10" /><directlog>
+<iso name="ActualEngPercentTorque" pgn="61444" sa="0" sbit="16" len="8"
+end="1" fac="1" offs="-125" min="-125" max="125" type="0" unit="%"
+spn="0" ddi="" /><iso name="EngSpeed" pgn="61444" sa="0" sbit="24"
+len="16" end="1" fac="0.125" offs="0" min="0" max="8031.88" type="0"
+unit="rpm" spn="0" ddi="" /><iso name="EngSpeed2" pgn="61445" sa="0"
+sbit="24" len="16" end="1" fac="0.125" offs="0" min="0" max="8031.88"
+type="0" unit="rpm" spn="0" ddi="" /><iso name="EngSpeed3" pgn="61446"
+sa="0" sbit="24" len="16" end="1" fac="0.125" offs="0" min="0"
+max="8031.88" type="0" unit="rpm" spn="0" ddi="" /><iso
+name="EngFuelRate" pgn="65266" sa="0" sbit="0" len="16" end="1"
+fac="0.05" offs="0" min="0" max="3212.75" type="0" unit="L/h" spn="0"
+ddi="" /></directlog><devicelog><device UUID="545259521"
+manufacturer="Reichhardt GmbH Steuerungstechnik"
 function="Ground based speed sensor"><message pgn="65097"
 name="Ground-based Speed and Distance
 "><signal spn="1859"
-name="Ground-based machine speed" log="0" start="1" len="16" end="0"
+name="Ground-based machine speed" log="1" start="1" len="16" end="0"
 fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /><signal
 spn="1860" name="Ground-based machine distance" log="0" start="17"
 len="32" end="0" fac="0" offs="0" min="-800000" max="800000" type=""
@@ -18,15 +30,15 @@ name="Lighting Command
 "><signal spn="2347"
 name="High-beam head lights - command" log="0" start="15" len="2" end="0"
 fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /><signal
-spn="2349" name="Low beam head light - command" log="0" start="13"
+spn="2349" name="Low beam head light - command" log="1" start="13"
 len="2" end="0" fac="0" offs="0" min="-800000" max="800000" type=""
 unit="" ddi="" /><signal spn="2351"
 name="Alternate head lights - command" log="0" start="11" len="2" end="0"
 fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /><signal
-spn="2353" name="Tractor front low-mounted work lights - command" log="1"
+spn="2353" name="Tractor front low-mounted work lights - command" log="0"
 start="53" len="2" end="0" fac="0" offs="0" min="-800000" max="800000"
 type="" unit="" ddi="" /><signal spn="2355"
-name="Tractor front high-mounted work lights - Command" log="1"
+name="Tractor front high-mounted work lights - Command" log="0"
 start="55" len="2" end="0" fac="0" offs="0" min="-800000" max="800000"
 type="" unit="" ddi="" /><signal spn="2357"
 name="Tractor underside-mounted work lights - Command" log="0" start="43"
@@ -93,7 +105,7 @@ fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /><signal
 spn="2406" name="Implement right forward work lights - command" log="0"
 start="61" len="2" end="0" fac="0" offs="0" min="-800000" max="800000"
 type="" unit="" ddi="" /><signal spn="2597"
-name="Implement left forward work lights - command" log="0" start="63"
+name="Implement left forward work lights - command" log="1" start="63"
 len="2" end="0" fac="0" offs="0" min="-800000" max="800000" type=""
 unit="" ddi="" /></message></device><device UUID="315891700"
 manufacturer="Fleetguard" function="Suspension Control - Drive Axle"><message
