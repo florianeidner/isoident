@@ -242,6 +242,60 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 
 }
 
+int parse_get_class(u_int64_t can_data, char* func_name) {
+	int func_id = parse_get_class_id(can_data);
+	if (func_id > 127) {
+		func_id = str_to_int(concat(concat(int_to_string(parse_get_industry_id(can_data)),int_to_string(parse_get_class_id(can_data))),int_to_string(func_id)));
+	}
+	//printf("Function ID: %d\n",func_id);
+
+	FILE *file;
+
+	if ((file = load_file(concat(datasets_path,"functions.CSV"))) == NULL) {
+		return EXIT_FAILURE;
+	}
+	
+	char * line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	int lineID;
+	short match=0;
+
+	if (file == NULL)
+        exit(0);
+
+	if (file){
+		while (((read =getline(&line, &len, file)) != -1)) {
+		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
+		    //printf("lineID: %d\n", lineID);
+				if (lineID == func_id) {
+					char* func_name_update = strtok(NULL,"\n");
+					strcpy(func_name,func_name_update);
+					match=1;
+					break;
+				}
+			}
+		if (match == 0){
+			strcpy(func_name,"unknown");
+			printf("Function not found.\n");
+		}
+		else {
+			printf("Function: %s \n",func_name);
+		}
+	}
+
+	else{
+		printf("File could not be opened.");
+	}
+
+	fclose(file);
+	
+	return 0;
+
+}
+
+
+
 
 /*
 *   \brief Get PGN
