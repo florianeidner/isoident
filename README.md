@@ -39,7 +39,9 @@ There are command line options to specify different paths to the configfile, the
 
 `$ ./isoident -f /home/isoident.xml -g /home/amcanlogger/canlogger.xml -d /home/datasets/`
 
-* `-d DIR` - Custom path to the datasets used to identify the participants, messages and signals.
+* `-a VALUE`- Interval for sending address claims. 1 = once on startup, 0 = disabled (no sending via CAN interface).
+* `-c TYPE` - Sets the CAN interface to listen to. Can be i.e. can0, can1, vcan0.
+* `-d DIR`  - Custom path to the datasets used to identify the participants, messages and signals.
 * `-f FILE` - Custom configfile. If not given, it takes the isoident.xml from the running dir.
 * `-g FILE` - If this option is given, logging via the amcanlogger is enabled. The path to the amcanlogger configfile needs to be provided.
 * `-h` - Shows the help prompt.

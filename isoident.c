@@ -48,7 +48,6 @@ const char *can_interface_name;
 
 mxml_node_t* configfile_xml;
 mxml_node_t* config_isoident_xml;
-mxml_node_t* config_parameter_xml;
 mxml_node_t* config_devicelog_xml;
 mxml_node_t* config_directlog_xml;
 
@@ -93,9 +92,10 @@ void show_help(void) {
           "log ISOBUS signals. The signals to log can be manually defined in the isoident.xml for each signal.\n\n"\
           "The following options are accepted:\n\n"\
 
-          "\t-f  OPTIONAL Path to configfile. i.e.: /home/usr/isoident.xml\n\n"\
-          
+          "\t-a  OPTIONAL Set address claim cycle in [s]. If not provided, an address claim is send once on startup. Disable with '-c 0'\n"\
+          "\t-c  OPTIONAL Set CAN interface. i.e. can0, can1, vcan0\n"\
           "\t-d  OPTIONAL Path to datasets from ISO11783. i.e. datasets/\n"\
+          "\t-f  OPTIONAL Path to configfile. i.e.: /home/usr/isoident.xml\n"\
           "\t-g  OPTIONAL Path to canlogger configfile i.e.: /home/usr/canlogger.xml, enables logging via amcanlogger\n"\
           "\t-h  OPTIONAL This argument shows this message.\n\n");}
 
@@ -106,11 +106,25 @@ int handle_command_line_arguments(int argc, char *argv[]) {
 	extern int optind, opterr, optopt;
 	bool configfile_path_flag = 0;
 	bool datasets_path_flag = 0;
+	bool can_interface_name_flag = 0;
+	bool address_claim_cycle_flag =0;
 		
 	int s;
 
-	while ((s = getopt(argc, argv, ":f:g:d:h")) != -1) {
+	while ((s = getopt(argc, argv, ":a:c:f:g:d:h")) != -1) {
 	    switch (s) {
+
+	    case 'a':
+	        /* handle -a, set address claim cycle period*/
+	        address_claim_cycle = str_to_int(optarg);
+	        address_claim_cycle_flag = 1 ;
+	        break;
+
+	    case 'c':
+	        /* handle -c, set can interface*/
+	        can_interface_name = optarg;
+	        can_interface_name_flag = 1 ;
+	        break;
 
 	    case 'd':
 	        /* handle -f, set path for logfile */
@@ -164,6 +178,16 @@ int handle_command_line_arguments(int argc, char *argv[]) {
 		datasets_path = "datasets/";
 	}
 
+	if (can_interface_name_flag == 0) {
+		fprintf(stdout, "No can interface given. Trying vcan0.\n");
+		can_interface_name = "vcan0";
+	}
+
+	if (address_claim_cycle_flag == 0) {
+		fprintf(stdout, "No address claim cycle given. Setting it to default: 1 - sending claim once on startup.\n");
+		address_claim_cycle = 1;
+	}
+
 	return EXIT_SUCCESS;}
 
 
@@ -174,15 +198,8 @@ int load_configfile() {
 
 		configfile_xml = mxmlLoadFile(NULL,configfile,MXML_TEXT_CALLBACK);
 
-		if (((config_isoident_xml = mxmlFindElement(configfile_xml,configfile_xml,"isoident",NULL,NULL,MXML_DESCEND))) && (config_parameter_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"config",NULL,NULL,MXML_DESCEND)) != NULL) {
+		if (((config_isoident_xml = mxmlFindElement(configfile_xml,configfile_xml,"isoident",NULL,NULL,MXML_DESCEND))) == NULL) {
 		
-			address_claim_cycle = str_to_int((char*)mxmlElementGetAttr(config_parameter_xml,"address_claim_cycle"));
-
-			can_interface_name = mxmlElementGetAttr(config_parameter_xml,"can_interface");	
-
-		}
-
-		else {
 			fprintf(stderr,"Error parsing the xml structure in the configfile or configfile empty.\n");
 			return EXIT_FAILURE;
 		} 
@@ -729,6 +746,12 @@ int main(int argc, char *argv[]) {
 	
 	while (1) {
 		if (address_claim_cycle != 0 && (time(NULL) > (time_last_claim+address_claim_cycle))) {
+			
+			if (address_claim_cycle == 1) {
+				fprintf(stdout,"Send address claim once on startup.\n");
+				address_claim_cycle = 0 ;
+			}
+
 			can_send(0x18EAFFFE,0x00EE00,3);
 			time_last_claim = time(NULL);
 		}
@@ -759,7 +782,7 @@ int main(int argc, char *argv[]) {
 						//Add message to isoident.xml
 						fprintf(stdout,"New message detected! PGN: %d\n",last_message.pgn);
 						xml_add_message(sender,last_message.pgn);
-						xml_write_file(isoident_logfile_path,"isoident",config_parameter_xml,config_directlog_xml,config_devicelog_xml);
+						xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
 					}
 				}
 
@@ -799,7 +822,7 @@ int main(int argc, char *argv[]) {
 					
 					fprintf(stdout, "There are other devices active. The isoident configfile will be updated.\n");
 					
-					xml_write_file(isoident_logfile_path,"isoident",config_parameter_xml,config_directlog_xml,config_devicelog_xml);
+					xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
 
 					if (canlogger_configfile_path_flag == 1) {
 
