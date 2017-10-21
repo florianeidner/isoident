@@ -346,6 +346,8 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 	short match = 0;
 	int lineID;
 
+	int pgn_type = 0; //0 = Unknown, 1= ISO11783, 2=J1939, 3=NMEA2000
+
 	if (file == NULL)
         exit(0);
 
@@ -354,11 +356,30 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
 				if (lineID == pgn_id){
-					char* pgn_name_update = strtok(NULL,"\n");
+					char* pgn_name_update = strtok(NULL,";");
+
+					char* pgn_type_c = strtok(NULL,"\n");
+
+					fprintf(stdout,"FIRST CHAR: %c\n", pgn_type_c[0]);
+
+					switch (pgn_type_c[0]) {
+						case 'I':
+							pgn_type = 1;
+							break;
+						case 'J':
+							pgn_type = 2;
+							break;
+						case 'N':
+							pgn_type = 3;
+							break;
+						default:
+							pgn_type = 0;
+							break;
+					}
 
 					strcpy(pgn_name,pgn_name_update);
 					
-					printf("Found PGN Name\n");
+					printf("Found PGN Name: ");
 					match = 1;
 					
 					break;
@@ -371,7 +392,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 		}
 		
 		else {
-			printf("PGN Name: %s \n",pgn_name);
+			printf("%s \n",pgn_name);
 		}
 	
 	}
@@ -382,7 +403,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 
 	fclose(file);
 
-	return 0;
+	return pgn_type;
 
 
 }

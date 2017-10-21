@@ -54,11 +54,29 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	mxml_node_t* message = mxmlNewElement(device,"message");
 
 	char pgn_name[50]={0};
-	parse_get_pgn_name(message_pgn, pgn_name);
+	int pgn_type = parse_get_pgn_name(message_pgn, pgn_name);
 
 	printf("Found device with UUID: %d\n",str_to_int((char*)mxmlElementGetAttr(device,"UUID")));
 	mxmlElementSetAttr(message, "pgn", int_to_string(message_pgn));
 	mxmlElementSetAttr(message, "name", pgn_name);
+
+	switch (pgn_type) {
+		case 1:
+			mxmlElementSetAttr(message, "type", "ISO11783");
+			break;
+
+		case 2:
+			mxmlElementSetAttr(message, "type", "J1939");
+			break;
+
+		case 3:
+			mxmlElementSetAttr(message, "type", "NMEA2000");
+			break;
+
+		default:
+			mxmlElementSetAttr(message, "type", "unknown");
+			break;
+	}
 
 	//Add signals to message.
 	int i;
