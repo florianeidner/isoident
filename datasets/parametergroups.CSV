@@ -1,0 +1,973 @@
+1792;General Purpose Valve Load Sense Pressure;ISO11783
+36096;Sequence Control Client-to-Sequence Control Master;ISO11783
+36352;Sequence Control Master-to-Sequence Control Client;ISO11783
+37632;NAME Management Message;ISO11783
+43520;Client to File Server message;ISO11783
+43776;File Server to client message;ISO11783
+44032;Guidance System Machine Information;ISO11783
+44288;Guidance System Command;ISO11783
+50176;General Purpose Valve Command;ISO11783
+50432;General Purpose Valve Measured Flow;ISO11783
+50688;General Purpose Valve Estimated Flow;ISO11783
+50944;Extended Transport Protocol – Data Transfer;ISO11783
+51200;Extended Transport Protocol - Connection Mgt;ISO11783
+51456;Request 2;ISO11783
+51712;Transfer;ISO11783
+51968;Process Data Message;ISO11783
+52224;Request for Repetition Rate;ISO11783
+58880;Virtual Terminal-to-Working Set;ISO11783
+59136;Working Set-to-Virtual Terminal;ISO11783
+59392;Acknowledgment Message;ISO11783
+59904;Request;ISO11783
+60160;Transport Protocol - Data Transfer;ISO11783
+60416;Transport Protocol – Connection Mgmt;ISO11783
+60672;Network Layer;ISO11783
+60928;Address Claimed Message;ISO11783
+61184;Proprietary A;ISO11783
+61474;Machine selected speed;ISO11783
+61668;Heartbeat Message;ISO11783
+64653;Product Identification Information;ISO11783
+64654;Control Function Functionalities;ISO11783
+64717;Drive Strategy Status;ISO11783
+64718;Drive Strategy Command;ISO11783
+64770;All implements stop operations switch state;ISO11783
+64771;Implement operating state command;ISO11783
+64818;ECU diagnostic protocol;ISO11783
+64834;ISOBUS compliance certification message;ISO11783
+64835;Machine selected speed command;ISO11783
+64965;ECU Identification Information;ISO11783
+65032;Required Tractor Facilities message;ISO11783
+65033;Tractor Facilities response message;ISO11783
+65034;Implement Remote Control Tractor Response;ISO11783
+65035;Implement Remote Control Command;ISO11783
+65036;Working Set Member;ISO11783
+65037;Working Set Master;ISO11783
+65038;Response for Repetition Rate;ISO11783
+65039;Language Command;ISO11783
+65040;Auxiliary Valve Number 0 Estimated Flow;ISO11783
+65041;Auxiliary Valve Number 1 Estimated Flow;ISO11783
+65042;Auxiliary Valve Number 2 Estimated Flow;ISO11783
+65043;Auxiliary Valve Number 3 Estimated Flow;ISO11783
+65044;Auxiliary Valve Number 4 Estimated Flow;ISO11783
+65045;Auxiliary Valve Number 5 Estimated Flow;ISO11783
+65046;Auxiliary Valve Number 6 Estimated Flow;ISO11783
+65047;Auxiliary Valve Number 7 Estimated Flow;ISO11783
+65048;Auxiliary Valve Number 8 Estimated Flow;ISO11783
+65049;Auxiliary Valve Number 9 Estimated Flow;ISO11783
+65050;Auxiliary Valve Number 10 Estimated Flow;ISO11783
+65051;Auxiliary Valve Number 11 Estimated Flow;ISO11783
+65052;Auxiliary Valve Number 12 Estimated Flow;ISO11783
+65053;Auxiliary Valve Number 13 Estimated Flow;ISO11783
+65054;Auxiliary Valve Number 14 Estimated Flow;ISO11783
+65055;Auxiliary Valve Number 15 Estimated Flow;ISO11783
+65056;Auxiliary Valve Number 0 Measured Flow;ISO11783
+65057;Auxiliary Valve Number 1 Measured Flow;ISO11783
+65058;Auxiliary Valve Number 2 Measured Flow;ISO11783
+65059;Auxiliary Valve Number 3 Measured Flow;ISO11783
+65060;Auxiliary Valve Number 4 Measured Flow;ISO11783
+65061;Auxiliary Valve Number 5 Measured Flow;ISO11783
+65062;Auxiliary Valve Number 6 Measured Flow;ISO11783
+65063;Auxiliary Valve Number 7 Measured Flow;ISO11783
+65064;Auxiliary Valve Number 8 Measured Flow;ISO11783
+65065;Auxiliary Valve Number 9 Measured Flow;ISO11783
+65066;Auxiliary Valve Number 10 Measured Flow;ISO11783
+65067;Auxiliary Valve Number 11 Measured Flow;ISO11783
+65068;Auxiliary Valve Number 12 Measured Flow;ISO11783
+65069;Auxiliary Valve Number 13 Measured Flow;ISO11783
+65070;Auxiliary Valve Number 14 Measured Flow;ISO11783
+65071;Auxiliary Valve Number 15 Measured Flow;ISO11783
+65072;Auxiliary Valve Number 0 Command;ISO11783
+65073;Auxiliary Valve Number 1 Command;ISO11783
+65074;Auxiliary Valve Number 2 Command;ISO11783
+65075;Auxiliary Valve Number 3 Command;ISO11783
+65076;Auxiliary Valve Number 4 Command;ISO11783
+65077;Auxiliary Valve Number 5 Command;ISO11783
+65078;Auxiliary Valve Number 6 Command;ISO11783
+65079;Auxiliary Valve Number 7 Command;ISO11783
+65080;Auxiliary Valve Number 8 Command;ISO11783
+65081;Auxiliary Valve Number 9 Command;ISO11783
+65082;Auxiliary Valve Number 10 Command;ISO11783
+65083;Auxiliary Valve Number 11 Command;ISO11783
+65084;Auxiliary Valve Number 12 Command;ISO11783
+65085;Auxiliary Valve Number 13 Command;ISO11783
+65086;Auxiliary Valve Number 14 Command;ISO11783
+65087;Auxiliary Valve Number 15 Command;ISO11783
+65088;Lighting Data;ISO11783
+65089;Lighting Command;ISO11783
+65090;Hitch and PTO Commands;ISO11783
+65091;Primary or Rear Power Take off Output Shaft;ISO11783
+65092;Secondary or Front Power Take off Output Shaft;ISO11783
+65093;Primary or Rear Hitch Status;ISO11783
+65094;Secondary or Front Hitch Status;ISO11783
+65095;Maintain Power;ISO11783
+65096;Wheel-based Speed and Distance;ISO11783
+65097;Ground-based Speed and Distance;ISO11783
+65226;Diagnostic Message #1 Active Diagnostic Trouble Codes;ISO11783
+65227;Diagnostic Message #2 Previously Active Diagnostic Trouble Codes;ISO11783
+65228;Diagnostic Message #3 Clear or reset Previously Active Diagnostic Trouble Codes;ISO11783
+65238;Reserved for Network Management;ISO11783
+65239;Reserved;ISO11783
+65240;Commanded Address;ISO11783
+65242;Software Identification;ISO11783
+65280;Proprietary B;ISO11783
+65281;Proprietary B;ISO11783
+65282;Proprietary B;ISO11783
+65283;Proprietary B;ISO11783
+65284;Proprietary B;ISO11783
+65285;Proprietary B;ISO11783
+65286;Proprietary B;ISO11783
+65287;Proprietary B;ISO11783
+65288;Proprietary B;ISO11783
+65289;Proprietary B;ISO11783
+65290;Proprietary B;ISO11783
+65291;Proprietary B;ISO11783
+65292;Proprietary B;ISO11783
+65293;Proprietary B;ISO11783
+65294;Proprietary B;ISO11783
+65295;Proprietary B;ISO11783
+65296;Proprietary B;ISO11783
+65297;Proprietary B;ISO11783
+65298;Proprietary B;ISO11783
+65299;Proprietary B;ISO11783
+65300;Proprietary B;ISO11783
+65301;Proprietary B;ISO11783
+65302;Proprietary B;ISO11783
+65303;Proprietary B;ISO11783
+65304;Proprietary B;ISO11783
+65305;Proprietary B;ISO11783
+65306;Proprietary B;ISO11783
+65307;Proprietary B;ISO11783
+65308;Proprietary B;ISO11783
+65309;Proprietary B;ISO11783
+65310;Proprietary B;ISO11783
+65311;Proprietary B;ISO11783
+65312;Proprietary B;ISO11783
+65313;Proprietary B;ISO11783
+65314;Proprietary B;ISO11783
+65315;Proprietary B;ISO11783
+65316;Proprietary B;ISO11783
+65317;Proprietary B;ISO11783
+65318;Proprietary B;ISO11783
+65319;Proprietary B;ISO11783
+65320;Proprietary B;ISO11783
+65321;Proprietary B;ISO11783
+65322;Proprietary B;ISO11783
+65323;Proprietary B;ISO11783
+65324;Proprietary B;ISO11783
+65325;Proprietary B;ISO11783
+65326;Proprietary B;ISO11783
+65327;Proprietary B;ISO11783
+65328;Proprietary B;ISO11783
+65329;Proprietary B;ISO11783
+65330;Proprietary B;ISO11783
+65331;Proprietary B;ISO11783
+65332;Proprietary B;ISO11783
+65333;Proprietary B;ISO11783
+65334;Proprietary B;ISO11783
+65335;Proprietary B;ISO11783
+65336;Proprietary B;ISO11783
+65337;Proprietary B;ISO11783
+65338;Proprietary B;ISO11783
+65339;Proprietary B;ISO11783
+65340;Proprietary B;ISO11783
+65341;Proprietary B;ISO11783
+65342;Proprietary B;ISO11783
+65343;Proprietary B;ISO11783
+65344;Proprietary B;ISO11783
+65345;Proprietary B;ISO11783
+65346;Proprietary B;ISO11783
+65347;Proprietary B;ISO11783
+65348;Proprietary B;ISO11783
+65349;Proprietary B;ISO11783
+65350;Proprietary B;ISO11783
+65351;Proprietary B;ISO11783
+65352;Proprietary B;ISO11783
+65353;Proprietary B;ISO11783
+65354;Proprietary B;ISO11783
+65355;Proprietary B;ISO11783
+65356;Proprietary B;ISO11783
+65357;Proprietary B;ISO11783
+65358;Proprietary B;ISO11783
+65359;Proprietary B;ISO11783
+65360;Proprietary B;ISO11783
+65361;Proprietary B;ISO11783
+65362;Proprietary B;ISO11783
+65363;Proprietary B;ISO11783
+65364;Proprietary B;ISO11783
+65365;Proprietary B;ISO11783
+65366;Proprietary B;ISO11783
+65367;Proprietary B;ISO11783
+65368;Proprietary B;ISO11783
+65369;Proprietary B;ISO11783
+65370;Proprietary B;ISO11783
+65371;Proprietary B;ISO11783
+65372;Proprietary B;ISO11783
+65373;Proprietary B;ISO11783
+65374;Proprietary B;ISO11783
+65375;Proprietary B;ISO11783
+65376;Proprietary B;ISO11783
+65377;Proprietary B;ISO11783
+65379;Proprietary B;ISO11783
+65380;Proprietary B;ISO11783
+65381;Proprietary B;ISO11783
+65382;Proprietary B;ISO11783
+65383;Proprietary B;ISO11783
+65384;Proprietary B;ISO11783
+65385;Proprietary B;ISO11783
+65386;Proprietary B;ISO11783
+65387;Proprietary B;ISO11783
+65388;Proprietary B;ISO11783
+65389;Proprietary B;ISO11783
+65390;Proprietary B;ISO11783
+65391;Proprietary B;ISO11783
+65392;Proprietary B;ISO11783
+65393;Proprietary B;ISO11783
+65394;Proprietary B;ISO11783
+65395;Proprietary B;ISO11783
+65396;Proprietary B;ISO11783
+65397;Proprietary B;ISO11783
+65398;Proprietary B;ISO11783
+65399;Proprietary B;ISO11783
+65400;Proprietary B;ISO11783
+65401;Proprietary B;ISO11783
+65402;Proprietary B;ISO11783
+65403;Proprietary B;ISO11783
+65404;Proprietary B;ISO11783
+65405;Proprietary B;ISO11783
+65406;Proprietary B;ISO11783
+65407;Proprietary B;ISO11783
+65408;Proprietary B;ISO11783
+65409;Proprietary B;ISO11783
+65410;Proprietary B;ISO11783
+65411;Proprietary B;ISO11783
+65412;Proprietary B;ISO11783
+65413;Proprietary B;ISO11783
+65414;Proprietary B;ISO11783
+65415;Proprietary B;ISO11783
+65416;Proprietary B;ISO11783
+65417;Proprietary B;ISO11783
+65418;Proprietary B;ISO11783
+65419;Proprietary B;ISO11783
+65420;Proprietary B;ISO11783
+65421;Proprietary B;ISO11783
+65422;Proprietary B;ISO11783
+65423;Proprietary B;ISO11783
+65424;Proprietary B;ISO11783
+65425;Proprietary B;ISO11783
+65426;Proprietary B;ISO11783
+65427;Proprietary B;ISO11783
+65428;Proprietary B;ISO11783
+65429;Proprietary B;ISO11783
+65430;Proprietary B;ISO11783
+65431;Proprietary B;ISO11783
+65432;Proprietary B;ISO11783
+65433;Proprietary B;ISO11783
+65434;Proprietary B;ISO11783
+65435;Proprietary B;ISO11783
+65436;Proprietary B;ISO11783
+65437;Proprietary B;ISO11783
+65438;Proprietary B;ISO11783
+65439;Proprietary B;ISO11783
+65440;Proprietary B;ISO11783
+65441;Proprietary B;ISO11783
+65442;Proprietary B;ISO11783
+65443;Proprietary B;ISO11783
+65444;Proprietary B;ISO11783
+65445;Proprietary B;ISO11783
+65446;Proprietary B;ISO11783
+65447;Proprietary B;ISO11783
+65448;Proprietary B;ISO11783
+65449;Proprietary B;ISO11783
+65450;Proprietary B;ISO11783
+65451;Proprietary B;ISO11783
+65452;Proprietary B;ISO11783
+65453;Proprietary B;ISO11783
+65454;Proprietary B;ISO11783
+65455;Proprietary B;ISO11783
+65456;Proprietary B;ISO11783
+65457;Proprietary B;ISO11783
+65458;Proprietary B;ISO11783
+65459;Proprietary B;ISO11783
+65460;Proprietary B;ISO11783
+65461;Proprietary B;ISO11783
+65462;Proprietary B;ISO11783
+65463;Proprietary B;ISO11783
+65464;Proprietary B;ISO11783
+65465;Proprietary B;ISO11783
+65466;Proprietary B;ISO11783
+65467;Proprietary B;ISO11783
+65468;Proprietary B;ISO11783
+65469;Proprietary B;ISO11783
+65470;Proprietary B;ISO11783
+65471;Proprietary B;ISO11783
+65472;Proprietary B;ISO11783
+65473;Proprietary B;ISO11783
+65474;Proprietary B;ISO11783
+65475;Proprietary B;ISO11783
+65476;Proprietary B;ISO11783
+65477;Proprietary B;ISO11783
+65478;Proprietary B;ISO11783
+65479;Proprietary B;ISO11783
+65480;Proprietary B;ISO11783
+65481;Proprietary B;ISO11783
+65482;Proprietary B;ISO11783
+65483;Proprietary B;ISO11783
+65484;Proprietary B;ISO11783
+65485;Proprietary B;ISO11783
+65486;Proprietary B;ISO11783
+65487;Proprietary B;ISO11783
+65488;Proprietary B;ISO11783
+65489;Proprietary B;ISO11783
+65490;Proprietary B;ISO11783
+65491;Proprietary B;ISO11783
+65492;Proprietary B;ISO11783
+65493;Proprietary B;ISO11783
+65494;Proprietary B;ISO11783
+65495;Proprietary B;ISO11783
+65496;Proprietary B;ISO11783
+65497;Proprietary B;ISO11783
+65498;Proprietary B;ISO11783
+65499;Proprietary B;ISO11783
+65500;Proprietary B;ISO11783
+65501;Proprietary B;ISO11783
+65502;Proprietary B;ISO11783
+65503;Proprietary B;ISO11783
+65504;Proprietary B;ISO11783
+65505;Proprietary B;ISO11783
+65506;Proprietary B;ISO11783
+65507;Proprietary B;ISO11783
+65508;Proprietary B;ISO11783
+65509;Proprietary B;ISO11783
+65510;Proprietary B;ISO11783
+65511;Proprietary B;ISO11783
+65512;Proprietary B;ISO11783
+65513;Proprietary B;ISO11783
+65514;Proprietary B;ISO11783
+65515;Proprietary B;ISO11783
+65516;Proprietary B;ISO11783
+65517;Proprietary B;ISO11783
+65518;Proprietary B;ISO11783
+65519;Proprietary B;ISO11783
+65520;Proprietary B;ISO11783
+65521;Proprietary B;ISO11783
+65522;Proprietary B;ISO11783
+65523;Proprietary B;ISO11783
+65524;Proprietary B;ISO11783
+65525;Proprietary B;ISO11783
+65526;Proprietary B;ISO11783
+65527;Proprietary B;ISO11783
+65528;Proprietary B;ISO11783
+65529;Proprietary B;ISO11783
+65530;Proprietary B;ISO11783
+65531;Proprietary B;ISO11783
+65532;Proprietary B;ISO11783
+65533;Proprietary B;ISO11783
+65534;Proprietary B;ISO11783
+65535;Proprietary B;ISO11783
+126464;PGN List - Transmit/Receive PGN’s group function;ISO11783
+126720;Proprietary A2;ISO11783
+0;Torque/Speed Control 1;J1939
+256;Transmission Control 1;J1939
+512;Reserved for ISO 11992;J1939
+768;Reserved for ISO 11992;J1939
+1024;External Brake Request;J1939
+1280;Reserved for CANopen;J1939
+1536;Reserved for CANopen;J1939
+2048;Auxiliary Input/Output Status 5;J1939
+38400;LVD Set Operating Mode;J1939
+38656;Noise Control Status;J1939
+38912;Noise Control 1;J1939
+39168;Joystick Lamp Command Message;J1939
+39424;Reserved for ISO 11992;J1939
+39680;Proprietary Method Identification;J1939
+39936;Auxiliary Input/Output Status 7;J1939
+40192;Auxiliary Input/Output Status 6;J1939
+40448;DTC Counts (DM29);J1939
+40704;Immediate Fault Status (DM35);J1939
+40960;NTE Status (DM34);J1939
+41216;Emission Increasing Auxiliary Emission Control Device Active Time (DM33);J1939
+41472;Regulated Exhaust Emission Level Exceedance (DM32);J1939
+41728;DTC To Lamp Association (DM31);J1939
+41984;Scaled Test Results (DM30);J1939
+42240;Auxiliary Input/Output Status 4;J1939
+42496;Auxiliary Input/Output Status 3;J1939
+42752;Auxiliary Input/Output Status 2;J1939
+43008;Text Display;J1939
+43264;Forward Lane Image Command;J1939
+44544;Tire Pressure Reference Setting;J1939
+44800;Parameter Locate Message;J1939
+45056;Configuration Identification Message;J1939
+45312;Proprietarily Configurable Message #1;J1939
+45568;Proprietarily Configurable Message #2;J1939
+45824;Proprietarily Configurable Message #3;J1939
+46080;Proprietarily Configurable Message #4;J1939
+46336;Proprietarily Configurable Message #5;J1939
+46592;Proprietarily Configurable Message #6;J1939
+46848;Proprietarily Configurable Message #7;J1939
+47104;Proprietarily Configurable Message #8;J1939
+47360;Proprietarily Configurable Message #9;J1939
+47616;Proprietarily Configurable Message #10;J1939
+47872;Proprietarily Configurable Message #11;J1939
+48128;Proprietarily Configurable Message #12;J1939
+48384;Proprietarily Configurable Message #13;J1939
+48640;Proprietarily Configurable Message #14;J1939
+48896;Proprietarily Configurable Message #15;J1939
+49152;Proprietarily Configurable Message #16;J1939
+49408;Diagnostic Readiness 2;J1939
+49664;Monitor Performance Ratio;J1939
+49920;Individual Clear/Reset Of Active And Previously Active DTC;J1939
+52480;Reserved for ISO 15765;J1939
+52736;Reserved for ISO 15765;J1939
+52992;Continuous Torque & Speed Limit Request;J1939
+53248;Cab Illumination Message;J1939
+53504;Air Suspension Control 6;J1939
+53760;Air Suspension Control 2;J1939
+54016;Calibration Information;J1939
+54272;Data Security;J1939
+54528;Time/Date Adjust;J1939
+54784;Boot Load Data;J1939
+55040;Binary Data Transfer;J1939
+55296;Memory Access Response;J1939
+55552;Memory Access Request;J1939
+55808;Reserved for ISO 15765;J1939
+56064;Reserved for ISO 15765;J1939
+56320;Anti-theft Status;J1939
+56576;Anti-theft Request;J1939
+56832;Reset;J1939
+57088;Stop Start Broadcast;J1939
+57344;Cab Message 1;J1939
+57600;Reserved for ISO 11992;J1939
+57856;Reserved for ISO 11992;J1939
+58112;Command Non-continuously Monitored Test;J1939
+58368;Reserved for ISO 11992;J1939
+58624;Reserved for ISO 11992;J1939
+61440;Electronic Retarder Controller 1;J1939
+61441;Electronic Brake Controller 1;J1939
+61442;Electronic Transmission Controller 1;J1939
+61443;Electronic Engine Controller 2;J1939
+61444;Electronic Engine Controller 1;J1939
+61445;Electronic Transmission Controller 2;J1939
+61446;Electronic Axle Controller 1;J1939
+61447;Forward Lane Image urgent msg;J1939
+61448;Hydraulic Pressure Governor Info;J1939
+61449;Vehicle Dynamic Stability Control 2;J1939
+61450;Engine Gas Flow Rate;J1939
+61451;Electronic Steering Control;J1939
+61452;Electronic Transmission Controller #8;J1939
+61453;Land Leveling System Operational Information;J1939
+61454;Aftertreatment 1 Intake Gas 1;J1939
+61455;Aftertreatment 1 Outlet Gas 1;J1939
+61456;Aftertreatment 2 Intake Gas 1;J1939
+61457;Aftertreatment 2 Outlet Gas 1;J1939
+61458;Fifth Wheel Smart Systems 1;J1939
+61459;Slope Sensor Information;J1939
+61460;Blade Information;J1939
+61461;Requested Generator Total AC Reactive Power;J1939
+61462;Cylinder Combustion Status;J1939
+61463;Engine Knock Level #1;J1939
+61464;Engine Knock Level #2;J1939
+61465;Engine Knock Level #3;J1939
+61466;Engine Throttle / Fuel Actuator Control Command;J1939
+61467;General Purpose Message #1/7;J1939
+61468;Requested Generator Average Basic AC Quantities;J1939
+61469;Steering Angle Sensor Information;J1939
+61470;Generator Control 2;J1939
+61471;Electronic Brake System #2/6;J1939
+61472;Electronic Brake System #2/5;J1939
+61473;Engine Speed Sensor Information;J1939
+61475;Aftertreatment 1 SCR Dosing System Information 1;J1939
+61476;Aftertreatment 1 SCR Dosing System Requests 1;J1939
+61477;Aftertreatment 1 SCR Ammonia Information;J1939
+61478;Aftertreatment 2 SCR Dosing System Information 1;J1939
+61479;Aftertreatment 2 SCR Dosing System Requests 1;J1939
+61480;Aftertreatment 2 SCR Ammonia Information;J1939
+61481;Slope Sensor Information 2;J1939
+61482;Angular Rate Information;J1939
+61483;Crash Notification;J1939
+61484;Magnet Status Information 2;J1939
+64769;LVD Status;J1939
+64772;Direct Lamp Control Data 2;J1939
+64773;Direct Lamp Control Data 1;J1939
+64774;Direct Lamp Control Command 2;J1939
+64775;Direct Lamp Control Command 1;J1939
+64776;Engine oil message;J1939
+64777;High Resolution Fuel Consumption (Liquid);J1939
+64778;Aftertreatment 2 Outlet Gas NOx Sensor correction data 2;J1939
+64779;Aftertreatment 2 Outlet Gas NOx Sensor correction data;J1939
+64780;Aftertreatment 2 Intake Gas NOx Sensor correction data 2;J1939
+64781;Aftertreatment 2 Intake Gas NOx Sensor correction data;J1939
+64782;Aftertreatment 1 Outlet Gas NOx Sensor correction data 2;J1939
+64783;Aftertreatment 1 Outlet Gas NOx Sensor correction data;J1939
+64784;Aftertreatment 1 Intake Gas NOx Sensor correction data 2;J1939
+64785;Aftertreatment 1 Intake Gas  NOx Sensor correction data;J1939
+64786;Magnet Status Information 1;J1939
+64787;Magnet System Configuration Information;J1939
+64788;Battery Charger 2;J1939
+64789;Battery Charger 1;J1939
+64790;Occupant Classification System Information;J1939
+64791;Beltlock and Airbag Deactivation Switch Information;J1939
+64792;Collision Sensor Information;J1939
+64793;Ignitor Loop Information;J1939
+64794;Aftertreatment 1 Warm Up Diesel Oxidation Catalyst Information;J1939
+64795;Diesel Particulate Filter 2 Soot;J1939
+64796;Diesel Particulate Filter 1 Soot;J1939
+64797;Aftertreatment Differential Temperature 2 ;J1939
+64798;Aftertreatment Differential Temperature 1 ;J1939
+64799;Aftertreatment 2 Diesel Oxidation Catalyst;J1939
+64800;Aftertreatment 1 Diesel Oxidation Catalyst;J1939
+64801;Aftertreatment 2 Gas Oxidation Catalyst;J1939
+64802;Aftertreatment 1 Gas Oxidation Catalyst;J1939
+64803;Extended Joystick Message 10;J1939
+64804;Basic Joystick Message 10;J1939
+64805;Extended Joystick Message 9;J1939
+64806;Basic Joystick Message 9;J1939
+64807;Extended Joystick Message 8;J1939
+64808;Basic Joystick Message 8;J1939
+64809;Extended Joystick Message 7;J1939
+64810;Basic Joystick Message 7;J1939
+64811;Extended Joystick Message 6;J1939
+64812;Basic Joystick Message 6;J1939
+64813;Extended Joystick Message 5;J1939
+64814;Basic Joystick Message 5;J1939
+64815;Extended Joystick Message 4;J1939
+64816;Basic Joystick Message 4;J1939
+64819;Aftertreatment 2 SCR Reagent Supply Information;J1939
+64820;Aftertreatment 2 SCR Reagant Tank 2 Information;J1939
+64821;Aftertreatment 2 SCR Reagant Tank 1 Information;J1939
+64822;Aftertreatment 2 SCR Reagent Information;J1939
+64823;Aftertreatment 2 SCR Service Information;J1939
+64824;Aftertreatment 2 SCR Exhaust Gas Temperature;J1939
+64825;Aftertreatment 2 SCR Exhaust Gas Pressures;J1939
+64826;Aftertreatment 2 SCR Dosing System Requests 2;J1939
+64827;Aftertreatment 2 SCR Dosing System Information 2;J1939
+64828;Aftertreatment 1 SCR Reagent Supply Information;J1939
+64829;Aftertreatment 1 SCR Reagant Tank 2 Information;J1939
+64830;Aftertreatment 1 SCR Exhaust Gas Temperature;J1939
+64831;Aftertreatment 1 SCR Exhaust Gas Pressures;J1939
+64832;Aftertreatment 1 SCR Dosing System Requests 2;J1939
+64833;Aftertreatment 1 SCR Dosing System Information 2;J1939
+64836;Aftertreatment 2 Fuel Control 2;J1939
+64837;Aftertreatment 2 Three Way Catalytic Converter;J1939
+64838;Aftertreatment 1 Three Way Catalytic Converter;J1939
+64839;Transmission Mode Labels;J1939
+64840;Engine Exhaust Bank 2 O2 Fuel Trim;J1939
+64841;Engine Exhaust Bank 1 O2 Fuel Trim;J1939
+64842;Reserved for ISO 11992;J1939
+64843;Reserved for ISO 11992;J1939
+64844;Reserved for ISO 11992;J1939
+64845;Reserved for ISO 11992;J1939
+64846;Reserved for ISO 11992;J1939
+64847;Reserved for ISO 11992;J1939
+64848;Reserved for ISO 11992;J1939
+64849;Aftercooler Coolant Control Valve Command;J1939
+64850;Engine Coolant Control Valve Command;J1939
+64851;Engine Average Information;J1939
+64852;DTCs - C, Previously Active;J1939
+64853;DTCs - C, Confirmed and Active;J1939
+64854;DTCs - C, Pending;J1939
+64855;DTCs - B2, Previously Active;J1939
+64856;DTCs - B2, Confirmed and Active;J1939
+64857;DTCs - B2, Pending;J1939
+64858;DTCs - B1, Previously Active;J1939
+64859;DTCs - B1, Confirmed and Active;J1939
+64860;DTCs - B1, Pending;J1939
+64861;DTCs - A, Previously Active;J1939
+64862;DTCs - A, Confirmed and Active;J1939
+64863;DTCs - A, Pending;J1939
+64864;Harmonized B1 Failure Counts (HB1C);J1939
+64865;Cumulative Continuous MI – System (HCMI) ;J1939
+64866;Harmonized Global Regulation Description (HGRD);J1939
+64867; Harmonized Roadworthiness – System (HRWS);J1939
+64868;Harmonized Roadworthiness - Vehicle (HRWV);J1939
+64869;Aftertreatment 1 Fuel Control 2;J1939
+64870;Engine Temperature 4;J1939
+64871;Zero Net Vehicle Weight Change;J1939
+64872;Gross Combination Vehicle Weight;J1939
+64873;Axle Group Calibration Weights;J1939
+64874;Axle Group Weight;J1939
+64875;Available Axle Group Weights;J1939
+64876;Aftertreatment 2 Air Control 2;J1939
+64877;Aftertreatment 1 Air Control 2;J1939
+64878;Aftertreatment 1 SCR Service Information;J1939
+64879;Electronic Engine Controller 8;J1939
+64880;Door ramp control;J1939
+64881;Brake actuator stroke status;J1939
+64882;Engine Spark Voltage 6;J1939
+64883;Engine Spark Voltage 5;J1939
+64884;Engine Spark Voltage 4;J1939
+64885;Engine Spark Voltage 3;J1939
+64886;Engine Spark Voltage 2;J1939
+64887;Engine Spark Voltage 1;J1939
+64888;Aftertreatment 2 Trip Information;J1939
+64889;Aftertreatment 1 Trip Information;J1939
+64890;Aftertreatment 2 Service;J1939
+64891;Aftertreatment 1 Service;J1939
+64892;Diesel Particulate Filter Control 1;J1939
+64894;Adaptive Front-Lighting System Status;J1939
+64895;Engine Configuration 2;J1939
+64896;Permanent DTCs;J1939
+64897;EGR Cooler Bypass;J1939
+64898;All Pending DTCs;J1939
+64899;Transfer Case Information;J1939
+64900;Engine Fluid Level/Pressure 9;J1939
+64901;Engine Fluid Level/Pressure 8;J1939
+64902;Engine Fluid Level/Pressure 7;J1939
+64903;Engine Fluid Level/Pressure 6;J1939
+64904;Engine Fluid Level/Pressure 5;J1939
+64905;Vehicle Direction/Speed 2;J1939
+64906;SAE J2012 DTC Display;J1939
+64907;Aftertreatment 2 Gas Parameters;J1939
+64908;Aftertreatment 1 Gas Parameters;J1939
+64909;Utility Total AC Reactive Energy;J1939
+64910;Generator Total AC Reactive Energy;J1939
+64911;Generator Total AC Percent Power;J1939
+64912;Advertised Engine Torque Curve;J1939
+64913;AC Switching Device Status;J1939
+64914;Engine Operating Information;J1939
+64915;Generator Control 1;J1939
+64916;Electronic Engine Controller 7;J1939
+64917;Transmission Fluids 2;J1939
+64920;Aftertreatment 1 Historical Information;J1939
+64921;Aftertreatment 2 Historical information;J1939
+64922;Electronic Brake System #2/4;J1939
+64923;Aftertreatment 1 SCR Reagent Information;J1939
+64924;Sensor Electrical Power #2;J1939
+64925;Sensor Electrical Power #1;J1939
+64926;Aftertreatment 2 Air Control 1;J1939
+64927;Aftertreatment 1 Air Control 1;J1939
+64928;Aftertreatment 2 Fuel Control 1;J1939
+64929;Aftertreatment 1 Fuel Control 1;J1939
+64930;Fuel Information 3 (Gaseous);J1939
+64931;Electronic Engine Controller 6;J1939
+64932;PTO Drive Engagement;J1939
+64933;Door Control 2;J1939
+64934;Voltage Regulator Excitation Status;J1939
+64935;Voltage Regulator Operating Mode;J1939
+64936;Wireless Communications Message 2;J1939
+64937;Wireless Communications Message 1;J1939
+64938;Engine Fluid Level/Pressure 4;J1939
+64939;Request For Complete Configurable Message Set;J1939
+64941;Request For Complete Configurable Message Set;J1939
+64942;Fifth Wheel Smart Systems 2;J1939
+64943;Aftertreatment 2 Intermediate Gas;J1939
+64944;Aftertreatment 2 Outlet Gas 2;J1939
+64945;Aftertreatment 2 Intake Gas 2;J1939
+64946;Aftertreatment 1 Intermediate Gas;J1939
+64947;Aftertreatment 1 Outlet Gas 2;J1939
+64948;Aftertreatment 1 Intake Gas 2;J1939
+64949;Previously Active Emission Related Faults;J1939
+64950;SPN Support;J1939
+64951;Expanded Freeze Frame;J1939
+64952;Diagnostic Readiness 3;J1939
+64953;Tire Pressure Reference Information;J1939
+64954;Farebox Status;J1939
+64955;Farebox Point of Sale;J1939
+64956;Farebox Service Detail;J1939
+64957;Signal Preemption;J1939
+64958;Transit Route;J1939
+64959;Transit Milepost;J1939
+64960;Passenger Counter;J1939
+64961;Engine Fluid Level/Pressure 3;J1939
+64964;Electronic Brake Controller 5;J1939
+64966;Cold Start Aids;J1939
+64967;Off-Highway Engine Control Selection States;J1939
+64968;Operator Primary Intermediate Speed Control state;J1939
+64969;Electronic Control Module Information;J1939
+64970;Intermediate Speed Control;J1939
+64971;Off-Highway Engine Control Selection;J1939
+64972;Operators External Light Controls Message;J1939
+64973;Operator Wiper and Washer Controls Message;J1939
+64974;Working Set Member Message;J1939
+64975;Working Set Master Message;J1939
+64976;Inlet/Exhaust Conditions 2;J1939
+64977;FMS-standard Interface Identity/Capabilities;J1939
+64978;ECU Performance;J1939
+64979;Turbocharger Information 6;J1939
+64980;Cab Message 3;J1939
+64981;Electronic Engine Controller 5;J1939
+64982;Basic Joystick Message 1;J1939
+64983;Extended Joystick Message 1;J1939
+64984;Basic Joystick Message 2;J1939
+64985;Extended Joystick Message 2;J1939
+64986;Basic Joystick Message 3;J1939
+64987;Extended Joystick Message 3;J1939
+64988;Marine Control Information;J1939
+64989;ISO 11992 Military Application Tractor - Trailer Message;J1939
+64990;ISO 11992 Military Application Trailer - Tractor Feedback Message;J1939
+64991;Front Wheel Drive Status;J1939
+64992;Ambient Conditions 2;J1939
+64993;Cab A/C Climate System Information;J1939
+64994;Supply Pressure Demand;J1939
+64995;Equipment Operation and Control;J1939
+64996;Equipment Performance Data;J1939
+64997;Maximum Vehicle Speed Limit Status;J1939
+64998;Hydraulic Braking System;J1939
+64999;Bus #1/Utility Sync Check Status;J1939
+65000;Bus #1/Generator Sync Check Status;J1939
+65001;Bus #1 Phase C  Basic AC Quantities;J1939
+65002;Bus #1 Phase B  Basic AC Quantities;J1939
+65003;Bus #1 Phase A  Basic AC Quantities;J1939
+65004;Bus #1 Average Basic AC Quantities;J1939
+65005;Utility Total AC Energy;J1939
+65006;Utility Phase C AC Reactive Power;J1939
+65007;Utility Phase C AC Power;J1939
+65008;Utility Phase C AC Basic Quantities;J1939
+65009;Utility Phase B AC Reactive Power;J1939
+65010;Utility Phase B AC Power;J1939
+65011;Utility Phase B AC Basic Quantities;J1939
+65012;Utility Phase A  AC Reactive Power;J1939
+65013;Utility Phase A  AC Power;J1939
+65014;Utility Phase A Basic AC Quantities;J1939
+65015;Utility Total AC Reactive Power;J1939
+65016;Utility Total AC Power;J1939
+65017;Utility Average Basic AC Quantities;J1939
+65018;Generator Total AC Energy;J1939
+65019;Generator Phase C AC Reactive Power;J1939
+65020;Generator Phase C AC Power;J1939
+65021;Generator Phase C Basic AC Quantities;J1939
+65022;Generator Phase B AC Reactive Power;J1939
+65023;Generator Phase B AC Power;J1939
+65024;Generator Phase B Basic AC Quantities;J1939
+65025;Generator Phase A AC Reactive Power;J1939
+65026;Generator Phase A AC Power;J1939
+65027;Generator Phase A Basic AC Quantities;J1939
+65028;Generator Total AC Reactive Power;J1939
+65029;Generator Total AC Power;J1939
+65030;Generator Average Basic AC Quantities;J1939
+65031;Exhaust Temperature;J1939
+65098;Electronic Transmission Controller 7;J1939
+65099;Transmission Configuration 2;J1939
+65100;Military Lighting Command;J1939
+65101;Total Averaged Information;J1939
+65102;Door Control 1;J1939
+65103;Vehicle Dynamic Stability Control 1;J1939
+65104;Battery Temperature;J1939
+65105;Adaptive Cruise Control, Operator Input;J1939
+65106;Vehicle Electrical Power #3;J1939
+65107;Retarder Continuous Torque & Speed Limit;J1939
+65108;Engine Continuous Torque & Speed Limit;J1939
+65109;Gaseous Fuel Properties;J1939
+65110;Aftertreatment 1 SCR Reagent Tank 1 Information;J1939
+65111;Air Suspension Control 5;J1939
+65112;Air Suspension Control 4;J1939
+65113;Air Suspension Control 3;J1939
+65114;Air Suspension Control 1;J1939
+65115;Forward Lane Image;J1939
+65116;ISO 11992 (even) - Running Gear Equipment #2/2;J1939
+65117;ISO 11992 (odd) - General Purpose Message #1/2;J1939
+65118;ISO 11992 (even) - Running Gear Equipment #2/3;J1939
+65119;ISO 11992 (odd) - General Purpose Message #1/3;J1939
+65120;ISO 11992 (even) - General Purpose Message #2/3;J1939
+65121;ISO 11992 (odd) - General Purpose Message #1/4;J1939
+65122;ISO 11992 (even) - General Purpose Message #2/4;J1939
+65123;ISO 11992 (odd) - General Purpose Message #1/5;J1939
+65124;ISO 11992 (even) - General Purpose Message #2/5;J1939
+65125;ISO 11992 (odd) - General Purpose Message #1/6;J1939
+65126;Battery Main Switch Information;J1939
+65127;Climate Control Configuration;J1939
+65128;Vehicle Fluids;J1939
+65129;Engine Temperature 3;J1939
+65130;Engine Fuel/lube systems;J1939
+65131;Driver's Identification;J1939
+65132;Tachograph;J1939
+65133;Heater Information;J1939
+65134;High Resolution Wheel Speed;J1939
+65135;Adaptive Cruise Control;J1939
+65136;Combination Vehicle Weight;J1939
+65137;Laser Tracer Position;J1939
+65138;Laser Leveling System Blade Control;J1939
+65139;Laser Receiver Mast Position;J1939
+65140;Modify Leveling System Control Set Point;J1939
+65141;Laser Leveling System Vertical Deviation;J1939
+65142;Laser Leveling System Vertical Position Display Data;J1939
+65143;Auxiliary Pressures;J1939
+65144;Tire Pressure Control Unit Mode and Status;J1939
+65145;Tire Pressure Control Unit Target Pressures;J1939
+65146;Tire Pressure Control Unit Current Pressures;J1939
+65147;Combustion Time 1;J1939
+65148;Combustion Time 2;J1939
+65149;Combustion Time 3;J1939
+65150;Combustion Time 4;J1939
+65151;Combustion Time 5;J1939
+65152;Combustion Time 6;J1939
+65153;Fuel Information 2 (Gaseous);J1939
+65154;Ignition Timing 1;J1939
+65155;Ignition Timing 2;J1939
+65156;Ignition Timing 3;J1939
+65157;Ignition Timing 4;J1939
+65158;Ignition Timing 5;J1939
+65159;Ignition Timing 6;J1939
+65160;Ignition Transformer Secondary Output 1;J1939
+65161;Ignition Transformer Secondary Output 2;J1939
+65162;Ignition Transformer Secondary Output 3;J1939
+65163;Gaseous Fuel Pressure;J1939
+65164;Auxiliary Analog Information;J1939
+65165;Vehicle Electrical Power #2;J1939
+65166;Service 2;J1939
+65167;Supply Pressure 2;J1939
+65168;Engine Torque History;J1939
+65169;Fuel Leakage;J1939
+65170;Engine Information;J1939
+65171;Engine Electrical System/Module Information;J1939
+65172;Engine Auxiliary Coolant;J1939
+65173;Rebuild Information;J1939
+65174;Turbocharger Wastegate;J1939
+65175;Turbocharger Information 5;J1939
+65176;Turbocharger Information 4;J1939
+65177;Turbocharger Information 3;J1939
+65178;Turbocharger Information 2;J1939
+65179;Turbocharger Information 1;J1939
+65180;Main Bearing Temperature 3;J1939
+65181;Main Bearing Temperature 2;J1939
+65182;Main Bearing Temperature 1;J1939
+65183;Exhaust Port Temperature 5;J1939
+65184;Exhaust Port Temperature 4;J1939
+65185;Exhaust Port Temperature 3;J1939
+65186;Exhaust Port Temperature 2;J1939
+65187;Exhaust Port Temperature 1;J1939
+65188;Engine Temperature 2;J1939
+65189;Intake Manifold Information 2;J1939
+65190;Intake Manifold Information 1;J1939
+65191;Alternator Temperature;J1939
+65192;Articulation Control;J1939
+65193;Exhaust Oxygen 1;J1939
+65194;Alternate Fuel 2;J1939
+65195;Electronic Transmission Controller 6;J1939
+65196;Wheel Brake Lining Remaining Information;J1939
+65197;Wheel Application Pressure High Range Information;J1939
+65198;Air Supply Pressure;J1939
+65199;Fuel Consumption (Gaseous);J1939
+65200;Trip Time Information 2;J1939
+65201;ECU History;J1939
+65202;Fuel Information 1 (Gaseous);J1939
+65203;Fuel Information (Liquid);J1939
+65204;Trip Time Information 1;J1939
+65205;Trip Shutdown Information;J1939
+65206;Trip Vehicle Speed/Cruise Distance Information;J1939
+65207;Engine Speed/Load Factor Information;J1939
+65208;Trip Fuel Information (Gaseous);J1939
+65209;Trip Fuel Information (Liquid);J1939
+65210;Trip Distance Information;J1939
+65211;Trip Fan Information;J1939
+65212;Compression/Service Brake Information;J1939
+65213;Fan Drive;J1939
+65214;Electronic Engine Controller 4;J1939
+65215;Wheel Speed Information;J1939
+65216;Service Information;J1939
+65217;High Resolution Vehicle Distance;J1939
+65218;Electronic Retarder Controller 2;J1939
+65219;Electronic Transmission Controller 5;J1939
+65220;Reserved for ISO 11992;J1939
+65221;Electronic Transmission Controller 4;J1939
+65222;Reserved for ISO 11992;J1939
+65223;Electronic Transmission Controller 3;J1939
+65224;Reserved for ISO 11992;J1939
+65225;Reserved for ISO 11992;J1939
+65229;Freeze Frame Parameters;J1939
+65230;Diagnostic Readiness 1;J1939
+65231;Pending DTCs;J1939
+65232;Test Results for Non-continuously Monitored Systems;J1939
+65233;Oxygen Sensor Test Results;J1939
+65234;Non-continuously Monitored System Test Identifiers Support;J1939
+65235;Diagnostic Data Clear/Reset for Active DTCs;J1939
+65236;Emissions Related Active DTCs;J1939
+65237;Alternator Information;J1939
+65241;Auxiliary Input/Output Status 1;J1939
+65243;Engine Fluid Level/Pressure 2;J1939
+65244;Idle Operation;J1939
+65245;Turbocharger;J1939
+65246;Air Start Pressure;J1939
+65247;Electronic Engine Controller 3;J1939
+65248;Vehicle Distance;J1939
+65249;Retarder Configuration;J1939
+65250;Transmission Configuration;J1939
+65251;Engine Configuration 1;J1939
+65252;Shutdown;J1939
+65253;Engine Hours, Revolutions;J1939
+65254;Time/Date;J1939
+65255;Vehicle Hours;J1939
+65256;Vehicle Direction/Speed;J1939
+65257;Fuel Consumption (Liquid);J1939
+65258;Vehicle Weight;J1939
+65259;Component Identification;J1939
+65260;Vehicle Identification;J1939
+65261;Cruise Control/Vehicle Speed Setup;J1939
+65262;Engine Temperature 1;J1939
+65263;Engine Fluid Level/Pressure 1;J1939
+65264;Power Takeoff Information;J1939
+65265;Cruise Control/Vehicle Speed;J1939
+65266;Fuel Economy (Liquid);J1939
+65267;Vehicle Position;J1939
+65268;Tire Condition;J1939
+65269;Ambient Conditions;J1939
+65270;Inlet/Exhaust Conditions 1;J1939
+65271;Vehicle Electrical Power 1;J1939
+65272;Transmission Fluids 1;J1939
+65273;Axle Information;J1939
+65274;Brakes;J1939
+65275;Retarder fluids;J1939
+65276;Dash Display;J1939
+65277;Alternate Fuel 1;J1939
+65278;Auxiliary Water Pump Pressure;J1939
+65279;Water in Fuel Indicator;J1939
+65378;Proprietary B;J1939
+126208;NMEA - Request/Command/Acknowledge group function;J1939
+126992;System Time;J1939
+126996;Product Information;J1939
+126998;Configuration Information;J1939
+127237;Heading/Track Control;J1939
+127245;Rudder;J1939
+127250;Vessel Heading;J1939
+127251;Rate of Turn;J1939
+127257;Attitude;J1939
+127488;Engine Parameters, Rapid Update;J1939
+127489;Engine Parameters, Dynamic;J1939
+127493;Transmission Parameters, Dynamic;J1939
+127497;Trip Parameters, Small Craft;J1939
+127498;Engine Parameters, Static;J1939
+127501;Binary Switch Bank Status;J1939
+127502;Switch Bank Control;J1939
+127505;Fluid Level;J1939
+127508;Battery Status;J1939
+128259;Speed;J1939
+128267;Water Depth;J1939
+128275;Distance Log;J1939
+128520;Tracked Target Data;J1939
+129025;Position, Rapid Update;J1939
+129026;COG & SOG, Rapid Update;J1939
+129029;GNSS Position Data;J1939
+129033;Time & Date;J1939
+129044;Datum;J1939
+129045;User Datum Settings;J1939
+129283;Cross Track Error;J1939
+129284;Navigation Data;J1939
+129291;Set & Drift, Rapid Update;J1939
+129301;Time to/from Mark;J1939
+129302;Bearing and Distance between two Marks;J1939
+129538;GNSS Control Status;J1939
+129539;GNSS DOPs;J1939
+129540;GNSS Sats in View;J1939
+129541;GPS Almanac Data;J1939
+129542;GNSS Pseudorange Noise Statistics;J1939
+129545;GNSS RAIM Output;J1939
+129546;GNSS RAIM Settings;J1939
+129547;GNSS Pseudorange Error Statistics;J1939
+129549;DGNSS Corrections;J1939
+129550;GNSS Differential Correction Receiver Interface;J1939
+129551;GNSS Differential Correction Receiver Signal;J1939
+129556;GLONASS Almanac Data;J1939
+129799;Radio Frequency/Mode/Power;J1939
+129808;DSC Call Information;J1939
+130052;Loran-C TD Data;J1939
+130053;Loran-C Range Data;J1939
+130054;Loran-C Signal Data;J1939
+130306;Wind Data;J1939
+130310;Environmental Parameters;J1939
+130320;Tide Station Data;J1939
+130321;Salinity Station Data;J1939
+130322;Current Station Data;J1939
+130323;Meteorological Station Data;J1939
+130324;Moored Buoy Station Data;J1939
+130576;Small Craft Status;J1939
+130577;Direction Data;J1939
+130578;Vessel Speed Components;J1939
