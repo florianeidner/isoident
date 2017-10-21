@@ -333,6 +333,16 @@ int can_init_socket() {
 		return EXIT_FAILURE;
 	}
 	fprintf(stdout,"CAN Socket Nr.: %d bound to process! Interface: %s\n",can_socket, can_interface_name);
+	
+	//Set CAN Filter to only receive messages according to J1939/ISO11783/NMEA2000 by excluding messages with EDP = 1 and DP =1
+
+	struct can_filter rfilter;
+
+	rfilter.can_id = 0x23000000; // DP Bit = 1, EDP Bit = 1 and CAN_INV_FILTER enabled
+	rfilter.can_mask = 0x03000000;
+
+	setsockopt(can_socket, SOL_CAN_RAW, CAN_RAW_FILTER, &rfilter, sizeof(rfilter));
+
 	return EXIT_SUCCESS;}
 
 
