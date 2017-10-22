@@ -135,7 +135,9 @@ int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1,
 	fprintf(stdout, "Writing isoident.xml...");
 	
 	FILE *xmlFile;
+	
 	mxml_node_t *xml;
+	
 	mxml_node_t *parent;
 
 	xml = mxmlNewXML("1.0");
@@ -150,7 +152,14 @@ int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1,
 	
 	mxmlSaveFile(xml,xmlFile,MXML_NO_CALLBACK);
 
+	mxmlRemove(node1);
+	mxmlRemove(node2);
+	mxmlRemove(node3);
+
+
 	fclose(xmlFile);
+
+	mxmlDelete(xml);
 
 	fprintf(stdout,"Successfully updated file.\n");
 	
