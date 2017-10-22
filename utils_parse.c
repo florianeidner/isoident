@@ -158,7 +158,8 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 
 	if (file){
 		while (((read =getline(&line, &len, file)) != -1)) {
-		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
+		    char *line2 = line;
+		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
 				if (lineID == man_id){
 					char* man_name_update = strtok(NULL,"\n");
@@ -179,7 +180,7 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 	else{
 		printf("File could not be opened.");
 	}
-
+	free(line);
 	fclose(file);
 
 	return 0;
@@ -232,7 +233,8 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 
 	if (file){
 		while (((read =getline(&line, &len, file)) != -1)) {
-		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
+		    char *line2 = line;
+		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
 				if (lineID == func_id) {
 					char* func_name_update = strtok(NULL,"\n");
@@ -253,6 +255,8 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 	else{
 		printf("File could not be opened.");
 	}
+
+	free(line);
 
 	fclose(file);
 	
@@ -300,7 +304,8 @@ int parse_get_class(u_int64_t can_data, char* func_name) {
 
 	if (file){
 		while (((read =getline(&line, &len, file)) != -1)) {
-		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
+		    char* line2 = line;
+		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
 				if (lineID == func_id) {
 					char* func_name_update = strtok(NULL,"\n");
@@ -321,6 +326,8 @@ int parse_get_class(u_int64_t can_data, char* func_name) {
 	else{
 		printf("File could not be opened.");
 	}
+
+	free(line);
 
 	fclose(file);
 	
@@ -388,6 +395,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 
 	if (file){
 		while (((read =getline(&line, &len, file)) != -1)) {
+		    char* line2 = line;
 		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
 				if (lineID == pgn_id){
@@ -436,6 +444,8 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 		printf("File could not be opened.");
 	}
 
+	free(line);
+
 	fclose(file);
 
 	return pgn_type;
@@ -475,6 +485,8 @@ int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 		signal_spn->spn = 0;
 
 		while (((read =getline(&line, &len, file)) != -1)) {
+		    
+		    char* line2 = line;
 		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
 				if (lineID == pgn_id){
@@ -500,6 +512,8 @@ int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 	else{
 		printf("File could not be opened.");
 	}
+
+	free(line);
 
 	fclose(file);
 

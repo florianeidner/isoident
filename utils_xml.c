@@ -56,12 +56,17 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	mxml_node_t* message = mxmlNewElement(device,"message");
 
 	char pgn_name[50]={0};
+	
 	int pgn_type = parse_get_pgn_name(message_pgn, pgn_name);
+	
 	char* pgn = int_to_string(message_pgn);
 
 	printf("Found device with UUID: %d\n",str_to_int((char*)mxmlElementGetAttr(device,"UUID")));
+	
 	mxmlElementSetAttr(message, "pgn", pgn);
+	
 	mxmlElementSetAttr(message, "name", pgn_name);
+	
 	free(pgn);
 
 	switch (pgn_type) {
@@ -142,9 +147,13 @@ int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1,
 	mxmlAdd(parent,MXML_ADD_AFTER,MXML_ADD_TO_PARENT,node3);
 
 	xmlFile = fopen(path,"w");
+	
 	mxmlSaveFile(xml,xmlFile,MXML_NO_CALLBACK);
+
 	fclose(xmlFile);
+
 	fprintf(stdout,"Successfully updated file.\n");
+	
 	return 1;
 }
 
