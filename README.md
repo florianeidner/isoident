@@ -3,7 +3,7 @@ This module identifies participants and message on the ISOBUS network utilizing 
 
 TODO:
 * Clean up (~~Memory Leaks~~, ~~CAN Filter~~, Exceptions in datasets structure - utils_parse, line 408)
-* J1939 Integration ✓ (~~PGN~~, ~~SPN~~, ~~Manufacturer~~)
+* ✓ J1939 Integration (~~PGN~~, ~~SPN~~, ~~Manufacturer~~)
 * Additional Data in isoident.xml (SA, class in isoident.xml)
 * Log messages without a registered device/sa
 * Edit xml via web
