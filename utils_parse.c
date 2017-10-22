@@ -405,19 +405,24 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 
 					fprintf(stdout,"FIRST CHAR: %c\n", pgn_type_c[0]);
 
-					switch (pgn_type_c[0]) {
-						case 'I':
-							pgn_type = 1;
-							break;
-						case 'J':
-							pgn_type = 2;
-							break;
-						case 'N':
-							pgn_type = 3;
-							break;
-						default:
-							pgn_type = 0;
-							break;
+					if (pgn_type_c != NULL) {
+						switch (pgn_type_c[0]) {
+							case 'I':
+								pgn_type = 1;
+								break;
+							case 'J':
+								pgn_type = 2;
+								break;
+							case 'N':
+								pgn_type = 3;
+								break;
+							default:
+								pgn_type = 0;
+								break;
+						}
+					}
+					else {
+						fprintf(stderr, "Error in structure of parametergroups.csv\n");
 					}
 
 					strcpy(pgn_name,pgn_name_update);
