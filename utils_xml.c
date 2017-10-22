@@ -30,15 +30,17 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data) {
 	
 	char func_name[50]={0};
 	parse_get_function(data,func_name);
+	char* uuid = int_to_string(device_id);
 
 	
 	mxml_node_t* device = mxmlNewElement(tree,"device");
 
-	mxmlElementSetAttr(device, "UUID", int_to_string(device_id));
+	mxmlElementSetAttr(device, "UUID", uuid);
 	mxmlElementSetAttr(device, "manufacturer", man_name);
 	mxmlElementSetAttr(device, "function", func_name);
 	// mxmlElementSetAttr(device,"class",parse_get_class(data));
 	// mxmlElementSetAttr(device,"industry",parse_get_industry(data));
+	free(uuid);
 	return EXIT_SUCCESS;
 
 }
@@ -55,10 +57,12 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 
 	char pgn_name[50]={0};
 	int pgn_type = parse_get_pgn_name(message_pgn, pgn_name);
+	char* pgn = int_to_string(message_pgn);
 
 	printf("Found device with UUID: %d\n",str_to_int((char*)mxmlElementGetAttr(device,"UUID")));
-	mxmlElementSetAttr(message, "pgn", int_to_string(message_pgn));
+	mxmlElementSetAttr(message, "pgn", pgn);
 	mxmlElementSetAttr(message, "name", pgn_name);
+	free(pgn);
 
 	switch (pgn_type) {
 		case 1:
@@ -83,15 +87,18 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	mxml_node_t* sig;
 	signal_t signal_spn;
 	signal_spn.name = malloc(50);
+	char* spn = int_to_string(signal_spn.spn);
+	char* start_bit = int_to_string(signal_spn.start_bit);
+	char* spn_len = int_to_string(signal_spn.len);
 
 	for (i=1;(parse_get_signals(message_pgn,i,&signal_spn) != 0);i++) {
 	 	sig = mxmlNewElement(message,"signal");
-	 	printf("Signal spn after:%s\n", int_to_string(signal_spn.spn));
-	 	mxmlElementSetAttr(sig, "spn", int_to_string(signal_spn.spn));
+	 	printf("Signal spn after:%s\n", spn);
+	 	mxmlElementSetAttr(sig, "spn", spn);
 	 	mxmlElementSetAttr(sig, "name", signal_spn.name);
 	 	mxmlElementSetAttr(sig, "log", "0");
-	 	mxmlElementSetAttr(sig, "start", int_to_string(signal_spn.start_bit));
-	 	mxmlElementSetAttr(sig, "len", int_to_string(signal_spn.len));
+	 	mxmlElementSetAttr(sig, "start", start_bit);
+	 	mxmlElementSetAttr(sig, "len", spn_len);
 	 	mxmlElementSetAttr(sig, "end", "0");
 	 	mxmlElementSetAttr(sig, "fac", "0");
 	 	mxmlElementSetAttr(sig, "offs", "0");
@@ -102,8 +109,11 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	 	mxmlElementSetAttr(sig, "ddi", "");
 
 	 	printf("Added Signal to message.\n");
-	}
 
+	}
+	free(spn);
+	free(spn_len);
+	free(start_bit);
 	free (signal_spn.name);
 
 	return EXIT_SUCCESS;

@@ -192,7 +192,7 @@ int handle_command_line_arguments(int argc, char *argv[]) {
 
 
 int load_configfile() {
-	FILE* configfile = malloc(sizeof(FILE));
+	FILE* configfile;
 
 	if ((configfile = load_file(isoident_logfile_path)) != NULL) {
 
@@ -276,7 +276,7 @@ int load_configfile() {
 	}}
 
 int load_canlogger_configfile() {
-	FILE* canloggerfile = malloc(sizeof(FILE));
+	FILE* canloggerfile;
 
 	printf("PAth to canlogger config file: %s\n",canlogger_configfile_path );
 
@@ -546,8 +546,11 @@ int update_canlogger_configfile() {
 			continue;
 		}
 		fprintf(stdout, "Looking for signals to log for device UUID: %" PRIu64 " with SA: %d\n",active_devices[i],i);
+		
+		char* active_devices_uuid = int_to_string(active_devices[i]);
+		char* active_devices_sa = int_to_string(i);
 
-		mxml_node_t* temp_device = mxmlFindElement(config_devicelog_xml,configfile_xml,"device","UUID",int_to_string(active_devices[i]),MXML_DESCEND);
+		mxml_node_t* temp_device = mxmlFindElement(config_devicelog_xml,configfile_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
 
 		for (temp_message = mxmlFindElement(temp_device,config_devicelog_xml,"message",NULL,NULL,MXML_DESCEND); temp_message != NULL; temp_message = mxmlGetNextSibling(temp_message)) {
 			for (temp_signal = mxmlFindElement(temp_message,temp_device,"signal",NULL,NULL,MXML_DESCEND); temp_signal != NULL; temp_signal = mxmlGetNextSibling(temp_signal)) {
@@ -564,7 +567,7 @@ int update_canlogger_configfile() {
 
 					if 	((new_log_signal_lib = mxmlFindElement(canlogger_signallib_xml,canlogger_configfile_xml,"iso","name",mxmlElementGetAttr(temp_signal,"name"),MXML_DESCEND)) != NULL) {
 						//If signal is already in signallib, update SA
-						mxmlElementSetAttr(new_log_signal_lib,"sa",int_to_string(i));
+						mxmlElementSetAttr(new_log_signal_lib,"sa",active_devices_sa);
 					}
 				
 					else {
@@ -574,7 +577,7 @@ int update_canlogger_configfile() {
 
 						mxmlElementSetAttr(new_log_signal_lib,"name",mxmlElementGetAttr(temp_signal,"name"));
 						mxmlElementSetAttr(new_log_signal_lib,"pgn",mxmlElementGetAttr(temp_message,"pgn"));
-						mxmlElementSetAttr(new_log_signal_lib,"sa",int_to_string(i));
+						mxmlElementSetAttr(new_log_signal_lib,"sa",active_devices_sa);
 						mxmlElementSetAttr(new_log_signal_lib,"sbit",mxmlElementGetAttr(temp_signal,"start"));
 						mxmlElementSetAttr(new_log_signal_lib,"len",mxmlElementGetAttr(temp_signal,"spn"));
 						mxmlElementSetAttr(new_log_signal_lib,"spn",mxmlElementGetAttr(temp_signal,"len"));
@@ -591,9 +594,11 @@ int update_canlogger_configfile() {
 
 				}
 
-			}		
+			}
 			
 		}
+		free(active_devices_uuid);
+		free(active_devices_sa);	
 	}
 
 	//Add directlog to canlogger configfile
@@ -776,8 +781,9 @@ int main(int argc, char *argv[]) {
 				//Check if the sender is registered
 				printf("Sender SA: %d, active device list: %" PRIu64 "\n", last_message.sa,active_devices[last_message.sa]);
 				if (active_devices[last_message.sa] != 0) {
-					mxml_node_t* sender = mxmlFindElement(config_devicelog_xml,config_devicelog_xml,"device","UUID",(int_to_string(active_devices[last_message.sa])),MXML_DESCEND);
-
+					char* active_devices_uuid = int_to_string(active_devices[last_message.sa]);
+					mxml_node_t* sender = mxmlFindElement(config_devicelog_xml,config_devicelog_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
+					free(active_devices_uuid);
 					mxml_node_t* message;
 
 					for (message = mxmlFindElement(sender,sender,"message",NULL,NULL,MXML_DESCEND); message != NULL; message = mxmlGetNextSibling(message)) {

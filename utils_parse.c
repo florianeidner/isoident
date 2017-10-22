@@ -140,10 +140,13 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 	//printf("Manufacturer ID: %d\n",man_id);
 
 	FILE *file;
-	if ((file = load_file(concat(datasets_path,"manufacturers.CSV"))) == NULL) {
+	char* path = concat(datasets_path,"manufacturers.CSV");
+	if ((file = load_file(path)) == NULL) {
+		free(path);
 		return EXIT_FAILURE;
 	}
-	
+	free(path);
+
 	char * line = NULL;
 	size_t len = 0;
 	ssize_t read;
@@ -193,16 +196,31 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 int parse_get_function(u_int64_t can_data, char* func_name) {
 	int func_id = parse_get_function_id(can_data);
 	if (func_id > 127) {
-		func_id = str_to_int(concat(concat(int_to_string(parse_get_industry_id(can_data)),int_to_string(parse_get_class_id(can_data))),int_to_string(func_id)));
+		char* industry_id = int_to_string(parse_get_industry_id(can_data));
+		char* class_id =int_to_string(parse_get_class_id(can_data));
+		char* function_id = int_to_string(func_id);
+        char* concat1 = concat(industry_id,class_id);
+		char* concat2 = concat(concat1,function_id);
+		
+		func_id = str_to_int(concat2);
+
+		free (industry_id);
+		free (class_id);
+		free (function_id);
+		free (concat1);
+		free (concat2);
 	}
 	//printf("Function ID: %d\n",func_id);
 
 	FILE *file;
+	char* path = concat(datasets_path,"functions.CSV");
 
-	if ((file = load_file(concat(datasets_path,"functions.CSV"))) == NULL) {
+	if ((file = load_file(path)) == NULL) {
+		free(path);
 		return EXIT_FAILURE;
 	}
-	
+	free(path);
+
 	char * line = NULL;
 	size_t len = 0;
 	ssize_t read;
@@ -245,16 +263,32 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 int parse_get_class(u_int64_t can_data, char* func_name) {
 	int func_id = parse_get_class_id(can_data);
 	if (func_id > 127) {
-		func_id = str_to_int(concat(concat(int_to_string(parse_get_industry_id(can_data)),int_to_string(parse_get_class_id(can_data))),int_to_string(func_id)));
+		char* industry_id = int_to_string(parse_get_industry_id(can_data));
+		char* class_id =int_to_string(parse_get_class_id(can_data));
+		char* function_id = int_to_string(func_id);
+		char* concat1 = concat(industry_id,class_id);
+		char* concat2 = concat(concat1,function_id);
+		
+		func_id = str_to_int(concat2);
+		
+		free (industry_id);
+		free (class_id);
+		free (function_id);
+		free (concat1);
+		free (concat2);
 	}
 	//printf("Function ID: %d\n",func_id);
 
 	FILE *file;
 
-	if ((file = load_file(concat(datasets_path,"functions.CSV"))) == NULL) {
+	char* path = concat(datasets_path,"functions.CSV");
+
+	if ((file = load_file(path)) == NULL) {
+		free(path);
 		return EXIT_FAILURE;
 	}
-	
+	free(path);
+
 	char * line = NULL;
 	size_t len = 0;
 	ssize_t read;
@@ -334,11 +368,12 @@ int parse_get_pgn(u_int32_t can_id) {
 int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 	
 	FILE *file;
-
-	if ((file = load_file(concat(datasets_path,"parametergroups.CSV"))) == NULL) {
+	char* path = concat(datasets_path,"parametergroups.CSV");
+	if ((file = load_file(path)) == NULL) {
+		free(path);
 		return EXIT_FAILURE;
 	}
-	
+	free(path);
 
 	char * line = NULL;
 	size_t len = 0;
@@ -419,11 +454,12 @@ int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 	printf("Extracting Signals for PGN\n");
 
 	FILE *file;
-
-	if ((file = load_file(concat(datasets_path,"signals.CSV"))) == NULL) {
+	char* path = concat(datasets_path,"signals.CSV");
+	if ((file = load_file(path)) == NULL) {
+		free(path);
 		return EXIT_FAILURE;
 	}
-
+	free(path);
 	char * line = NULL;
 	int lineID;
 	size_t len = 0;
