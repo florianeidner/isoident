@@ -4,6 +4,7 @@ This module identifies participants and message on the ISOBUS network utilizing 
 TODO:
 * ✓ Clean up (~~Memory Leaks~~, ~~CAN Filter~~, ~~Exceptions in datasets structure - utils_parse, line 408~~)
 * ✓ J1939 Integration (~~PGN~~, ~~SPN~~, ~~Manufacturer~~)
+* Add log file/ debug option
 * Additional Data in isoident.xml (lastSA, status, lastSeen, class in isoident.xml)
 * Identify messages from unknown sender
 * Optimize Canlogger.xml-handling (No overwriting, ...)
