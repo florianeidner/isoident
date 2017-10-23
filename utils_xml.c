@@ -30,7 +30,14 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data) {
 	
 	char func_name[50]={0};
 	parse_get_function(data,func_name);
+	
+	char class_name[50]={0};
+	char industry_name[50]={0};
+
+	parse_get_class_industry(data,class_name,industry_name);
+
 	char* uuid = int_to_string(device_id);
+
 
 	
 	mxml_node_t* device = mxmlNewElement(tree,"device");
@@ -38,8 +45,8 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data) {
 	mxmlElementSetAttr(device, "UUID", uuid);
 	mxmlElementSetAttr(device, "manufacturer", man_name);
 	mxmlElementSetAttr(device, "function", func_name);
-	// mxmlElementSetAttr(device,"class",parse_get_class(data));
-	// mxmlElementSetAttr(device,"industry",parse_get_industry(data));
+	mxmlElementSetAttr(device,"class",class_name));
+	mxmlElementSetAttr(device,"industry",industry_name);
 	free(uuid);
 	return EXIT_SUCCESS;
 

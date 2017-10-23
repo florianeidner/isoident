@@ -264,28 +264,15 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 
 }
 
-int parse_get_class(u_int64_t can_data, char* func_name) {
-	int func_id = parse_get_class_id(can_data);
-	if (func_id > 127) {
-		char* industry_id = int_to_string(parse_get_industry_id(can_data));
-		char* class_id =int_to_string(parse_get_class_id(can_data));
-		char* function_id = int_to_string(func_id);
-		char* concat1 = concat(industry_id,class_id);
-		char* concat2 = concat(concat1,function_id);
-		
-		func_id = str_to_int(concat2);
-		
-		free (industry_id);
-		free (class_id);
-		free (function_id);
-		free (concat1);
-		free (concat2);
-	}
+int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industry_name) {
+	int class_id = parse_get_class_id(can_data);
+	int industry_id = parse_get_industry_id(can_data);
+	
 	//printf("Function ID: %d\n",func_id);
 
 	FILE *file;
 
-	char* path = concat(datasets_path,"functions.CSV");
+	char* path = concat(datasets_path,"industry_class.CSV");
 
 	if ((file = load_file(path)) == NULL) {
 		free(path);
@@ -297,7 +284,8 @@ int parse_get_class(u_int64_t can_data, char* func_name) {
 	size_t len = 0;
 	ssize_t read;
 	int lineID;
-	short match=0;
+	short industry_match=0;
+	short class_match=0;
 
 	if (file == NULL)
         exit(0);
@@ -307,20 +295,44 @@ int parse_get_class(u_int64_t can_data, char* func_name) {
 		    char* line2 = line;
 		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
 		    //printf("lineID: %d\n", lineID);
-				if (lineID == func_id) {
-					char* func_name_update = strtok(NULL,"\n");
-					strcpy(func_name,func_name_update);
-					match=1;
-					break;
+				if (lineID == industry_id) {
+					
+					int lineID2 = (int)strtol((strtok(NULL, ";")),((char **)NULL),10);
+					char* industry_name_update = strtok(NULL,";");
+					strcpy(industry_name,industry_name_update);
+
+					fprintf(stdout, "Found class match - ID: %d, Name: %s\n",class_id,class_name);
+					industry_match=1;
+
+					if (lineID2 == class_id) {
+						char* class_name_update = strtok(NULL,";");
+						strcpy(class_name,class_name_update);
+						class_match=1;
+						fprintf(stdout, "Found class match - ID: %d, Name: %s\n",class_id,class_name);
+						break;
+					}
+				
 				}
+			
 			}
-		if (match == 0){
-			strcpy(func_name,"unknown");
-			printf("Function not found.\n");
+
+		if (industry_match == 0){
+			strcpy(industry_name,"unknown");
+			printf("Industry not found.\n");
 		}
 		else {
-			printf("Function: %s \n",func_name);
+			printf("Industry: %s \n",industry_name);
 		}
+
+		if (class_match == 0){
+			strcpy(class_name,"unknown");
+			printf("Class not found.\n");
+		}
+
+		else {
+			printf("Class: %s \n",class_name);
+		}
+
 	}
 
 	else{
@@ -328,7 +340,6 @@ int parse_get_class(u_int64_t can_data, char* func_name) {
 	}
 
 	free(line);
-
 	fclose(file);
 	
 	return 0;
