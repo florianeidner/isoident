@@ -305,7 +305,7 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 					industry_match=1;
 
 					if (lineID2 == class_id) {
-						char* class_name_update = strtok(NULL,";");
+						char* class_name_update = strtok(NULL,"\n");
 						strcpy(class_name,class_name_update);
 						class_match=1;
 						fprintf(stdout, "Found class match - ID: %d, Name: %s\n",class_id,class_name);

@@ -45,7 +45,7 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data) {
 	mxmlElementSetAttr(device, "UUID", uuid);
 	mxmlElementSetAttr(device, "manufacturer", man_name);
 	mxmlElementSetAttr(device, "function", func_name);
-	mxmlElementSetAttr(device,"class",class_name));
+	mxmlElementSetAttr(device,"class",class_name);
 	mxmlElementSetAttr(device,"industry",industry_name);
 	free(uuid);
 	return EXIT_SUCCESS;

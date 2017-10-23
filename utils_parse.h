@@ -17,3 +17,5 @@ int parse_get_pgn(u_int32_t);
 int parse_get_pgn_name(int, char*);
 
 int parse_get_signals(u_int32_t, short,signal_t*);
+
+int parse_get_class_industry(u_int64_t, char*,char*);
