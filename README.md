@@ -8,6 +8,7 @@ TODO:
 * Additional Data in isoident.xml (lastSA, status, lastSeen, class in isoident.xml)
 * Identify messages from unknown sender
 * Optimize Canlogger.xml-handling (No overwriting, ...)
+* Update config section
 * Edit xml via web
 
 ## Build
