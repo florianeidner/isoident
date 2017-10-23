@@ -216,7 +216,7 @@ int load_configfile() {
 
 					++device_count;
 					insertArray(&known_devices, str_to_int((char*)mxmlElementGetAttr(device,"UUID")));
-
+					mxmlElementSetAttr(device,"status","offline");
 					int i;
 					mxml_node_t *message;
 					bool match;
@@ -268,6 +268,9 @@ int load_configfile() {
 
 		fprintf(stdout, "Config file loaded successfully.\n");		
 		fclose(configfile);
+
+		xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
+		
 		return EXIT_SUCCESS;
 	}
 
@@ -661,7 +664,7 @@ int handle_address_claim_message() {
 	if (known_devices.used == 0) {
 		fprintf(stdout,"Add device because there is no device known yet.\n");
 			//Add new device to device log
-			if (xml_add_device(config_devicelog_xml,device_id,last_message.data_LE) == EXIT_FAILURE) {
+			if (xml_add_device(config_devicelog_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
 				return EXIT_FAILURE;
 			}
 			insertArray(&known_devices,device_id);
@@ -674,6 +677,26 @@ int handle_address_claim_message() {
 		
 		if (device_id == known_devices.array[i]) {
 			fprintf(stdout,"Device is known from isoident.xml\n");
+			
+			char date_buff[70];
+			time_t now = time(NULL);
+ 			struct tm *now_local = localtime(&now);
+ 
+    		if (strftime(date_buff, sizeof date_buff, "%Y-%m-%d-%H:%M", now_local)) {
+        		fprintf(stdout,"Device seen on %s\n",date_buff);
+    		} else {
+        		fprintf(stderr,"strftime failed");
+    		}
+    		char* active_device_sa = int_to_string(last_message.sa);
+    		char* active_device_id = int_to_string(device_id);
+
+    		mxml_node_t* device = mxmlFindElement(config_devicelog_xml,config_devicelog_xml,"device","UUID",active_device_id,MXML_DESCEND);
+    		mxmlElementSetAttr(device,"lastClaim",date_buff);
+    		mxmlElementSetAttr(device,"lastSA",active_device_sa);
+    		mxmlElementSetAttr(device,"status","online");
+
+    		free(active_device_id);
+    		free(active_device_sa);
 			match = true;
 			break;
 		}
@@ -685,7 +708,7 @@ int handle_address_claim_message() {
 
 	if (match == false) {
 		printf("Add device because is not yet in the db.\n");
-		if (xml_add_device(config_devicelog_xml,device_id,last_message.data_LE) == EXIT_FAILURE) {
+		if (xml_add_device(config_devicelog_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
 			return EXIT_FAILURE;
 		}; //Add new device to device log
 		
@@ -836,7 +859,7 @@ int main(int argc, char *argv[]) {
 				
 				if (memcmp(active_devices,old_active_devices,sizeof(active_devices)) != 0) {
 					
-					fprintf(stdout, "There are other devices active. The isoident configfile will be updated.\n");
+					fprintf(stdout, "There are new devices active. The isoident configfile will be updated.\n");
 					
 					xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
 

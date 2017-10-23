@@ -301,11 +301,10 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 					char* industry_name_update = strtok(NULL,";");
 					strcpy(industry_name,industry_name_update);
 
-					fprintf(stdout, "Found class match - ID: %d, Name: %s\n",class_id,class_name);
 					industry_match=1;
 
 					if (lineID2 == class_id) {
-						char* class_name_update = strtok(NULL,"\n");
+						char* class_name_update = strtok(NULL,"\n\r\t");
 						strcpy(class_name,class_name_update);
 						class_match=1;
 						fprintf(stdout, "Found class match - ID: %d, Name: %s\n",class_id,class_name);
@@ -327,10 +326,6 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 		if (class_match == 0){
 			strcpy(class_name,"unknown");
 			printf("Class not found.\n");
-		}
-
-		else {
-			printf("Class: %s \n",class_name);
 		}
 
 	}

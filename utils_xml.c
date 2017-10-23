@@ -21,7 +21,7 @@
 
 
 
-int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data) {
+int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	
 	printf("Add device to xml\n");
 	
@@ -38,15 +38,26 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data) {
 
 	char* uuid = int_to_string(device_id);
 
+	char date_buff[70];
+ 	time_t now = time(NULL);
+ 	struct tm *now_local = localtime(&now);
 
+ 	if (strftime(date_buff, sizeof date_buff, "%Y-%m-%d-%H:%M",now_local)) {
+        fprintf(stdout,"Device seen on %s",date_buff);
+    } else {
+        fprintf(stderr,"strftime failed");
+    }
 	
 	mxml_node_t* device = mxmlNewElement(tree,"device");
 
 	mxmlElementSetAttr(device, "UUID", uuid);
 	mxmlElementSetAttr(device, "manufacturer", man_name);
 	mxmlElementSetAttr(device, "function", func_name);
-	mxmlElementSetAttr(device,"class",class_name);
-	mxmlElementSetAttr(device,"industry",industry_name);
+	mxmlElementSetAttr(device, "class",class_name);
+	mxmlElementSetAttr(device, "industry",industry_name);
+	mxmlElementSetAttr(device, "lastClaim",date_buff);
+	mxmlElementSetAttr(device, "lastSA",int_to_string(sa));
+	mxmlElementSetAttr(device, "status","online");
 	free(uuid);
 	return EXIT_SUCCESS;
 

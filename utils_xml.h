@@ -1,4 +1,4 @@
-int xml_add_device(mxml_node_t * tree, int device_id, u_int64_t data);
+int xml_add_device(mxml_node_t * tree, int device_id, u_int64_t data,int sa);
 
 int xml_add_message(mxml_node_t* device, int message_pgn);
 
