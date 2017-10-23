@@ -6,7 +6,7 @@ TODO:
 * ✓ J1939 Integration (~~PGN~~, ~~SPN~~, ~~Manufacturer~~)
 * ✓ Add log file/ debug option
 * ✓ Additional Data in isoident.xml (~~lastSA~~, ~~status~~, ~~lastSeen~~, ~~class and industry in isoident.xml~~)
-* Identify messages from unknown sender (Restructure isoident.xml, add method to handle unknown messages, isoident.xml generator)
+* Identify messages from unknown sender (~~Restructure isoident.xml~~, add method to handle unknown messages,~~isoident.xml generator~~)
 * Optimize Canlogger.xml-handling (No overwriting, ...)
 * Update config section
 * Edit xml via web
