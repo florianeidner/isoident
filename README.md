@@ -2,10 +2,11 @@
 This module identifies participants and message on the ISOBUS network utilizing the address-claim procedure defined in ISO 11783-5. The detected participants and their messages will be saved in the configfile. Furthermore it can be an addition to the existing amcanlogger to adjust the CAN logging profile dynamically to the active devices.
 
 TODO:
-* Clean up (~~Memory Leaks~~, ~~CAN Filter~~, Exceptions in datasets structure - utils_parse, line 408)
+* ✓ Clean up (~~Memory Leaks~~, ~~CAN Filter~~, ~~Exceptions in datasets structure - utils_parse, line 408~~)
 * ✓ J1939 Integration (~~PGN~~, ~~SPN~~, ~~Manufacturer~~)
-* Additional Data in isoident.xml (SA, class in isoident.xml)
-* Log messages without a registered device/sa
+* Additional Data in isoident.xml (lastSA, status, lastSeen, class in isoident.xml)
+* Identify messages from unknown sender
+* Optimize Canlogger.xml-handling (No overwriting, ...)
 * Edit xml via web
 
 ## Build
