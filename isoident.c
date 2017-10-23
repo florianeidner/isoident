@@ -849,8 +849,16 @@ int main(int argc, char *argv[]) {
 
 				else {
 
-					fprintf(stderr, "Message from unknown sender (SA: %d). Message will be ignored.\n",last_message.sa);
-
+					fprintf(stderr, "Message from unknown sender (SA: %d). Message will be added to messagelib.\n",last_message.sa);
+					char* last_message_pgn = int_to_string(last_message.pgn);
+					if (mxmlFindElement(config_messagelib_xml,config_messagelib_xml,"message","pgn",last_message_pgn,MXML_DESCEND) != NULL){
+						fprintf(stdout, "Message is already in messagelib\n");
+					} else {
+						xml_add_message(config_messagelib_xml,last_message.pgn);
+						fprintf(stdout, "Message added to messagelib\n");
+						xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
+					}
+					free (last_message_pgn);
 				}
 
 				break;

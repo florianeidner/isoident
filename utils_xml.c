@@ -72,7 +72,7 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 */
 
 int xml_add_message(mxml_node_t* device, int message_pgn) {
-	printf("Add message PGN: %d to device.\n",message_pgn);
+	printf("Add message PGN: %d.\n",message_pgn);
 
 	mxml_node_t* message = mxmlNewElement(device,"message");
 
@@ -81,8 +81,6 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	int pgn_type = parse_get_pgn_name(message_pgn, pgn_name);
 	
 	char* pgn = int_to_string(message_pgn);
-
-	printf("Found device with UUID: %d\n",str_to_int((char*)mxmlElementGetAttr(device,"UUID")));
 	
 	mxmlElementSetAttr(message, "pgn", pgn);
 	
@@ -110,15 +108,21 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 
 	//Add signals to message.
 	int i;
+	
 	mxml_node_t* sig;
+	
 	signal_t signal_spn;
-	signal_spn.name = malloc(50);
-	char* spn = int_to_string(signal_spn.spn);
-	char* start_bit = int_to_string(signal_spn.start_bit);
-	char* spn_len = int_to_string(signal_spn.len);
+	
+	signal_spn.name = malloc(50);	
 
 	for (i=1;(parse_get_signals(message_pgn,i,&signal_spn) != 0);i++) {
 	 	sig = mxmlNewElement(message,"signal");
+	 	
+	 	char* spn = int_to_string(signal_spn.spn);
+		char* start_bit = int_to_string(signal_spn.start_bit);
+		char* spn_len = int_to_string(signal_spn.len);
+
+
 	 	printf("Signal spn after:%s\n", spn);
 	 	mxmlElementSetAttr(sig, "spn", spn);
 	 	mxmlElementSetAttr(sig, "name", signal_spn.name);
@@ -136,10 +140,12 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 
 	 	printf("Added Signal to message.\n");
 
+	 	free(spn);
+		free(spn_len);
+		free(start_bit);
+
 	}
-	free(spn);
-	free(spn_len);
-	free(start_bit);
+	
 	free (signal_spn.name);
 
 	return EXIT_SUCCESS;
