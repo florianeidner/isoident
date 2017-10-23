@@ -26,15 +26,13 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	printf("Add device to xml\n");
 	
 	char man_name[50]={0}; //Name max is 50 chars, Database max name length is.
-	parse_get_manufacturer(data,man_name);
-	
 	char func_name[50]={0};
-	parse_get_function(data,func_name);
-	
 	char class_name[50]={0};
 	char industry_name[50]={0};
 
+	parse_get_function(data,func_name);
 	parse_get_class_industry(data,class_name,industry_name);
+	parse_get_manufacturer(data,man_name);
 
 	char* uuid = int_to_string(device_id);
 	char* device_sa = int_to_string(sa);
@@ -186,6 +184,6 @@ int xml_write_file(const char* path, const char* parentname, mxml_node_t* node1,
 
 	fprintf(stdout,"Successfully updated file.\n");
 	
-	return 1;
+	return EXIT_SUCCESS;
 }
 

@@ -48,8 +48,10 @@ const char *can_interface_name;
 
 mxml_node_t* configfile_xml;
 mxml_node_t* config_isoident_xml;
-mxml_node_t* config_devicelog_xml;
-mxml_node_t* config_directlog_xml;
+mxml_node_t* config_signallib_xml;
+mxml_node_t* config_messagelib_xml;
+mxml_node_t* config_devicelib_xml;
+
 
 bool canlogger_configfile_path_flag = 0;
 mxml_node_t* canlogger_configfile_xml;
@@ -205,13 +207,13 @@ int load_configfile() {
 		} 
 
 		/* Loading registered devices from configfile */
-		if ((config_devicelog_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"devicelog",NULL,NULL,MXML_DESCEND)) != NULL) {
+		if ((config_devicelib_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"devicelib",NULL,NULL,MXML_DESCEND)) != NULL) {
 
 			int device_count = 0;
 			int message_count = 0; 
 			mxml_node_t *device;
 
-			for (device = mxmlFindElement(config_devicelog_xml,config_devicelog_xml,"device",NULL,NULL,MXML_DESCEND); device != NULL; device = mxmlGetNextSibling(device)) {
+			for (device = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device",NULL,NULL,MXML_DESCEND); device != NULL; device = mxmlGetNextSibling(device)) {
 				if (mxmlElementGetAttr(device,"UUID") != NULL) {
 
 					++device_count;
@@ -256,27 +258,47 @@ int load_configfile() {
 		}
 
 		else {
-			fprintf(stderr,"Error parsing the devicelog.\n");
+			fprintf(stderr,"Error parsing the devicelib.\n");
 			return EXIT_FAILURE;
 		}
 
-		if ((config_directlog_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"directlog",NULL,NULL,MXML_DESCEND)) == NULL) {
-			fprintf(stderr,"Error parsing the directlog.\n");
+		if ((config_signallib_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"signallib",NULL,NULL,MXML_DESCEND)) == NULL) {
+			fprintf(stderr,"Error parsing the signallib.\n");
 			return EXIT_FAILURE;
 		}
 
+		if ((config_messagelib_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"messagelib",NULL,NULL,MXML_DESCEND)) == NULL) {
+			fprintf(stderr,"Error parsing the messagelib.\n");
+			return EXIT_FAILURE;
+		}
 
 		fprintf(stdout, "Config file loaded successfully.\n");		
 		fclose(configfile);
 
-		xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
+		xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
 		
 		return EXIT_SUCCESS;
 	}
 
 	else {
-		return EXIT_FAILURE;
+		
+		fprintf(stdout, "Try to create new config file.\n");
+		config_devicelib_xml = mxmlLoadString(NULL,"<devicelib></devicelib>",MXML_NO_CALLBACK);
+		config_signallib_xml = mxmlLoadString(NULL,"<signallib></signallib>",MXML_NO_CALLBACK);
+		config_messagelib_xml = mxmlLoadString(NULL,"<messagelib></messagelib>",MXML_NO_CALLBACK);
+
+		if (xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml) != EXIT_FAILURE) {
+			fprintf(stdout,"Successfully created new configfile.\n");
+			load_configfile();
+			return EXIT_SUCCESS;
+		}
+
+		else{
+			fprintf(stdout,"Failed creating new configfile.");
+			return EXIT_FAILURE;
+		}
 	}}
+
 
 int load_canlogger_configfile() {
 	FILE* canloggerfile;
@@ -553,9 +575,9 @@ int update_canlogger_configfile() {
 		char* active_devices_uuid = int_to_string(active_devices[i]);
 		char* active_devices_sa = int_to_string(i);
 
-		mxml_node_t* temp_device = mxmlFindElement(config_devicelog_xml,configfile_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
+		mxml_node_t* temp_device = mxmlFindElement(config_devicelib_xml,configfile_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
 
-		for (temp_message = mxmlFindElement(temp_device,config_devicelog_xml,"message",NULL,NULL,MXML_DESCEND); temp_message != NULL; temp_message = mxmlGetNextSibling(temp_message)) {
+		for (temp_message = mxmlFindElement(temp_device,config_devicelib_xml,"message",NULL,NULL,MXML_DESCEND); temp_message != NULL; temp_message = mxmlGetNextSibling(temp_message)) {
 			for (temp_signal = mxmlFindElement(temp_message,temp_device,"signal",NULL,NULL,MXML_DESCEND); temp_signal != NULL; temp_signal = mxmlGetNextSibling(temp_signal)) {
 				if (((str_to_int((char*)mxmlElementGetAttr(temp_signal,"log")) == 1)) && (mxmlFindElement(canlogger_logfile_xml,canlogger_configfile_xml,"log","name",mxmlElementGetAttr(temp_signal,"name"),MXML_DESCEND)==NULL)) {
 					
@@ -604,10 +626,10 @@ int update_canlogger_configfile() {
 		free(active_devices_sa);	
 	}
 
-	//Add directlog to canlogger configfile
+	//Add signallib to canlogger configfile
 	mxml_node_t* temp_directsignal;
 
-	for (temp_directsignal = mxmlFindElement(config_directlog_xml,config_isoident_xml,"iso",NULL,NULL,MXML_DESCEND); temp_directsignal != NULL; temp_directsignal = mxmlGetNextSibling(temp_directsignal)) {
+	for (temp_directsignal = mxmlFindElement(config_signallib_xml,config_isoident_xml,"iso",NULL,NULL,MXML_DESCEND); temp_directsignal != NULL; temp_directsignal = mxmlGetNextSibling(temp_directsignal)) {
 		if (mxmlFindElement(canlogger_signallib_xml,canlogger_configfile_xml,"iso","name",mxmlElementGetAttr(temp_directsignal,"name"),MXML_DESCEND) == NULL) {
 			
 			
@@ -664,7 +686,7 @@ int handle_address_claim_message() {
 	if (known_devices.used == 0) {
 		fprintf(stdout,"Add device because there is no device known yet.\n");
 			//Add new device to device log
-			if (xml_add_device(config_devicelog_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
+			if (xml_add_device(config_devicelib_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
 				return EXIT_FAILURE;
 			}
 			insertArray(&known_devices,device_id);
@@ -690,7 +712,7 @@ int handle_address_claim_message() {
     		char* active_device_sa = int_to_string(last_message.sa);
     		char* active_device_id = int_to_string(device_id);
 
-    		mxml_node_t* device = mxmlFindElement(config_devicelog_xml,config_devicelog_xml,"device","UUID",active_device_id,MXML_DESCEND);
+    		mxml_node_t* device = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device","UUID",active_device_id,MXML_DESCEND);
     		mxmlElementSetAttr(device,"lastClaim",date_buff);
     		mxmlElementSetAttr(device,"lastSA",active_device_sa);
     		mxmlElementSetAttr(device,"status","online");
@@ -708,7 +730,7 @@ int handle_address_claim_message() {
 
 	if (match == false) {
 		printf("Add device because is not yet in the db.\n");
-		if (xml_add_device(config_devicelog_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
+		if (xml_add_device(config_devicelib_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
 			return EXIT_FAILURE;
 		}; //Add new device to device log
 		
@@ -805,7 +827,7 @@ int main(int argc, char *argv[]) {
 				printf("Sender SA: %d, active device list: %" PRIu64 "\n", last_message.sa,active_devices[last_message.sa]);
 				if (active_devices[last_message.sa] != 0) {
 					char* active_devices_uuid = int_to_string(active_devices[last_message.sa]);
-					mxml_node_t* sender = mxmlFindElement(config_devicelog_xml,config_devicelog_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
+					mxml_node_t* sender = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
 					free(active_devices_uuid);
 					mxml_node_t* message;
 
@@ -821,7 +843,7 @@ int main(int argc, char *argv[]) {
 						//Add message to isoident.xml
 						fprintf(stdout,"New message detected! PGN: %d\n",last_message.pgn);
 						xml_add_message(sender,last_message.pgn);
-						xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
+						xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
 					}
 				}
 
@@ -861,7 +883,7 @@ int main(int argc, char *argv[]) {
 					
 					fprintf(stdout, "There are new devices active. The isoident configfile will be updated.\n");
 					
-					xml_write_file(isoident_logfile_path,"isoident",config_directlog_xml,config_devicelog_xml,NULL);
+					xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
 
 					if (canlogger_configfile_path_flag == 1) {
 
