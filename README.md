@@ -63,3 +63,7 @@ If used with other software using the CAN devices, the loopback option has to be
 `$ ip link set [CAN-DEVICE] type [CAN-TYPE] loopback on`
 
 `$ ip link set up [CAN-DEVICE]`
+
+Errorlogging can be done by redirecting stderr to a file:
+
+`$ ./isoident 2>isoident_err.log`
