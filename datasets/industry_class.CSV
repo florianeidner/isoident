@@ -1,0 +1,58 @@
+0;0;Global, applies to all industries;NON SPECIFIC SYSTEM
+0;127;Global, applies to all industries;NOT AVAILABLE
+1;0;On-Highway Equipment;NON SPECIFIC SYSTEM
+1;1;On-Highway Equipment;TRACTOR
+1;2;On-Highway Equipment;TRAILER
+1;127;On-Highway Equipment;NOT AVAILABLE
+2;0;Agriculture and Forestry Equipment;NON SPECIFIC SYSTEM
+2;1;Agriculture and Forestry Equipment;TRACTOR
+2;2;Agriculture and Forestry Equipment;TILLAGE
+2;3;Agriculture and Forestry Equipment;SECONDARY TILLAGE
+2;4;Agriculture and Forestry Equipment;PLANTER/SEEDER
+2;5;Agriculture and Forestry Equipment;FERTILIZERS
+2;6;Agriculture and Forestry Equipment;SPRAYERS
+2;7;Agriculture and Forestry Equipment;HARVESTER
+2;8;Agriculture and Forestry Equipment;ROOT HARVESTER
+2;9;Agriculture and Forestry Equipment;FORAGE
+2;10;Agriculture and Forestry Equipment;IRRIGATION
+2;11;Agriculture and Forestry Equipment;TRANSPORTER/TRAILER
+2;12;Agriculture and Forestry Equipment;FARMSTEAD OPERATIONS
+2;13;Agriculture and Forestry Equipment;POWERED AUXILIARY DEVICES
+2;14;Agriculture and Forestry Equipment;SPECIAL CROPS
+2;15;Agriculture and Forestry Equipment;EARTHWORKS
+2;16;Agriculture and Forestry Equipment;SKIDDER
+2;17;Agriculture and Forestry Equipment;SENSOR SYSTEMS
+2;18;Agriculture and Forestry Equipment;RESERVED FOR FUTURE
+2;19;Agriculture and Forestry Equipment;TIMBER HARVESTER
+2;20;Agriculture and Forestry Equipment;FORWARDERS
+2;21;Agriculture and Forestry Equipment;TIMBER LOADERS
+2;22;Agriculture and Forestry Equipment;TIMBER PROCESSING MASCHINES
+2;23;Agriculture and Forestry Equipment;MULCHERS
+2;24;Agriculture and Forestry Equipment;UTILITY VEHICLES
+2;25;Agriculture and Forestry Equipment;SLURRY/MANURE APPLICATIONS
+2;26;Agriculture and Forestry Equipment;FEEDERS/MIXERS
+2;127;Agriculture and Forestry Equipment;NOT AVAILABLE
+3;0;Construction Equipment;NON SPECIFIC SYSTEM
+3;1;Construction Equipment;SKID STEER LOADER
+3;2;Construction Equipment;ARTICULATED DUMP TRUCK
+3;3;Construction Equipment;BACKHOE
+3;4;Construction Equipment;CRAWLER
+3;5;Construction Equipment;EXCAVATOR
+3;6;Construction Equipment;FORKLIFT
+3;7;Construction Equipment;FOUR WHEEL DRIVE LOADER
+3;8;Construction Equipment;GRADER
+3;127;Construction Equipment;NOT AVAILABLE
+4;0;Marine;NON SPECIFIC SYSTEM
+4;10;Marine;SYSTEM TOOL
+4;20;Marine;SYSTEM SAFE
+4;25;Marine;GATEWAY
+4;30;Marine;POWER MANAGMENT AND LIGHTING SYSTEM
+4;40;Marine;STEERING SYSTEM
+4;50;Marine;PROPULSION SYSTEM
+4;60;Marine;NAVIGATION SYSTEM
+4;70;Marine;COMMUNICATIONS SYSTEM
+4;80;Marine;INSTRUMENTATION SYSTEM
+4;90;Marine;ENVIROMENTAL SYSTEM
+4;100;Marine;DECK CARGO AND FISHING EQUIPMENT SYSTEM
+5;0;Industrial / Process Control / Stationary / Gen-Sets;NON SPECIFIC SYSTEM
+;;;
