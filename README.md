@@ -64,6 +64,8 @@ If used with other software using the CAN devices, the loopback option has to be
 
 `$ ip link set up [CAN-DEVICE]`
 
-Errorlogging can be done by redirecting stderr to a file:
+Errorlogging can be done by redirecting stderr to a file.
 
 `$ ./isoident 2>isoident_err.log`
+
+Included is the "S54isoident" startscript, that can be copied to  /etc/init.d/. It sets the default locations to the  /media/disk/isoident/ folder.
