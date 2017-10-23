@@ -37,10 +37,12 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	parse_get_class_industry(data,class_name,industry_name);
 
 	char* uuid = int_to_string(device_id);
+	char* device_sa = int_to_string(sa);
 
 	char date_buff[70];
  	time_t now = time(NULL);
  	struct tm *now_local = localtime(&now);
+ 	
 
  	if (strftime(date_buff, sizeof date_buff, "%Y-%m-%d-%H:%M",now_local)) {
         fprintf(stdout,"Device seen on %s",date_buff);
@@ -56,9 +58,12 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	mxmlElementSetAttr(device, "class",class_name);
 	mxmlElementSetAttr(device, "industry",industry_name);
 	mxmlElementSetAttr(device, "lastClaim",date_buff);
-	mxmlElementSetAttr(device, "lastSA",int_to_string(sa));
+	mxmlElementSetAttr(device, "lastSA",device_sa);
 	mxmlElementSetAttr(device, "status","online");
+	
+	free(device_sa);
 	free(uuid);
+
 	return EXIT_SUCCESS;
 
 }
