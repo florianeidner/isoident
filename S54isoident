@@ -1,0 +1,59 @@
+#! /bin/sh
+#
+# System-V init script for isoident
+#
+
+CONF_FILE=/media/disk/isoident/isoident.xml
+DATASETS=/media/disk/isoident/datasets/
+CANLOGGER_CONFIG=/media/disk/canlogger/canlogger.xml
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/etc/conf.d
+NAME="isoident"
+USER=root
+
+ISOIDENT_OPTS=" -d ${DATASETS} -f ${CONF_FILE} -g ${CANLOGGER_CONFIG}"
+SIGNAL = "SIGTERM"
+
+case "$1" in
+start)
+	
+	echo -n "Starting ${NAME}:"
+	
+	if sudo ${NAME} ${ISOIDENT_OPTS} 2>/media/disk/isoident/isoident_err.log; then
+	echo "done"
+	else 
+	echo "failed"
+	fi
+	
+	;;
+	
+stop)   
+	${SYNC}
+
+	echo -n "Stopping ${NAME}:"
+	
+	if  ${PKILL} -${SIGNAL} ${NAME}  ; then
+	echo "done"
+	else 
+	echo "failed"
+	fi
+    
+	;;
+	
+restart)
+
+  /etc/init.d/S54isoident stop
+  sleep 1
+  /etc/init.d/S53isoident start
+  
+	;;
+
+esac
+
+  else
+
+    echo "missing sd card"
+    exit 1
+   fi
+   
+exit 0
