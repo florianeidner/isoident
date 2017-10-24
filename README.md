@@ -9,7 +9,7 @@ TODO:
 * ✓ Identify messages from unknown sender (~~Restructure isoident.xml~~, ~~add method to handle unknown messages~~,~~isoident.xml generator~~)
 * Optimize Canlogger.xml-handling (No overwriting, ...)
 * Update config section
-* Edit xml via web
+* Edit xml via web (~~Test nginx~~, test Xonomy, create web app) 
 * Create database of signal details
 
 ## Build
