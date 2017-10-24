@@ -10,6 +10,7 @@ TODO:
 * Optimize Canlogger.xml-handling (No overwriting, ...)
 * Update config section
 * Edit xml via web
+* Create database of signal details
 
 ## Build
 
