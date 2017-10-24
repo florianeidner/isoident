@@ -33,11 +33,7 @@ Cross - Compiling for other Platforms, i.e. for an Cortex A7 system can be done 
 
 ## Config
 
-The software loads the config parameters from the given configfile (default: isoident.xml). The `<config>` section includes the following parameters:
-* `can_interface` - Defines the CAN interface. (i.e. vcan0, can0, can1, ...)
-* `adress_claim_cycle` - The interval in seconds between requesting the participants to claim their addresses. If this is set to 0 the module doesnt send messages via the CAN Bus and only listens to external address-claims.
-
-Within the `<devicelog>` section in the config file, the identified devices, messages and signals will be saved. If used in combination with the amcanlogger, the "log" attribute of the "signal" nodes can be set to have the signal logged via the amcanlogger.
+The software loads depends on a configuration file that contains information about the identified devices, messages and signals.
 
 ## Run
 
