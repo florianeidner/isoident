@@ -195,6 +195,7 @@ int handle_command_line_arguments(int argc, char *argv[]) {
 
 
 int load_configfile() {
+
 	FILE* configfile;
 
 	if ((configfile = load_file(isoident_logfile_path)) != NULL) {
@@ -204,6 +205,7 @@ int load_configfile() {
 		if (((config_isoident_xml = mxmlFindElement(configfile_xml,configfile_xml,"isoident",NULL,NULL,MXML_DESCEND))) == NULL) {
 		
 			fprintf(stderr,"Error parsing the xml structure in the configfile or configfile empty.\n");
+
 			return EXIT_FAILURE;
 		}
 
@@ -212,7 +214,9 @@ int load_configfile() {
 		if ((config_devicelib_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"devicelib",NULL,NULL,MXML_DESCEND)) != NULL) {
 
 			int device_count = 0;
+			
 			int message_count = 0; 
+
 			mxml_node_t *device;
 
 			for (device = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device",NULL,NULL,MXML_DESCEND); device != NULL; device = mxmlGetNextSibling(device)) {
@@ -282,8 +286,6 @@ int load_configfile() {
 		fprintf(stdout, "Config file loaded successfully.\n");		
 		
 		fclose(configfile);
-		
-		
 
 		return EXIT_SUCCESS;
 	}
@@ -295,6 +297,8 @@ int load_configfile() {
 		config_signallib_xml = mxmlLoadString(NULL,"<signallib></signallib>",MXML_NO_CALLBACK);
 		config_messagelib_xml = mxmlLoadString(NULL,"<messagelib></messagelib>",MXML_NO_CALLBACK);
 		config_eval_xml = mxmlLoadString(NULL,"<evaluation><level1 /><level2 /><logic /></evaluation>",MXML_NO_CALLBACK);
+
+		free(configfile);
 
 		if (xml_write_file(isoident_logfile_path,config_isoident_xml,config_signallib_xml,config_messagelib_xml,config_devicelib_xml,config_eval_xml) != EXIT_FAILURE) {
 			fprintf(stdout,"Successfully created new configfile.\n");
@@ -308,7 +312,6 @@ int load_configfile() {
 		}
 	}
 
-	free(configfile);
 }
 
 
