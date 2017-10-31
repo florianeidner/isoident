@@ -51,6 +51,7 @@ mxml_node_t* config_isoident_xml;
 mxml_node_t* config_signallib_xml;
 mxml_node_t* config_messagelib_xml;
 mxml_node_t* config_devicelib_xml;
+mxml_node_t* config_eval_xml;
 
 
 bool canlogger_configfile_path_flag = 0;
@@ -58,7 +59,7 @@ mxml_node_t* canlogger_configfile_xml;
 mxml_node_t* canlogger_agromicosbox_xml;
 mxml_node_t* canlogger_signallib_xml;
 mxml_node_t* canlogger_logfile_xml;
-
+mxml_node_t* canlogger_eval_xml;
 
 
 int can_socket;
@@ -204,7 +205,8 @@ int load_configfile() {
 		
 			fprintf(stderr,"Error parsing the xml structure in the configfile or configfile empty.\n");
 			return EXIT_FAILURE;
-		} 
+		}
+
 
 		/* Loading registered devices from configfile */
 		if ((config_devicelib_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"devicelib",NULL,NULL,MXML_DESCEND)) != NULL) {
@@ -272,11 +274,17 @@ int load_configfile() {
 			return EXIT_FAILURE;
 		}
 
-		fprintf(stdout, "Config file loaded successfully.\n");		
-		fclose(configfile);
+		if ((config_eval_xml = mxmlFindElement(config_isoident_xml,configfile_xml,"evaluation",NULL,NULL,MXML_DESCEND)) == NULL) {
+			fprintf(stderr,"Error parsing the evaluation section.\n");
+			return EXIT_FAILURE;
+		}
 
-		xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
+		fprintf(stdout, "Config file loaded successfully.\n");		
 		
+		fclose(configfile);
+		
+		
+
 		return EXIT_SUCCESS;
 	}
 
@@ -286,8 +294,9 @@ int load_configfile() {
 		config_devicelib_xml = mxmlLoadString(NULL,"<devicelib></devicelib>",MXML_NO_CALLBACK);
 		config_signallib_xml = mxmlLoadString(NULL,"<signallib></signallib>",MXML_NO_CALLBACK);
 		config_messagelib_xml = mxmlLoadString(NULL,"<messagelib></messagelib>",MXML_NO_CALLBACK);
+		config_eval_xml = mxmlLoadString(NULL,"<evaluation><level1 /><level2 /><logic /></evaluation>",MXML_NO_CALLBACK);
 
-		if (xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml) != EXIT_FAILURE) {
+		if (xml_write_file(isoident_logfile_path,config_isoident_xml,config_signallib_xml,config_messagelib_xml,config_devicelib_xml,config_eval_xml) != EXIT_FAILURE) {
 			fprintf(stdout,"Successfully created new configfile.\n");
 			load_configfile();
 			return EXIT_SUCCESS;
@@ -297,7 +306,10 @@ int load_configfile() {
 			fprintf(stdout,"Failed creating new configfile.");
 			return EXIT_FAILURE;
 		}
-	}}
+	}
+
+	free(configfile);
+}
 
 
 int load_canlogger_configfile() {
@@ -317,6 +329,11 @@ int load_canlogger_configfile() {
 
 		if ((canlogger_logfile_xml = mxmlFindElement(canlogger_agromicosbox_xml,canlogger_configfile_xml,"logfile",NULL,NULL,MXML_DESCEND)) == NULL) {
 			fprintf(stderr, "Error loading canlogger configfile - logfile\n");
+			return EXIT_FAILURE;
+		}
+
+		if ((canlogger_eval_xml = mxmlFindElement(canlogger_agromicosbox_xml,canlogger_configfile_xml,"evaluation",NULL,NULL,MXML_DESCEND)) == NULL) {
+			fprintf(stderr, "Error loading canlogger configfile - evaluation\n");
 			return EXIT_FAILURE;
 		}
 
@@ -555,113 +572,151 @@ int canlogger(int command) {
 int update_canlogger_configfile() {
 	int i;
 
+	//load_configfile();
+
 	mxmlDelete(canlogger_logfile_xml);
 	
 	canlogger_logfile_xml = mxmlNewElement(canlogger_agromicosbox_xml,"logfile");
 
 	mxml_node_t* temp_message;
+	
 	mxml_node_t* temp_signal;
+	mxml_node_t* temp_signal_parent;
+	mxml_node_t* temp_signal_parent_parent;
 	
 	mxml_node_t* new_log_signal;
+
 	mxml_node_t* new_log_signal_lib;
 
-	for (i=0; i < (sizeof(active_devices)/sizeof(active_devices[0])); i++) {
-		//fprintf("Check SA: %d - UUID: %"PRIu64"\n",i, active_devices[i] );
-		if (active_devices[i]==0) {
-			continue;
-		}
-		fprintf(stdout, "Looking for signals to log for device UUID: %" PRIu64 " with SA: %d\n",active_devices[i],i);
+	fprintf(stdout, "Look for signals to log.\n");
+
+	//Look for active devices and look up which messages have to be logged.
+	for (temp_signal = mxmlFindElement(config_isoident_xml,config_isoident_xml,"signal","log","1",MXML_DESCEND); temp_signal != NULL; temp_signal = mxmlFindElement(temp_signal,config_isoident_xml,"signal","log","1",MXML_DESCEND)) {
 		
-		char* active_devices_uuid = int_to_string(active_devices[i]);
-		char* active_devices_sa = int_to_string(i);
+		fprintf(stdout,"Found signal to log - SPN: %s\n", mxmlElementGetAttr(temp_signal,"spn"));
+		
+		int temp_sa = -1;
+		int temp_uuid = 0;
+		int temp_pgn= -1;
 
-		mxml_node_t* temp_device = mxmlFindElement(config_devicelib_xml,configfile_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
+		char* temp_pgn_str;
+		char* temp_sa_str;
 
-		for (temp_message = mxmlFindElement(temp_device,config_devicelib_xml,"message",NULL,NULL,MXML_DESCEND); temp_message != NULL; temp_message = mxmlGetNextSibling(temp_message)) {
-			for (temp_signal = mxmlFindElement(temp_message,temp_device,"signal",NULL,NULL,MXML_DESCEND); temp_signal != NULL; temp_signal = mxmlGetNextSibling(temp_signal)) {
-				if (((str_to_int((char*)mxmlElementGetAttr(temp_signal,"log")) == 1)) && (mxmlFindElement(canlogger_logfile_xml,canlogger_configfile_xml,"log","name",mxmlElementGetAttr(temp_signal,"name"),MXML_DESCEND)==NULL)) {
-					
-					//If log attribute is set to "1" add  it to canlogger config file
-					new_log_signal = mxmlNewElement(canlogger_logfile_xml,"log");
+		int log=0;
 
-					mxmlElementSetAttr(new_log_signal,"name",mxmlElementGetAttr(temp_signal,"name"));
-					mxmlElementSetAttr(new_log_signal,"unit","-");
-					mxmlElementSetAttr(new_log_signal,"des","-");
-				
-					
+		temp_signal_parent = mxmlGetParent(temp_signal);
 
-					if 	((new_log_signal_lib = mxmlFindElement(canlogger_signallib_xml,canlogger_configfile_xml,"iso","name",mxmlElementGetAttr(temp_signal,"name"),MXML_DESCEND)) != NULL) {
-						//If signal is already in signallib, update SA
-						mxmlElementSetAttr(new_log_signal_lib,"sa",active_devices_sa);
-					}
-				
-					else {
+		// Signal 
+		if ((mxmlElementGetAttr(temp_signal_parent,"pgn")) != NULL) {
 
-						//Add new entry in signallib;
-						new_log_signal_lib = mxmlNewElement(canlogger_signallib_xml,"iso");
+			temp_pgn_str = strdup(mxmlElementGetAttr(temp_signal_parent,"pgn"));
 
-						mxmlElementSetAttr(new_log_signal_lib,"name",mxmlElementGetAttr(temp_signal,"name"));
-						mxmlElementSetAttr(new_log_signal_lib,"pgn",mxmlElementGetAttr(temp_message,"pgn"));
-						mxmlElementSetAttr(new_log_signal_lib,"sa",active_devices_sa);
-						mxmlElementSetAttr(new_log_signal_lib,"sbit",mxmlElementGetAttr(temp_signal,"start"));
-						mxmlElementSetAttr(new_log_signal_lib,"len",mxmlElementGetAttr(temp_signal,"spn"));
-						mxmlElementSetAttr(new_log_signal_lib,"spn",mxmlElementGetAttr(temp_signal,"len"));
-						mxmlElementSetAttr(new_log_signal_lib,"end",mxmlElementGetAttr(temp_signal,"end"));
-						mxmlElementSetAttr(new_log_signal_lib,"fac",mxmlElementGetAttr(temp_signal,"fac"));
-						mxmlElementSetAttr(new_log_signal_lib,"offs",mxmlElementGetAttr(temp_signal,"offs"));
-						mxmlElementSetAttr(new_log_signal_lib,"min",mxmlElementGetAttr(temp_signal,"min"));
-						mxmlElementSetAttr(new_log_signal_lib,"max",mxmlElementGetAttr(temp_signal,"max"));
-						mxmlElementSetAttr(new_log_signal_lib,"type",mxmlElementGetAttr(temp_signal,"type"));
-						mxmlElementSetAttr(new_log_signal_lib,"unit",mxmlElementGetAttr(temp_signal,"unit"));
-						mxmlElementSetAttr(new_log_signal_lib,"ddi",mxmlElementGetAttr(temp_signal,"ddi"));
+			fprintf(stdout," -> Signal belongs to message - PGN: %s\n", temp_pgn_str);
 
+			temp_signal_parent_parent = mxmlGetParent(temp_signal_parent);
+
+			
+			if ((mxmlElementGetAttr(temp_signal_parent_parent,"UUID")) != NULL) {
+
+				temp_uuid = str_to_int(strdup(mxmlElementGetAttr(temp_signal_parent_parent,"UUID")));
+
+				fprintf(stdout," --> Message belongs to device - UUID: %d\n", temp_uuid);
+
+				for (i=0; i < (sizeof(active_devices)/sizeof(active_devices[0])); i++) {
+
+					if (active_devices[i] == temp_uuid) {
+						temp_sa = i;
+						log=1;
+						break;
 					}
 
 				}
 
+				if (log == 0) {
+					fprintf(stdout, " ---> Device is not online - signal will not b logged.\n" );
+					continue; //Continue if device is not online, and signal will not be logged.
+				}
 			}
-			
+
 		}
-		free(active_devices_uuid);
-		free(active_devices_sa);	
-	}
 
-	//Add signallib to canlogger configfile
-	mxml_node_t* temp_directsignal;
+		else {
+			temp_pgn_str = int_to_string(-1);
+		}
+		
+		temp_sa_str = int_to_string(temp_sa);
 
-	for (temp_directsignal = mxmlFindElement(config_signallib_xml,config_isoident_xml,"iso",NULL,NULL,MXML_DESCEND); temp_directsignal != NULL; temp_directsignal = mxmlGetNextSibling(temp_directsignal)) {
-		if (mxmlFindElement(canlogger_signallib_xml,canlogger_configfile_xml,"iso","name",mxmlElementGetAttr(temp_directsignal,"name"),MXML_DESCEND) == NULL) {
+		//Add signal to log
+
+		new_log_signal = mxmlNewElement(canlogger_logfile_xml,"log");
+
+		mxmlElementSetAttr(new_log_signal,"name",mxmlElementGetAttr(temp_signal,"name"));
+		mxmlElementSetAttr(new_log_signal,"unit","-");
+		mxmlElementSetAttr(new_log_signal,"des","-");
+
+		//Check if signal is in lib, add new or edit the old.
+
+		if ((new_log_signal_lib = mxmlFindElement(canlogger_signallib_xml,canlogger_configfile_xml,"iso","name",mxmlElementGetAttr(temp_signal,"name"),MXML_DESCEND)) == NULL) {
 			
-			
-			printf("Add %s to sigallib\n", mxmlElementGetAttr(temp_directsignal,"name"));
+			//Not yet in the signallib, add signal to lib
+
+			printf("Add %s to sigallib\n", mxmlElementGetAttr(temp_signal,"name"));
 
 			new_log_signal_lib = mxmlNewElement(canlogger_signallib_xml,"iso");
-
-			mxmlElementSetAttr(new_log_signal_lib,"name",mxmlElementGetAttr(temp_directsignal,"name"));
-			mxmlElementSetAttr(new_log_signal_lib,"pgn",mxmlElementGetAttr(temp_directsignal,"pgn"));
-			mxmlElementSetAttr(new_log_signal_lib,"sa",mxmlElementGetAttr(temp_directsignal,"sa"));
-			mxmlElementSetAttr(new_log_signal_lib,"sbit",mxmlElementGetAttr(temp_directsignal,"sbit"));
-			mxmlElementSetAttr(new_log_signal_lib,"len",mxmlElementGetAttr(temp_directsignal,"spn"));
-			mxmlElementSetAttr(new_log_signal_lib,"spn",mxmlElementGetAttr(temp_directsignal,"len"));
-			mxmlElementSetAttr(new_log_signal_lib,"end",mxmlElementGetAttr(temp_directsignal,"end"));
-			mxmlElementSetAttr(new_log_signal_lib,"fac",mxmlElementGetAttr(temp_directsignal,"fac"));
-			mxmlElementSetAttr(new_log_signal_lib,"offs",mxmlElementGetAttr(temp_directsignal,"offs"));
-			mxmlElementSetAttr(new_log_signal_lib,"min",mxmlElementGetAttr(temp_directsignal,"min"));
-			mxmlElementSetAttr(new_log_signal_lib,"max",mxmlElementGetAttr(temp_directsignal,"max"));
-			mxmlElementSetAttr(new_log_signal_lib,"type",mxmlElementGetAttr(temp_directsignal,"type"));
-			mxmlElementSetAttr(new_log_signal_lib,"unit",mxmlElementGetAttr(temp_directsignal,"unit"));
-			mxmlElementSetAttr(new_log_signal_lib,"ddi",mxmlElementGetAttr(temp_directsignal,"ddi"));
-
 		}
 
-		fprintf(stdout,"Add direct signal: %s to <logfile>\n",mxmlElementGetAttr(temp_directsignal,"name"));
-		new_log_signal = mxmlNewElement(canlogger_logfile_xml,"log");
-		mxmlElementSetAttr(new_log_signal,"name",mxmlElementGetAttr(temp_directsignal,"name"));
-		mxmlElementSetAttr(new_log_signal,"unit",mxmlElementGetAttr(temp_directsignal,"unit"));
-		mxmlElementSetAttr(new_log_signal,"des","-");
+		mxmlElementSetAttr(new_log_signal_lib,"name",mxmlElementGetAttr(temp_signal,"name"));
+		mxmlElementSetAttr(new_log_signal_lib,"pgn",temp_pgn_str);
+		mxmlElementSetAttr(new_log_signal_lib,"sa",temp_sa_str);
+		mxmlElementSetAttr(new_log_signal_lib,"sbit",mxmlElementGetAttr(temp_signal,"start"));
+		mxmlElementSetAttr(new_log_signal_lib,"len",mxmlElementGetAttr(temp_signal,"spn"));
+		mxmlElementSetAttr(new_log_signal_lib,"spn",mxmlElementGetAttr(temp_signal,"len"));
+		mxmlElementSetAttr(new_log_signal_lib,"end",mxmlElementGetAttr(temp_signal,"end"));
+		mxmlElementSetAttr(new_log_signal_lib,"fac",mxmlElementGetAttr(temp_signal,"fac"));
+		mxmlElementSetAttr(new_log_signal_lib,"offs",mxmlElementGetAttr(temp_signal,"offs"));
+		mxmlElementSetAttr(new_log_signal_lib,"min",mxmlElementGetAttr(temp_signal,"min"));
+		mxmlElementSetAttr(new_log_signal_lib,"max",mxmlElementGetAttr(temp_signal,"max"));
+		mxmlElementSetAttr(new_log_signal_lib,"type",mxmlElementGetAttr(temp_signal,"type"));
+		mxmlElementSetAttr(new_log_signal_lib,"unit",mxmlElementGetAttr(temp_signal,"unit"));
+		mxmlElementSetAttr(new_log_signal_lib,"ddi",mxmlElementGetAttr(temp_signal,"ddi"));
+
+		free(temp_pgn_str);
+		free(temp_sa_str);
+
 	}
 
 	//write canlogger configfile
+
+
+	// Copy eval part to canlogger.xml
+
+	mxml_node_t* canlogger_eval_element_xml;
+	mxml_node_t* canlogger_eval_next_element_xml;
+
+	mxmlDelete(canlogger_eval_xml);
+	
+	mxmlAdd(canlogger_agromicosbox_xml,MXML_ADD_AFTER,MXML_ADD_TO_PARENT,config_eval_xml);
+
+	canlogger_eval_xml = config_eval_xml;
+	printf("Check for useless elements in eval part.\n");
+
+	canlogger_eval_next_element_xml = mxmlFindElement(canlogger_eval_xml,canlogger_eval_xml,NULL,"name",NULL,MXML_DESCEND);
+	
+	for ((canlogger_eval_element_xml = mxmlFindElement(canlogger_eval_xml,canlogger_eval_xml,NULL,"name",NULL,MXML_DESCEND)); canlogger_eval_next_element_xml != NULL; canlogger_eval_element_xml = canlogger_eval_next_element_xml) {
+		
+		fprintf(stdout," -> Check for element with name: %s\n",mxmlElementGetAttr(canlogger_eval_element_xml,"name"));
+		
+		sleep(1);
+		
+		canlogger_eval_next_element_xml = mxmlFindElement(canlogger_eval_element_xml,canlogger_eval_xml,NULL,"name",NULL,MXML_DESCEND);
+
+		fprintf(stdout," -> next element will be: %s\n",mxmlElementGetAttr(canlogger_eval_next_element_xml,"name"));
+
+		if ( mxmlFindElement(canlogger_logfile_xml,canlogger_logfile_xml,"log","name",mxmlElementGetAttr(canlogger_eval_element_xml,"name"),MXML_DESCEND) == NULL) {
+			fprintf(stdout," --> Logging of required signal is not enabled - removing from eval\n");
+			mxmlDelete(canlogger_eval_element_xml);
+		}
+	}
 
 	fprintf(stdout,"Write canlogger configfile.\n");
 
@@ -670,6 +725,8 @@ int update_canlogger_configfile() {
 	mxmlSaveFile(canlogger_configfile_xml,canloggerfile,MXML_NO_CALLBACK);
 
 	fclose(canloggerfile);
+
+	load_configfile();
 
 	return EXIT_SUCCESS;
 }
@@ -713,6 +770,7 @@ int handle_address_claim_message() {
     		char* active_device_id = int_to_string(device_id);
 
     		mxml_node_t* device = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device","UUID",active_device_id,MXML_DESCEND);
+    		
     		mxmlElementSetAttr(device,"lastClaim",date_buff);
     		mxmlElementSetAttr(device,"lastSA",active_device_sa);
     		mxmlElementSetAttr(device,"status","online");
@@ -843,7 +901,7 @@ int main(int argc, char *argv[]) {
 						//Add message to isoident.xml
 						fprintf(stdout,"New message detected! PGN: %d\n",last_message.pgn);
 						xml_add_message(sender,last_message.pgn);
-						xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
+						xml_write_file(isoident_logfile_path,config_isoident_xml,config_signallib_xml,config_messagelib_xml,config_devicelib_xml,config_eval_xml);
 					}
 				}
 
@@ -856,7 +914,7 @@ int main(int argc, char *argv[]) {
 					} else {
 						xml_add_message(config_messagelib_xml,last_message.pgn);
 						fprintf(stdout, "Message added to messagelib\n");
-						xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
+						xml_write_file(isoident_logfile_path,config_isoident_xml,config_signallib_xml,config_messagelib_xml,config_devicelib_xml,config_eval_xml);
 					}
 					free (last_message_pgn);
 				}
@@ -891,7 +949,7 @@ int main(int argc, char *argv[]) {
 					
 					fprintf(stdout, "There are new devices active. The isoident configfile will be updated.\n");
 					
-					xml_write_file(isoident_logfile_path,"isoident",config_signallib_xml,config_messagelib_xml,config_devicelib_xml);
+					xml_write_file(isoident_logfile_path,config_isoident_xml,config_signallib_xml,config_messagelib_xml,config_devicelib_xml,config_eval_xml);
 
 					if (canlogger_configfile_path_flag == 1) {
 
@@ -906,6 +964,7 @@ int main(int argc, char *argv[]) {
 				}
 
 				memcpy(old_active_devices,active_devices,sizeof(active_devices));
+
 
 				break;}
 
