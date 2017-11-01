@@ -20,7 +20,7 @@ start)
 	
 	echo -n "Starting ${NAME}:"
 	
-	if sudo ${NAME} ${ISOIDENT_OPTS} 2>/media/disk/isoident/isoident_err.log; then
+	if sudo nohup ${NAME} ${ISOIDENT_OPTS}& 2>/media/disk/isoident/isoident_err.log 1>/dev/null; then
 	echo "done"
 	else 
 	echo "failed"
