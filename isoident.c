@@ -25,6 +25,7 @@
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <inttypes.h>
 #include <net/if.h>
 #include <signal.h>
@@ -302,6 +303,7 @@ int load_configfile() {
 
 		if (xml_write_file(isoident_logfile_path,config_isoident_xml,config_signallib_xml,config_messagelib_xml,config_devicelib_xml,config_eval_xml) != EXIT_FAILURE) {
 			fprintf(stdout,"Successfully created new configfile.\n");
+			chmod(isoident_logfile_path, 0666);
 			load_configfile();
 			return EXIT_SUCCESS;
 		}

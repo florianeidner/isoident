@@ -11,7 +11,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/etc/conf.d
 NAME="isoident"
 USER=root
 
-ISOIDENT_OPTS=" -d ${DATASETS} -f ${CONF_FILE} -g ${CANLOGGER_CONFIG}"
+#ISOIDENT_OPTS=" -d ${DATASETS} -f ${CONF_FILE} -g ${CANLOGGER_CONFIG}"
+ISOIDENT_OPTS="-c can0 -d ${DATASETS} -f ${CONF_FILE}"
 SIGNAL = "SIGTERM"
 
 case "$1" in

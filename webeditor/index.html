@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<script src="/webeditor/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="/webeditor/js/xonomy/xonomy.js"></script>
+<link type="text/css" rel="stylesheet" href="/webeditor/js/xonomy/xonomy.css"/>
+
+<script type="text/javascript" src="/webeditor/js/docSpec.js"></script>
+<script type="text/javascript" src="/webeditor/js/functions.js"></script>
+
+</head>
+<body onload="load_configfile()">
+	<h1>ISOIDENT</h1>
+	<h3>Bibilothek</h3>
+	<table>
+		<tr>
+			<td>
+				<div id="buttons">
+					<button type="button" onclick="save_configfile()">SAVE</button>
+					<button type="button" onclick="download_configfile()">DOWNLOAD</button>
+					<button type="button" onclick="clear_configfile()">CLEAR</button>
+				</div>
+			</td>
+			<td width="10%"/>
+			<td>
+				<div id="info"></div>
+			</td>
+			<td width="10%"/>
+			<td>
+				<div id="status" style="font-weight:bold"></div>
+			</td>
+		</tr>
+	</table>
+	<hr>
+	<div id="editor"></div>
+</body>
+</html>
