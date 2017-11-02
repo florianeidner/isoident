@@ -24,7 +24,7 @@ start)
 	
 	echo -n "Starting ${NAME}:"
 	
-	if (sudo nohup ${NAME} ${ISOIDENT_OPTS} ${PIPE}&) ; then
+	if (sudo nohup ${NAME} ${ISOIDENT_OPTS} ${PIPE} & ) ; then
 	echo "done"
 	else 
 	echo "failed"

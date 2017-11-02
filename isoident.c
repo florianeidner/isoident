@@ -88,7 +88,7 @@ int kill(pid_t pid, int sig);
 
 
 void show_help(void) {
-   printf("\n\trun: ./isoident\n\n"\
+   fprintf(stdout,"\n\trun: ./isoident\n\n"\
           "The isoident analyzes the ISOBUS traffic"\
           "and identifies devices as well as ISOBUS messages by their PGNs."\
           "The detected entities are saved within the isoident.xml."\
@@ -320,7 +320,7 @@ int load_configfile() {
 int load_canlogger_configfile() {
 	FILE* canloggerfile;
 
-	printf("PAth to canlogger config file: %s\n",canlogger_configfile_path );
+	fprintf(stdout,"PAth to canlogger config file: %s\n",canlogger_configfile_path );
 
 	if ((canloggerfile = load_file(canlogger_configfile_path)) != NULL) {
 
@@ -665,7 +665,7 @@ int update_canlogger_configfile() {
 			
 			//Not yet in the signallib, add signal to lib
 
-			printf("Add %s to sigallib\n", mxmlElementGetAttr(temp_signal,"name"));
+			fprintf(stdout,"Add %s to sigallib\n", mxmlElementGetAttr(temp_signal,"name"));
 
 			new_log_signal_lib = mxmlNewElement(canlogger_signallib_xml,"iso");
 		}
@@ -703,7 +703,7 @@ int update_canlogger_configfile() {
 	mxmlAdd(canlogger_agromicosbox_xml,MXML_ADD_AFTER,MXML_ADD_TO_PARENT,config_eval_xml);
 
 	canlogger_eval_xml = config_eval_xml;
-	printf("Check for useless elements in eval part.\n");
+	fprintf(stdout,"Check for useless elements in eval part.\n");
 
 	canlogger_eval_next_element_xml = mxmlFindElement(canlogger_eval_xml,canlogger_eval_xml,NULL,"name",NULL,MXML_DESCEND);
 	
@@ -792,7 +792,7 @@ int handle_address_claim_message() {
 	}
 
 	if (match == false) {
-		printf("Add device because is not yet in the db.\n");
+		fprintf(stdout,"Add device because is not yet in the db.\n");
 		if (xml_add_device(config_devicelib_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
 			return EXIT_FAILURE;
 		}; //Add new device to device log
@@ -887,7 +887,7 @@ int main(int argc, char *argv[]) {
 			
 				bool match = false;
 				//Check if the sender is registered
-				printf("Sender SA: %d, active device list: %" PRIu64 "\n", last_message.sa,active_devices[last_message.sa]);
+				fprintf(stdout,"Sender SA: %d, active device list: %" PRIu64 "\n", last_message.sa,active_devices[last_message.sa]);
 				if (active_devices[last_message.sa] != 0) {
 					char* active_devices_uuid = int_to_string(active_devices[last_message.sa]);
 					mxml_node_t* sender = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device","UUID",active_devices_uuid,MXML_DESCEND);
@@ -974,14 +974,14 @@ int main(int argc, char *argv[]) {
 				break;}
 
 			default:
-				printf("Message could not be classified.\n");
+				fprintf(stdout,"Message could not be classified.\n");
 		}
 
 	}
 
 
-	printf("\n---------------End----------------\n");
-	printf("---This should never be reached---");
+	pfrintf(stdout,"\n---------------End----------------\n");
+	fprintf(stdout,"---This should never be reached---");
 	return EXIT_FAILURE;
 
 }

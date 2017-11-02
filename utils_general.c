@@ -101,7 +101,7 @@ const char* get_process_name_by_pid(const int pid)
         }
     }
 
-    printf("Process name: %s\n", name );
+    fprintf(stdout,"Process name: %s\n", name );
 
     return name;
 }

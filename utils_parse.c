@@ -62,7 +62,7 @@ int parse_get_manufac_id(u_int64_t can_data) {
 	int manufac_id;
 	u_int64_t mask = create_mask(0,10);
 	manufac_id = mask & (can_data >> 21);
-	printf("mask: 0x%" PRIx64 " - manufac_id: %d\n",mask, manufac_id );
+	fprintf(stdout,"mask: 0x%" PRIx64 " - manufac_id: %d\n",mask, manufac_id );
 
 	return manufac_id;
 }
@@ -84,7 +84,7 @@ int parse_get_device_id(u_int64_t can_data) {
 	u_int64_t mask = create_mask(0,31);
 
 	device_id = can_data & mask;
-	printf("mask: 0x%" PRIx64 " - device_id: %d\n",mask, device_id );
+	fprintf(stdout,"mask: 0x%" PRIx64 " - device_id: %d\n",mask, device_id );
 
 	return device_id;
 }
@@ -101,7 +101,7 @@ int parse_get_function_id(u_int64_t can_data) {
 	int function_id;
 	u_int64_t mask = create_mask(0,7);
 	function_id = mask & (can_data >> 40);
-	printf("mask: 0x%" PRIx64 " - function_id: %d\n",mask, function_id );
+	fprintf(stdout,"mask: 0x%" PRIx64 " - function_id: %d\n",mask, function_id );
 
 	return function_id;
 }
@@ -112,7 +112,7 @@ int parse_get_industry_id(u_int64_t can_data) {
 	int industry_id;
  	u_int64_t mask = create_mask(0,2);
  	industry_id = mask & (can_data >> 60);
- 	printf("mask: 0x%" PRIx64 " - industry_id: %d\n",mask, industry_id );
+ 	fprintf(stdout,"mask: 0x%" PRIx64 " - industry_id: %d\n",mask, industry_id );
 
  	return industry_id;
 }
@@ -122,7 +122,7 @@ int parse_get_class_id(u_int64_t can_data) {
  	int class_id;
  	u_int64_t mask = create_mask(0,6);
  	class_id = mask & (can_data >> 49);
- 	printf("mask: 0x%" PRIx64 " - class_id: %d\n",mask, class_id );
+ 	fprintf(stdout,"mask: 0x%" PRIx64 " - class_id: %d\n",mask, class_id );
 
  	return class_id;
 }
@@ -137,7 +137,7 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 	
 	int man_id = parse_get_manufac_id(can_data);
 
-	//printf("Manufacturer ID: %d\n",man_id);
+	//fprintf(stdout,"Manufacturer ID: %d\n",man_id);
 
 	FILE *file;
 	char* path = concat(datasets_path,"manufacturers.CSV");
@@ -160,7 +160,7 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 		while (((read =getline(&line, &len, file)) != -1)) {
 		    char *line2 = line;
 		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
-		    //printf("lineID: %d\n", lineID);
+		    //fprintf(stdout,"lineID: %d\n", lineID);
 				if (lineID == man_id){
 					char* man_name_update = strtok(NULL,"\n");
 					strcpy(man_name,man_name_update); //This is important, strtok changes the pointer!
@@ -170,15 +170,15 @@ int parse_get_manufacturer(u_int64_t can_data,char* man_name) {
 			}
 		if (match == 0){
 			strcpy(man_name,"unknown");
-			printf("Manufacturer not found.\n");
+			fprintf(stdout,"Manufacturer not found.\n");
 		}
 		else {
-			printf("Manufacturer: %s \n",man_name);
+			fprintf(stdout,"Manufacturer: %s \n",man_name);
 		}
 	}
 
 	else{
-		printf("File could not be opened.");
+		fprintf(stderr,"File could not be opened.");
 	}
 	free(line);
 	fclose(file);
@@ -211,7 +211,7 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 		free (concat1);
 		free (concat2);
 	}
-	//printf("Function ID: %d\n",func_id);
+	//fprintf(stdout,"Function ID: %d\n",func_id);
 
 	FILE *file;
 	char* path = concat(datasets_path,"functions.CSV");
@@ -235,7 +235,7 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 		while (((read =getline(&line, &len, file)) != -1)) {
 		    char *line2 = line;
 		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
-		    //printf("lineID: %d\n", lineID);
+		    //fprintf(stdout,"lineID: %d\n", lineID);
 				if (lineID == func_id) {
 					char* func_name_update = strtok(NULL,"\n");
 					strcpy(func_name,func_name_update);
@@ -245,15 +245,15 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 			}
 		if (match == 0){
 			strcpy(func_name,"unknown");
-			printf("Function not found.\n");
+			fprintf(stdout,"Function not found.\n");
 		}
 		else {
-			printf("Function: %s \n",func_name);
+			fprintf(stdout,"Function: %s \n",func_name);
 		}
 	}
 
 	else{
-		printf("File could not be opened.");
+		fprintf(stderr,"File could not be opened.");
 	}
 
 	free(line);
@@ -268,7 +268,7 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 	int class_id = parse_get_class_id(can_data);
 	int industry_id = parse_get_industry_id(can_data);
 	
-	//printf("Function ID: %d\n",func_id);
+	//fprintf(stdout,"Function ID: %d\n",func_id);
 
 	FILE *file;
 
@@ -294,7 +294,7 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 		while (((read =getline(&line, &len, file)) != -1)) {
 		    char* line2 = line;
 		    int lineID = (int)strtol((strtok(line2, ";")),((char **)NULL),10);
-		    //printf("lineID: %d\n", lineID);
+		    //fprintf(stdout,"lineID: %d\n", lineID);
 				if (lineID == industry_id) {
 					
 					int lineID2 = (int)strtol((strtok(NULL, ";")),((char **)NULL),10);
@@ -317,21 +317,21 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 
 		if (industry_match == 0){
 			strcpy(industry_name,"unknown");
-			printf("Industry not found.\n");
+			fprintf(stdout,"Industry not found.\n");
 		}
 		else {
-			printf("Industry: %s \n",industry_name);
+			fprintf(stdout,"Industry: %s \n",industry_name);
 		}
 
 		if (class_match == 0){
 			strcpy(class_name,"unknown");
-			printf("Class not found.\n");
+			fprintf(stdout,"Class not found.\n");
 		}
 
 	}
 
 	else{
-		printf("File could not be opened.");
+		fprintf(stderr,"File could not be opened.");
 	}
 
 	free(line);
@@ -367,7 +367,7 @@ int parse_get_pgn(u_int32_t can_id) {
 		PGN = (can_id >> 8) & create_mask(0,17);
 	}
 
-	//printf("PF is: %d - PGN is: %d\n",PF, PGN );
+	//fprintf(stdout,"PF is: %d - PGN is: %d\n",PF, PGN );
 	return PGN;
 
 }
@@ -403,7 +403,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 		while (((read =getline(&line, &len, file)) != -1)) {
 		    char* line2 = line;
 		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
-		    //printf("lineID: %d\n", lineID);
+		    //fprintf(stdout,"lineID: %d\n", lineID);
 				if (lineID == pgn_id){
 					char* pgn_name_update = strtok(NULL,";");
 
@@ -433,7 +433,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 
 					strcpy(pgn_name,pgn_name_update);
 					
-					printf("Found PGN Name: ");
+					fprintf(stdout,"Found PGN Name: ");
 					match = 1;
 					
 					break;
@@ -442,17 +442,17 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 		
 		if (match == 0){
 			pgn_name="unknown";
-			printf("PGN name not found.\n");
+			fprintf(stdout,"PGN name not found.\n");
 		}
 		
 		else {
-			printf("%s \n",pgn_name);
+			fprintf(stdout,"%s \n",pgn_name);
 		}
 	
 	}
 
 	else{
-		printf("File could not be opened.");
+		fprintf(stdout,"File could not be opened.");
 	}
 
 	free(line);
@@ -472,7 +472,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 */
 int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 
-	printf("Extracting Signals for PGN\n");
+	fprintf(stdout,"Extracting Signals for PGN\n");
 
 	FILE *file;
 	char* path = concat(datasets_path,"signals.CSV");
@@ -499,7 +499,7 @@ int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 		    
 		    char* line2 = line;
 		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
-		    //printf("lineID: %d\n", lineID);
+		    //fprintf(stdout,"lineID: %d\n", lineID);
 				if (lineID == pgn_id){
 					counter += 1;
 					if (counter == round) {
@@ -512,7 +512,7 @@ int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 
 						signal_spn->len = str_to_int((strtok(NULL, "\n")));
 
-						printf("Signal SPN: %s found.\n", signal_spn->name);
+						fprintf(stdout,"Signal SPN: %s found.\n", signal_spn->name);
 
 						break;
 					}
@@ -521,7 +521,7 @@ int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
 	}
 
 	else{
-		printf("File could not be opened.");
+		fprintf(stderr,"File could not be opened.");
 	}
 
 	free(line);

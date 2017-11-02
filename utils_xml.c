@@ -23,7 +23,7 @@
 
 int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	
-	printf("Add device to xml\n");
+	fprintf(stdout,"Add device to xml\n");
 	
 	char man_name[50]={0}; //Name max is 50 chars, Database max name length is.
 	char func_name[50]={0};
@@ -72,7 +72,7 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 */
 
 int xml_add_message(mxml_node_t* device, int message_pgn) {
-	printf("Add message PGN: %d.\n",message_pgn);
+	fprintf(stdout,"Add message PGN: %d.\n",message_pgn);
 
 	mxml_node_t* message = mxmlNewElement(device,"message");
 
@@ -123,7 +123,7 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 		char* spn_len = int_to_string(signal_spn.len);
 
 
-	 	printf("Signal spn after:%s\n", spn);
+	 	fprintf(stdout,"Signal spn after:%s\n", spn);
 	 	mxmlElementSetAttr(sig, "spn", spn);
 	 	mxmlElementSetAttr(sig, "name", signal_spn.name);
 	 	mxmlElementSetAttr(sig, "log", "0");
@@ -138,7 +138,7 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	 	mxmlElementSetAttr(sig, "unit", "");
 	 	mxmlElementSetAttr(sig, "ddi", "");
 
-	 	printf("Added Signal to message.\n");
+	 	fprintf(stdout,"Added Signal to message.\n");
 
 	 	free(spn);
 		free(spn_len);
