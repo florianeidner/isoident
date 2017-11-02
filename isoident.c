@@ -980,7 +980,7 @@ int main(int argc, char *argv[]) {
 	}
 
 
-	pfrintf(stdout,"\n---------------End----------------\n");
+	fprintf(stdout,"\n---------------End----------------\n");
 	fprintf(stdout,"---This should never be reached---");
 	return EXIT_FAILURE;
 

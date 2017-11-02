@@ -14,7 +14,6 @@ USER=root
 #ISOIDENT_OPTS=" -d ${DATASETS} -f ${CONF_FILE} -g ${CANLOGGER_CONFIG}"
 ISOIDENT_OPTS="-c can0 -d ${DATASETS} -f ${CONF_FILE}"
 SIGNAL="TERM"
-PIPE=">/dev/null 2>/media/disk/isoident/isoident_err.log"
 
 if [ -r ${MMC} ]
 then
@@ -24,7 +23,7 @@ start)
 	
 	echo -n "Starting ${NAME}:"
 	
-	if (sudo nohup ${NAME} ${ISOIDENT_OPTS} ${PIPE} & ) ; then
+	if (sudo nohup ${NAME} ${ISOIDENT_OPTS} >/dev/null 2>/media/disk/isoident/isoident_err.log &); then
 	echo "done"
 	else 
 	echo "failed"
