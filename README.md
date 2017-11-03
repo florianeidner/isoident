@@ -42,7 +42,9 @@ The file consists out of 4 sections:
 #### signallib
 The signallib consists standalone signals, that have to be put in manually. If the "log" attribute is set to "1" the signal is passed to the log. This is an example for an entry:
 
-`<signal spn="174" name="Engine Fuel Temperature 1" log="0" start="8" len="8" end="0" fac="0" offs="0" min="-1000" max="1000" type="1" unit="°C" ddi="" />`
+```xml
+<signal spn="174" name="Engine Fuel Temperature 1" log="0" start="8" len="8" end="0" fac="0" offs="0" min="-1000" max="1000" type="1" unit="°C" ddi="" />
+```
 All the attributes have to be set by hand or copied into the configfile.
 
 
@@ -57,9 +59,11 @@ The "type" attribute of the message node describes the standard which the messag
 
 #### devicellib
 The devicelib includes all identified devices with information about the last active date and manufacturer, function and class. As child nodes, all messages (and with that signals) that came from this device are entered.
-`</device><device UUID="315891700" manufacturer="Fleetguard" function="Suspension Control - Drive Axle" class="POWERED AUXILIARY DEVICES" industry="Agriculture and Forestry Equipment" lastClaim="2017-11-03-21:29" lastSA="38" status="online"><message pgn="65198" name="Air Supply Pressure" type="J1939"><signal spn="46" name="Pneumatic Supply Pressure" log="0" start="0" len="8" end="0"
+```xml
+</device><device UUID="315891700" manufacturer="Fleetguard" function="Suspension Control - Drive Axle" class="POWERED AUXILIARY DEVICES" industry="Agriculture and Forestry Equipment" lastClaim="2017-11-03-21:29" lastSA="38" status="online"><message pgn="65198" name="Air Supply Pressure" type="J1939"><signal spn="46" name="Pneumatic Supply Pressure" log="0" start="0" len="8" end="0"
 fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /><signal spn="1086" name="Parking and/or Trailer Air Pressure" log="0" start="8" len="8" end="0" fac="0" offs="0" min="-800000" max="800000" type=""
-unit="" ddi="" /> </message></device>`
+unit="" ddi="" /> </message></device>
+```
 
 
 #### evaluation
