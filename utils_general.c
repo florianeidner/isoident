@@ -137,12 +137,14 @@ char* concat(const char *s1, const char *s2){
     return result;
 }
 
-void get_time(char* date_time) {
+void get_time(char *date_time) {
     time_t now = time(NULL);
     struct tm *now_local = localtime(&now);
+    char new_date[70];
 
-    if (strftime(date_time, sizeof date_time, "%Y-%m-%d-%H:%M", now_local)) {
-        fprintf(stdout,"Device seen on %s\n",date_time);
+    if (strftime(new_date, sizeof new_date, "%Y-%m-%d-%H:%M", now_local)) {
+        fprintf(stdout,"Device seen on %s\n",new_date);
+        strcpy(date_time,new_date);
     } else {
         fprintf(stderr,"strftime failed");
     }

@@ -43,7 +43,7 @@ function save_configfile() {
 	 $.ajax({  
         type: 'POST',
 
-        url: '/webeditor/php/saveXML.php',          
+        url: '/save_isoident_xml',          
 
         data: {xml : xmlContent},
 
