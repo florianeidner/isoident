@@ -374,7 +374,7 @@ int parse_get_pgn(u_int32_t can_id) {
 	int PF = (can_id >> 16) & create_mask(0,7);
 
 	if (PF < 240) {
-		PGN = (can_id >> 16) & create_mask(0,9);
+		PGN = ((can_id >> 16)<<8) & create_mask(0,17);
 	}
 
 	else {
