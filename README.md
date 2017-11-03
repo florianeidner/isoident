@@ -48,7 +48,9 @@ All the attributes have to be set by hand or copied into the configfile.
 
 #### messagelib
 Everytime the software detects a message, whose source address (the sending device) has not been identified, a new entry will be made in here. Again, with setting the "log" attribute of a signal in here will enable logging. The signals are added according to the standard that defines the PGN. The database of this can be found in datasets/ . An example entry is as followed:
-`<message pgn="60928" name="Address Claimed Message" type="ISO11783"> <signal spn="2848" name="NAME of Controller Application (for address claimed)" log="0" start="0" len="64" end="0" fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /></message>`
+```xml
+<message pgn="60928" name="Address Claimed Message" type="ISO11783"> <signal spn="2848" name="NAME of Controller Application (for address claimed)" log="0" start="0" len="64" end="0" fac="0" offs="0" min="-800000" max="800000" type="" unit="" ddi="" /></message>
+```
 
 The "type" attribute of the message node describes the standard which the message is defined in. It can be J1939 or ISO11783.
 
