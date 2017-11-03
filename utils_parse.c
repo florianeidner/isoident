@@ -74,19 +74,19 @@ int parse_get_manufac_id(u_int64_t can_data) {
 *	Extracting the manufacturer key and device id and use it as UUID
 *	Consisting of the first 32bit of the data field.
 */
-int parse_get_device_id(u_int64_t can_data) {
+int parse_get_device_uuid(u_int64_t can_data) {
 
-	int device_id;
+	int device_uuid;
 	// u_int64_t mask = create_mask(0,20);
 	// Instead of device ID, create UUID from
 	// manufacturer ID and this device ID:
 
 	u_int64_t mask = create_mask(0,31);
 
-	device_id = can_data & mask;
-	fprintf(stdout,"mask: 0x%" PRIx64 " - device_id: %d\n",mask, device_id );
+	device_uuid = can_data & mask;
+	fprintf(stdout,"mask: 0x%" PRIx64 " - device_id: %d\n",mask, device_uuid );
 
-	return device_id;
+	return device_uuid;
 }
 
 
@@ -106,6 +106,12 @@ int parse_get_function_id(u_int64_t can_data) {
 	return function_id;
 }
 
+/*
+*   \brief Extract industry key
+*
+*	Extracting the manufacturer key from the
+*	data field of a NAME claim.
+*/
 
 int parse_get_industry_id(u_int64_t can_data) {
 
@@ -117,6 +123,12 @@ int parse_get_industry_id(u_int64_t can_data) {
  	return industry_id;
 }
 
+/*
+*   \brief Extract class key
+*
+*	Extracting the manufacturer key from the
+*	data field of a NAME claim.
+*/
 int parse_get_class_id(u_int64_t can_data) {
 
  	int class_id;
@@ -264,6 +276,11 @@ int parse_get_function(u_int64_t can_data, char* func_name) {
 
 }
 
+
+/*
+*   \brief Parse class and industry names
+*
+*/
 int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industry_name) {
 	int class_id = parse_get_class_id(can_data);
 	int industry_id = parse_get_industry_id(can_data);
@@ -340,9 +357,6 @@ int parse_get_class_industry(u_int64_t can_data, char* class_name, char* industr
 	return 0;
 
 }
-
-
-
 
 /*
 *   \brief Get PGN
@@ -470,7 +484,7 @@ int parse_get_pgn_name(int pgn_id, char* pgn_name) {
 *
 *	Take a PGN and look up all the SPNs known.
 */
-int parse_get_signals(int pgn_id, short round,signal_t* signal_spn) {
+int parse_get_signals(int pgn_id, short round, signal_t* signal_spn) {
 
 	fprintf(stdout,"Extracting Signals for PGN\n");
 

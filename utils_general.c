@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <math.h>
-
+#include <time.h>
 #include "utils_general.h"
 
 int str_to_int(char* p) {
@@ -135,4 +135,15 @@ char* concat(const char *s1, const char *s2){
     strcpy(result, s1);
     strcat(result, s2);
     return result;
+}
+
+void get_time(char* date_time) {
+    time_t now = time(NULL);
+    struct tm *now_local = localtime(&now);
+
+    if (strftime(date_time, sizeof date_time, "%Y-%m-%d-%H:%M", now_local)) {
+        fprintf(stdout,"Device seen on %s\n",date_time);
+    } else {
+        fprintf(stderr,"strftime failed");
+    }
 }

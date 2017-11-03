@@ -1,4 +1,4 @@
-int parse_get_device_id(u_int64_t);
+int parse_get_device_uuid(u_int64_t);
 
 int parse_get_manufac_id(u_int64_t);
 

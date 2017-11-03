@@ -1,7 +1,7 @@
 
 
-/** /file isoident.c
-*	/brief main class
+/** \file isoident.c
+*	\brief main class
 *	
 *	
 *
@@ -43,6 +43,8 @@
 
 
 int address_claim_cycle;
+const int address_claim_timeout = 3; //How long to wait for address-claimed messages before updating device list in [s]
+
 const char *canlogger_configfile_path;
 const char *isoident_logfile_path;
 const char *can_interface_name;
@@ -65,7 +67,7 @@ mxml_node_t* canlogger_eval_xml;
 
 int can_socket;
 
-dynArray known_devices;
+dynArray known_devices; //Array that holds the
 dynArray known_messages;
 
 typedef struct {
@@ -229,6 +231,8 @@ int load_configfile() {
 					int i;
 					mxml_node_t *message;
 					bool match;
+
+					mxmlElementSetAttr(device,"status","offline");
 
 					/* Iterate through messages and add to known_messages*/
 					for (message = mxmlFindElement(device,device,"message",NULL,NULL,MXML_DESCEND); message != NULL; message = mxmlGetNextSibling(message)) {
@@ -472,7 +476,7 @@ int can_read() {
 					
 					//Check if message is adress-claim-answer
 					
-					if ((last_message.id & 0xFFFFFF00) == 0x18EEFF00) {
+					if (((last_message.id & 0xFFFFFF00) == 0x18EE0000) || ((last_message.id & 0xFFFFFF00) == 0x18EEFF00)) {
 						
 						fprintf(stdout,"Address claim detected.\n");
 
@@ -736,53 +740,63 @@ int update_canlogger_configfile() {
 	return EXIT_SUCCESS;
 }
 
+
+/*
+ * \brief The function to process a detected address-claimed-message.
+ * 
+ *
+*/
+
 int handle_address_claim_message() {
-	int device_id = parse_get_device_id(last_message.data_LE);
+	
+	//Get device UUID from data field of adress-claimed-message
+	int device_uuid = parse_get_device_uuid(last_message.data_LE); 
+	
+
 	int i; 
 	
-	active_devices[last_message.sa] = device_id;
+	//Write device UUID in List of active devices. Position in list = source address (0-254)
+	active_devices[last_message.sa] = device_uuid;
 
-	
+	// Match will be set to true if device uuid is already known from isoident configfile (device has been registered before)
 	bool match = false;
 
+	// Check list of devices, that have been seen before and exist in isoident configfile
+	
+	// If there is no device is the list yet, the address-claim belongs to a NEW device, that has to be added to the configfile.
 	if (known_devices.used == 0) {
+
 		fprintf(stdout,"Add device because there is no device known yet.\n");
-			//Add new device to device log
-			if (xml_add_device(config_devicelib_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
+		
+			//Add new device to devicelib in isoident configfile
+		
+			if (xml_add_device(config_devicelib_xml,device_uuid,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
+				
+				fprintf(stderr, "Error adding device to devicelib tree.\n");
 				return EXIT_FAILURE;
+		
 			}
-			insertArray(&known_devices,device_id);
-			return 1;
+			
+			//Add new device to list of registered devices
+			insertArray(&known_devices,device_uuid);
+		
+			return EXIT_SUCCESS;
 	}
 
+	// Check list of known devices for a match of the device_uuid. If there is a match, update last SA and
 	for (i=0; i < known_devices.used; i++) {
 		
-		fprintf(stdout,"Check if ID:%d - is matching DB entry: %d\n",device_id, known_devices.array[i]);
+		fprintf(stdout,"Check if ID:%d - is matching DB entry: %d\n",device_uuid, known_devices.array[i]);
 		
-		if (device_id == known_devices.array[i]) {
-			fprintf(stdout,"Device is known from isoident.xml\n");
+		if (device_uuid == known_devices.array[i]) {
+
+			fprintf(stdout,"Device is known from isoident.xml. Updating lastSA, status and lastSeen.\n");
 			
-			char date_buff[70];
-			time_t now = time(NULL);
- 			struct tm *now_local = localtime(&now);
- 
-    		if (strftime(date_buff, sizeof date_buff, "%Y-%m-%d-%H:%M", now_local)) {
-        		fprintf(stdout,"Device seen on %s\n",date_buff);
-    		} else {
-        		fprintf(stderr,"strftime failed");
-    		}
-    		char* active_device_sa = int_to_string(last_message.sa);
-    		char* active_device_id = int_to_string(device_id);
+			//Update SA, lastSeen and status in isoident configfile.
+			xml_update_device(config_devicelib_xml,last_message.sa,device_uuid);
 
-    		mxml_node_t* device = mxmlFindElement(config_devicelib_xml,config_devicelib_xml,"device","UUID",active_device_id,MXML_DESCEND);
-    		
-    		mxmlElementSetAttr(device,"lastClaim",date_buff);
-    		mxmlElementSetAttr(device,"lastSA",active_device_sa);
-    		mxmlElementSetAttr(device,"status","online");
-
-    		free(active_device_id);
-    		free(active_device_sa);
 			match = true;
+		
 			break;
 		}
 
@@ -792,14 +806,21 @@ int handle_address_claim_message() {
 	}
 
 	if (match == false) {
-		fprintf(stdout,"Add device because is not yet in the db.\n");
-		if (xml_add_device(config_devicelib_xml,device_id,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
-			return EXIT_FAILURE;
-		}; //Add new device to device log
 		
-		insertArray(&known_devices,device_id);
+		fprintf(stdout,"Add device because is not yet in the db.\n");
+		
+		//Add new device to device lib, because the uuid was not found.
+		if (xml_add_device(config_devicelib_xml,device_uuid,last_message.data_LE,last_message.sa) == EXIT_FAILURE) {
+			
+			return EXIT_FAILURE;
+		}; 
+		
+		//Add uuid in list of known devices
+		insertArray(&known_devices,device_uuid);
 	}
+
 	return EXIT_SUCCESS;
+
 }
 
 int quit_isoident() {
@@ -857,7 +878,6 @@ int main(int argc, char *argv[]) {
 
 	signal(SIGTERM, SIGTERMHandler);
 	
-	int address_claim_timeout = 3; //How long to wait for address-claimed messages before updating device list in [s]
 	time_t time_last_claim;
 
 	if (init(argc, argv) == EXIT_FAILURE) {
@@ -926,10 +946,11 @@ int main(int argc, char *argv[]) {
 
 				break;
 			}
+
 			case 2: //Address claim
-				//address claim
 				{
-				memset(active_devices, 0, sizeof(active_devices)); //Clear device list.
+				//Clear list of active devices
+				memset(active_devices, 0, sizeof(active_devices)); 
 
 				handle_address_claim_message();
 
@@ -937,15 +958,24 @@ int main(int argc, char *argv[]) {
 
 				/*This loop listens for additional address claims from the ISOBUS devices for a certain time.
 				This period is defined through the adress_claim_timeout var in seconds*/
+
 				while (time(NULL) < (time_first_claim_answer + address_claim_timeout)) {
+					
 					fprintf(stdout, "Waiting for other adress claims.\n");
+					
 					if (can_read() == 2) {
+					
 						if (handle_address_claim_message() == EXIT_FAILURE) {
+					
 							return EXIT_FAILURE;
 						}
+					
 					}
+					
 					else {
+					
 						fprintf(stdout,"No address claim detected.\n");
+					
 					}
 					
 				}		

@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mxml-2.10/mxml.h"
-#include <time.h>
 #include <unistd.h>
 
 
@@ -37,16 +36,9 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	char* uuid = int_to_string(device_id);
 	char* device_sa = int_to_string(sa);
 
-	char date_buff[70];
- 	time_t now = time(NULL);
- 	struct tm *now_local = localtime(&now);
- 	
+	char date_time[70];
 
- 	if (strftime(date_buff, sizeof date_buff, "%Y-%m-%d-%H:%M",now_local)) {
-        fprintf(stdout,"Device seen on %s",date_buff);
-    } else {
-        fprintf(stderr,"strftime failed");
-    }
+	get_time(date_time);
 	
 	mxml_node_t* device = mxmlNewElement(tree,"device");
 
@@ -55,7 +47,7 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	mxmlElementSetAttr(device, "function", func_name);
 	mxmlElementSetAttr(device, "class",class_name);
 	mxmlElementSetAttr(device, "industry",industry_name);
-	mxmlElementSetAttr(device, "lastClaim",date_buff);
+	mxmlElementSetAttr(device, "lastClaim",date_time);
 	mxmlElementSetAttr(device, "lastSA",device_sa);
 	mxmlElementSetAttr(device, "status","online");
 	
@@ -64,6 +56,27 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 
 	return EXIT_SUCCESS;
 
+}
+
+int xml_update_device(mxml_node_t* tree, int device_sa, int device_uuid) {
+
+		char date_time[70];
+		
+		get_time(date_time);
+
+		char* active_device_sa = int_to_string(device_sa);
+		char* active_device_uuid = int_to_string(device_uuid);
+
+		mxml_node_t* device = mxmlFindElement(tree,tree,"device","UUID",active_device_uuid,MXML_DESCEND);
+		
+		mxmlElementSetAttr(device,"lastClaim",date_time);
+		mxmlElementSetAttr(device,"lastSA",active_device_sa);
+		mxmlElementSetAttr(device,"status","online");
+
+		free(active_device_uuid);
+		free(active_device_sa);
+
+		return EXIT_SUCCESS;
 }
 
 /*

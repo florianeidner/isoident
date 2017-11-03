@@ -30,3 +30,5 @@ void freeArray(dynArray *a);
 const char* get_process_name_by_pid(const int pid);
 
 char* concat(const char *s1, const char *s2);
+
+void get_time(char* date_time);
