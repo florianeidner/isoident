@@ -5,13 +5,13 @@
 4;Battery Pack Monitor
 5;Shift Control
 6;Power Take Off - (Rear or Primary)
-7;Axle – Steering
-8;Axle – Driving
+7;Axle - Steering
+8;Axle - Driving
 9;Brakes - System Control
 10;Brakes - Steer Axle Control
 11;Brakes - Drive Axle Control
-12;Retarder – Engine
-13;Retarder – Driveline
+12;Retarder - Engine
+13;Retarder - Driveline
 14;Cruise Control
 15;Fuel System
 16;Steering Control
@@ -83,7 +83,7 @@
 82;File Server
 83;Printer
 84;Start Aid Device
-85;Reserved for Future Assignment
+85
 00128;Reserved
 00129;Off-Board Diagnostic Service Tool
 00130;On-Board Data Logger
@@ -108,25 +108,21 @@
 00149;On-board bin weighing scale
 00150;On-board bin weighing scale display
 00151;Engine Cylinder Pressure Monitoring System
-;Reserved for Future Assignment
 00255;Not Available
 0127255;Not Available
-;
-;
 10127;See Annex F
 10128;Tachograph
 10129;Door Control System
 10130;Articulation Turntable Control
 10131;Body to Vehicle Interface Control
 10132;Slope Sensor
-10133;Reserved for Future Assignment
+10133
 10134;Retarder Display
 10135;Differential Lock Controller
 10136;Low-Voltage Disconnect
 10137;Roadway Information
-;Reserved for Future Assignment
+
 10255;Not Available
-;
 11127;See Annex F
 11128;Forward Road Image Processor
 11129;Fifth Wheel Smart System
@@ -134,16 +130,10 @@
 11131;Adaptive Front Lighting System
 11132;Idle Control System
 11133;User Interface System
-;Reserved for Future Assignment
 11255;Not Available
-;
 12127;See Annex F
-;Reserved for Future Assignment
 12255;Not Available
-;
 1127255;Not Available
-;
-;
 20127;See Annex F
 20128;Non-Virtual Terminal Display
 20129;Operator Controls
@@ -159,42 +149,30 @@
 20139;Data Logger
 20140;Decision Support
 20141;Lighting Controller
-;Reserved for Future Assignment
 20255;Not Available
-;
 21127;See Annex F
-21128;Reserved for Future Assignment
+21128
 21129;Auxiliary Valve Control
 21130;Rear Hitch Control
 21131;Front Hitch Control
 21132;Tractor Machine Control
-21133;Reserved for Future Assignment
+21133
 21134;Center Hitch Control
-;Reserved for Future Assignment
 21255;Not Available
-;
 22127;See Annex F
-;Reserved for Future Assignment
 22132;Tillage Machine Control
-;Reserved for Future Assignment
 22135;Tillage Depth Control
 22136;Frame Control
-;Reserved for Future Assignment
 22255;Not Available
-;
 23127;See Annex F
-;Reserved for Future Assignment
 23132;Secondary Tillage Machine Control
-;Reserved for Future Assignment
 23135;Secondary Tillage Depth Control
 23136;Frame Control
-;Reserved for Future Assignment
 23255;Not Available
-;
 24127;See Annex F
 24128;Seed Rate Control
 24129;Section On/Off Control
-24130;Reserved for Future Assignment
+24130
 24131;Position Control
 24132;Seeders/Planters Machine Control
 24133;Product Flow
@@ -202,9 +180,7 @@
 24135;Depth Control
 24136;Frame Control
 24137;Down Pressure
-;Reserved for Future Assignment
 24255;Not Available
-;
 25127;See Annex F
 25128;Fertilizer Rate Control
 25129;Section On/Off Control
@@ -215,9 +191,7 @@
 25134;Product Level
 25135;Height/ Depth Control
 25136;Frame Control
-;Reserved for Future Assignment
 25255;Not Available
-;
 26127;See Annex F
 26128;Spray Rate Control
 26129;Section On/Off Control
@@ -228,9 +202,7 @@
 26134;Product Level
 26135;Boom Height Control
 26136;Frame Control
-;Reserved for Future Assignment
 26255;Not Available
-;
 27127;See Annex F
 27128;Tailing Monitor
 27129;Header Control
@@ -240,134 +212,87 @@
 27133;Product Flow
 27134;Product Level
 27135;Header Height Control
-;Reserved for Future Assignment
 27255;Not Available
-;
 28127;See Annex F
-;Reserved for Future Assignment
 28132;Root Harvesters Machine Control
 28133;Product Flow
 28134;Product Level
 28135;Depth Control
-;Reserved for Future Assignment
 28255;Not Available
-;
 29127;See Annex F
 29128;Twine Wrapper Control
 29129;Product Packaging Control
-29130;Reserved for Future Assignment
+29130
 29131;Product Moisture
 29132;Forage Machine Control
 29133;Product Flow
-29134;Reserved for Future Assignment
+29134
 29135;Working Height Control
-;Reserved for Future Assignment
 29255;Not Available
-;
 210127;See Annex F
-;Reserved for Future Assignment
 210255;Not Available
-;
 211127;See Annex F
-;Reserved for Future Assignment
 211132;Transport Machine Control
-;Reserved for Future Assignment
 211136;Unload Control
-;Reserved for Future Assignment
 211255;Not Available
-;
 212127;See Annex F
-;Reserved for Future Assignment
 212255;Not Available
-;
 213127;See Annex F
-;Reserved for Future Assignment
 213132;Powered Devices Machine Control
-;Reserved for Future Assignment
 213255;Not Available
-;
 214127;See Annex F
-;Reserved for Future Assignment
 214132;Special Crop Machine Control
-;Reserved for Future Assignment
 214255;Not Available
-;
 215127;See Annex F
 215128;Material rate control
-;Reserved for Future Assignment
 215132;Earthworks Machine Control
 215133;Material Flow
 215134;Material Level
 215135;Depth Control
 215255;Not Available
-;
 216127;See Annex F
-;Reserved for Future Assignment
 216132;Skidder Machine Control
-;Reserved for Future Assignment
 216255;Not Available
-;
 217127;See Annex F
 217128;Guidance Feeler
 217129;Camera System
 217130;Crop Scouting
 217131;Material Properties Sensing
 217255;Not Available
-;
 221127;See Annex F
-;Reserved for Future Assignment
 221132;Timber Loaders Machine Control
-;Reserved for Future Assignment
 221255;Not Available
-;
 222127;See Annex F
-;Reserved for Future Assignment
 222132;Timber Processing Machine Control
-;Reserved for Future Assignment
 222255;Not Available
-;
 223127;See Annex F
-;Reserved for Future Assignment
 223132;Mulcher Machine Control
-;Reserved for Future Assignment
 223255;Not Available
-;
 224127;See Annex F
-;Reserved for Future Assignment
 224132;Utility Machine Control
-;Reserved for Future Assignment
 224255;Not Available
-;
 225127;See Annex F
 225128;Slurry/Manure Rate Control
 225129;Section On/Off Control
 225130;Product Pressure
-225131;Reserved for Future Assignment
+225131
 225132;Slurry/Manure Machine Control
 225133;Product Flow
 225134;Product Level
 225135;Boom Height Control
-;Reserved for Future Assignment
 225255;Not Available
-;
 226127;See Annex F
 226128;Feeder/Mixer Rate Control
 226129;Section On/Off Control
 226130;Product Pressure
-226131;Reserved for Future Assignment
+226131
 226132;Feeder/Mixer Machine Control
 226133;Product Flow
 226134;Product Level
 226135;Boom Height Control
-;Reserved for Future Assignment
 226255;Not Available
-;
-;
 2127127;See Annex F
-;Reserved for Future Assignment
 2127255;Not Available
-;
-;
 30127;See Annex F
 30128;Supplemental Engine Control Sensing
 30129;Laser Receiver
@@ -388,192 +313,94 @@
 30144;Survey Total Station Target
 30145;Heading Sensor
 30146;Alarm device
-;Reserved for Future Assignment
 30255;Not Available
-;
 31128;Main Controller
-;Reserved for Future Assignment
 31255;Not Available
-;
-;Reserved for Future Assignment
 32255;Not Available
-;
-;Reserved for Future Assignment
 33255;Not Available
-;
 34128;Blade Control
-;Reserved for Future Assignment
 34255;Not Available
-;
 35128;Slope Sensor
-;Reserved for Future Assignment
 35255;Not Available
-;
-;Reserved for Future Assignment
 36255;Not Available
-;
-;Reserved for Future Assignment
 37255;Not Available
-;
 38128;HFWD Controller
-;Reserved for Future Assignment
 38255;Not Available
-;
-;
-;Reserved for Future Assignment
-;Not Available
-;
 3127255;Not Available
-;
-;
 40127;See Annex F
 40128;Marine Engines Alarm System
 40129;Marine Engines Protection System
 40130;Marine Engines Protection System Disp
-;Reserved for Future Assignment
 40255;Not Available
-;
 410127;See Annex F
-;Reserved for Future Assignment
 410255;Not Available
-;
 420127;See Annex F
-;Reserved for Future Assignment
 420255;Not Available
-;
-;See Annex F
 42510;Gateway
-;See Annex F
-;Reserved for Future Assignment
 425255;Not Available
-;
-;
 430127;See Annex F
-;Reserved for Future Assignment
 430130;Switch
-;Reserved for Future Assignment
 430140;Load
-;Reserved for Future Assignment
 430255;Not Available
-;
 440127;See Annex F
-;Reserved for Future Assignment
 440130;Follow-up Controller
-;Reserved for Future Assignment
 440140;Mode Controller
-;Reserved for Future Assignment
 440150;Automatic Steering Controller
-;Reserved for Future Assignment
 440160;Heading Sensors
-;Reserved for Future Assignment
 440255;Not Available
-;
 450127;See Annex F
-;Reserved for Future Assignment
 450130;Engine room monitoring
-;Reserved for Future Assignment
 450140;Engine Interface
-;Reserved for Future Assignment
 450150;Engine Controller
-;Reserved for Future Assignment
 450160;Engine Gateway
-;Reserved for Future Assignment
 450170;Control Head
-;Reserved for Future Assignment
 450180;Actuator
-;Reserved for Future Assignment
 450190;Gauge Interface
-;Reserved for Future Assignment
 450200;Gauge Large
-;Reserved for Future Assignment
 450210;Gauge Small
-;Reserved for Future Assignment
 450255;Not Available
-;
 460127;See Annex F
-;Reserved for Future Assignment
 460130;Sounder, depth
-;Reserved for Future Assignment
 460140;
-;Reserved for Future Assignment
 460145;Global Navigation Satellite System (GNSS)
-;Reserved for Future Assignment
 460150;Loran C
-;Reserved for Future Assignment
 460155;Speed Sensors
-;Reserved for Future Assignment
 460160;Turn Rate Indicator
-;Reserved for Future Assignment
 460170;Integrated Navigation
-;Reserved for Future Assignment
 460200;Radar and/or Radar Plotting
-;Reserved for Future Assignment
 460205;Electronic Chart Display & Information System (ECDIS)
-;Reserved for Future Assignment
 460210;Electronic Chart System (ECS)
-;Reserved for Future Assignment
 460220;Direction Finder
-;Reserved for Future Assignment
 460255;Not Available
-;
 470127;See Annex F
-;Reserved for Future Assignment
 470130;Emergency Position Indicating Beacon (EPIRB)
-;Reserved for Future Assignment
 470140;Automatic Identification System
-;Reserved for Future Assignment
 470150;Digital Selective Calling (DSC)
-;Reserved for Future Assignment
 470160;Data Receiver
-;Reserved for Future Assignment
 470170;Satellite
-;Reserved for Future Assignment
 470180;Radio-Telephone (MF/HF)
-;Reserved for Future Assignment
 470190;Radio-Telephone (VHF)
-;Reserved for Future Assignment
 470255;Not Available
-;
 480127;See Annex F
-;Reserved for Future Assignment
 480130;Time/Date systems
-;Reserved for Future Assignment
 480140;Voyage Data Recorder
-;Reserved for Future Assignment
 480150;Integrated Instrumentation
-;Reserved for Future Assignment
 480160;General Purpose Displays
-;Reserved for Future Assignment
 480170;General Sensor Box
-;Reserved for Future Assignment
 480180;Weather Instruments
-;Reserved for Future Assignment
 480190;Transducer/general
-;Reserved for Future Assignment
 480200;NMEA 0183 Converter
-;Reserved for Future Assignment
 480255;Not Available
-;
 490127;See Annex F
-;Reserved for Future Assignment
 490255;Not Available
-;
-4100127;"systems
-See Annex F"
-;Reserved for Future Assignment
+4100127;systems
 4100255;Not Available
-;
 4127127;See Annex F
-;Reserved for Future Assignment
 4127255;Not Available
-;
-;
 50127;See Annex F
 50128;Supplemental Engine Control Sensing
 50129;Generator Set Controller
 50130;Generator Voltage Regulator
 50131;Choke Actuator
-;Reserved for Future Assignment
 50255;Not Available
-;
 5127255;Not Available

@@ -9,7 +9,7 @@
 50176;General Purpose Valve Command;ISO11783
 50432;General Purpose Valve Measured Flow;ISO11783
 50688;General Purpose Valve Estimated Flow;ISO11783
-50944;Extended Transport Protocol – Data Transfer;ISO11783
+50944;Extended Transport Protocol - Data Transfer;ISO11783
 51200;Extended Transport Protocol - Connection Mgt;ISO11783
 51456;Request 2;ISO11783
 51712;Transfer;ISO11783
@@ -20,7 +20,7 @@
 59392;Acknowledgment Message;ISO11783
 59904;Request;ISO11783
 60160;Transport Protocol - Data Transfer;ISO11783
-60416;Transport Protocol – Connection Mgmt;ISO11783
+60416;Transport Protocol - Connection Mgmt;ISO11783
 60672;Network Layer;ISO11783
 60928;Address Claimed Message;ISO11783
 61184;Proprietary A;ISO11783
@@ -418,7 +418,7 @@
 49920;Individual Clear/Reset Of Active And Previously Active DTC;J1939
 52480;Reserved for ISO 15765;J1939
 52736;Reserved for ISO 15765;J1939
-52992;Continuous Torque & Speed Limit Request;J1939
+52992;Continuous Torque and Speed Limit Request;J1939
 53248;Cab Illumination Message;J1939
 53504;Air Suspension Control 6;J1939
 53760;Air Suspension Control 2;J1939
@@ -744,8 +744,8 @@
 65104;Battery Temperature;J1939
 65105;Adaptive Cruise Control, Operator Input;J1939
 65106;Vehicle Electrical Power #3;J1939
-65107;Retarder Continuous Torque & Speed Limit;J1939
-65108;Engine Continuous Torque & Speed Limit;J1939
+65107;Retarder Continuous Torque and Speed Limit;J1939
+65108;Engine Continuous Torque and Speed Limit;J1939
 65109;Gaseous Fuel Properties;J1939
 65110;Aftertreatment 1 SCR Reagent Tank 1 Information;J1939
 65111;Air Suspension Control 5;J1939
@@ -768,7 +768,7 @@
 65128;Vehicle Fluids;J1939
 65129;Engine Temperature 3;J1939
 65130;Engine Fuel/lube systems;J1939
-65131;Driver's Identification;J1939
+65131;Drivers Identification;J1939
 65132;Tachograph;J1939
 65133;Heater Information;J1939
 65134;High Resolution Wheel Speed;J1939
@@ -934,14 +934,14 @@
 128275;Distance Log;J1939
 128520;Tracked Target Data;J1939
 129025;Position, Rapid Update;J1939
-129026;COG & SOG, Rapid Update;J1939
+129026;COG and SOG, Rapid Update;J1939
 129029;GNSS Position Data;J1939
-129033;Time & Date;J1939
+129033;Time and Date;J1939
 129044;Datum;J1939
 129045;User Datum Settings;J1939
 129283;Cross Track Error;J1939
 129284;Navigation Data;J1939
-129291;Set & Drift, Rapid Update;J1939
+129291;Set and Drift, Rapid Update;J1939
 129301;Time to/from Mark;J1939
 129302;Bearing and Distance between two Marks;J1939
 129538;GNSS Control Status;J1939
