@@ -24,10 +24,10 @@ int xml_add_device(mxml_node_t* tree, int device_id, u_int64_t data,int sa) {
 	
 	fprintf(stdout,"Add device to xml\n");
 	
-	char man_name[50]={0}; //Name max is 50 chars, Database max name length is.
-	char func_name[50]={0};
-	char class_name[50]={0};
-	char industry_name[50]={0};
+	char man_name[200]={0}; //Name max is 200 chars, Database max name length is.
+	char func_name[200]={0};
+	char class_name[200]={0};
+	char industry_name[200]={0};
 
 	parse_get_function(data,func_name);
 	parse_get_class_industry(data,class_name,industry_name);
@@ -89,7 +89,7 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 
 	mxml_node_t* message = mxmlNewElement(device,"message");
 
-	char pgn_name[50]={0};
+	char pgn_name[200]={0};
 	
 	int pgn_type = parse_get_pgn_name(message_pgn, pgn_name);
 	
@@ -126,7 +126,7 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	
 	signal_t signal_spn;
 	
-	signal_spn.name = malloc(50);	
+	signal_spn.name = malloc(200);	
 
 	for (i=1;(parse_get_signals(message_pgn,i,&signal_spn) != 0);i++) {
 	 	sig = mxmlNewElement(message,"signal");
