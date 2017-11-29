@@ -126,40 +126,51 @@ int xml_add_message(mxml_node_t* device, int message_pgn) {
 	
 	signal_t signal_spn;
 	
-	signal_spn.name = malloc(200);	
+	signal_spn.name = malloc(200);
+	signal_spn.unit = malloc (20);
 
 	for (i=1;(parse_get_signals(message_pgn,i,&signal_spn) != 0);i++) {
 	 	sig = mxmlNewElement(message,"signal");
 	 	
-	 	char* spn = int_to_string(signal_spn.spn);
-		char* start_bit = int_to_string(signal_spn.start_bit);
+	 	fprintf(stdout, "Here1\n");
+	 	
+	 	char* spn_id = int_to_string(signal_spn.spn);
+		char* spn_start_bit = int_to_string(signal_spn.start_bit);
 		char* spn_len = int_to_string(signal_spn.len);
+		char* spn_factor = int_to_string(signal_spn.factor);
+		char* spn_offset = int_to_string(signal_spn.offset);
+		char* spn_range_min = int_to_string(signal_spn.range_min);
+		char* spn_range_max = int_to_string(signal_spn.range_max);
 
-
-	 	fprintf(stdout,"Signal spn after:%s\n", spn);
-	 	mxmlElementSetAttr(sig, "spn", spn);
+	 	fprintf(stdout,"Signal spn after:%s\n", spn_id);
+	 	mxmlElementSetAttr(sig, "spn", spn_id);
 	 	mxmlElementSetAttr(sig, "name", signal_spn.name);
 	 	mxmlElementSetAttr(sig, "log", "0");
-	 	mxmlElementSetAttr(sig, "start", start_bit);
+	 	mxmlElementSetAttr(sig, "start", spn_start_bit);
 	 	mxmlElementSetAttr(sig, "len", spn_len);
 	 	mxmlElementSetAttr(sig, "end", "0");
-	 	mxmlElementSetAttr(sig, "fac", "0");
-	 	mxmlElementSetAttr(sig, "offs", "0");
-	 	mxmlElementSetAttr(sig, "min", "-800000");
-	 	mxmlElementSetAttr(sig, "max", "800000");
+	 	mxmlElementSetAttr(sig, "fac", spn_factor);
+	 	mxmlElementSetAttr(sig, "offs", spn_offset);
+	 	mxmlElementSetAttr(sig, "min", spn_range_min);
+	 	mxmlElementSetAttr(sig, "max", spn_range_max);
 	 	mxmlElementSetAttr(sig, "type", "");
-	 	mxmlElementSetAttr(sig, "unit", "");
+	 	mxmlElementSetAttr(sig, "unit", signal_spn.unit);
 	 	mxmlElementSetAttr(sig, "ddi", "");
 
 	 	fprintf(stdout,"Added Signal to message.\n");
 
-	 	free(spn);
+	 	free(spn_id);
 		free(spn_len);
-		free(start_bit);
+		free(spn_start_bit);
+		free(spn_factor);
+		free(spn_offset);
+		free(spn_range_max);
+		free(spn_range_min);
 
 	}
 	
 	free (signal_spn.name);
+	free (signal_spn.unit);
 
 	return EXIT_SUCCESS;
 }

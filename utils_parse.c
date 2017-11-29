@@ -512,19 +512,45 @@ int parse_get_signals(int pgn_id, short round, signal_t* signal_spn) {
 		while (((read =getline(&line, &len, file)) != -1)) {
 		    
 		    char* line2 = line;
+
 		    int lineID = (int)strtol((strtok(line, ";")),((char **)NULL),10);
+
 		    //fprintf(stdout,"lineID: %d\n", lineID);
+			
 				if (lineID == pgn_id){
+			
 					counter += 1;
+			
 					if (counter == round) {
-
+						
+						fprintf(stdout, "Here1\n");
+						
 						signal_spn->spn = str_to_int(strtok(NULL, ";"));
-
+						fprintf(stdout, "Here2 - spn: %d\n",signal_spn->spn);
+						
 						strcpy(signal_spn->name,strtok(NULL,";"));
-
+						fprintf(stdout, "Here3 - name: %s\n",signal_spn->name);
+						
 						signal_spn->start_bit = str_to_int((strtok(NULL,";")));
+						fprintf(stdout, "Here4 - start: %d\n",signal_spn->start_bit);
 
-						signal_spn->len = str_to_int((strtok(NULL, "\n")));
+						signal_spn->len = str_to_int((strtok(NULL,";")));
+						fprintf(stdout, "Here5 - len: %d\n",signal_spn->len);
+			
+						strcpy(signal_spn->unit, strtok(NULL,";"));
+						fprintf(stdout, "Here6 - unit: %s\n",signal_spn->unit);
+
+						signal_spn->offset = str_to_int((strtok(NULL,";")));
+						fprintf(stdout, "Here7 - offset: %d\n",signal_spn->offset);
+						
+						signal_spn->factor = str_to_int((strtok(NULL,";")));
+						fprintf(stdout, "Here8 - factor: %d\n",signal_spn->factor);
+						
+						signal_spn->range_min = str_to_int((strtok(NULL,";")));
+						fprintf(stdout, "Here9 - range_min: %d\n",signal_spn->range_min);
+						
+						signal_spn->range_max = str_to_int((strtok(NULL, "\n")));
+						fprintf(stdout, "Here10\n");
 
 						fprintf(stdout,"Signal SPN: %s found.\n", signal_spn->name);
 

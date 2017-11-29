@@ -19,6 +19,11 @@ typedef struct {
 	int spn;
 	u_int32_t start_bit; //source address
 	u_int32_t len;
+	int factor;
+	int offset;
+	int range_min;
+	u_int64_t range_max;
+	char* unit;
 } signal_t;
 
 void initArray(dynArray *a, size_t initialSize);
