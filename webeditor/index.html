@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta charset="utf-8"/>
 
 <script src="/webeditor/js/jquery-3.2.1.min.js"></script>
 
@@ -11,9 +12,9 @@
 <script type="text/javascript" src="/webeditor/js/functions.js"></script>
 
 </head>
-<body onload="load_configfile()">
+<body onload="setup()">
 	<h1>ISOIDENT</h1>
-	<h3>Bibilothek</h3>
+	<h3>Bibliothek</h3>
 	<table>
 		<tr>
 			<td>
@@ -23,7 +24,11 @@
 					<button type="button" onclick="clear_configfile()">CLEAR</button>
 				</div>
 			</td>
-			<td width="10%"/>
+			<td width="5%"/>
+			<td> Upload Config:
+				<input id="uploadbutton" type="file" accept=".xml" value="UPLOAD" onchange="open_configfile(event)"/>
+			</td>
+			<td width="5%"/>
 			<td>
 				<div id="info"></div>
 			</td>

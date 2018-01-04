@@ -1,3 +1,8 @@
+function setup() {
+
+	load_configfile();
+}
+
 function load_configfile() {
 
 
@@ -38,14 +43,14 @@ function load_configfile() {
 }
 
 function save_configfile() {
-	var xmlContent = Xonomy.harvest();
+	var xmlContent = decodeURIComponent(Xonomy.harvest());
 	
 	 $.ajax({  
         type: 'POST',
 
-        url: '/save_isoident_xml',          
+        url: '/save_isoident_xml', 
 
-        data: {xml : xmlContent},
+        data: {xml: xmlContent},
 
         success: function(response) {
             
@@ -80,4 +85,29 @@ function clear_configfile() {
 	document.getElementById("status").style = "color:#FF0000";
 	
 	document.getElementById("status").innerHTML = "NOT SAVED";
+}
+
+function open_configfile(event) {
+
+	var input = event.target;
+
+	var reader = new FileReader();
+
+	reader.onload = function (){
+
+		var configfile = reader.result;
+
+		Xonomy.render(configfile, editor, docSpec);
+
+		document.getElementById("info").innerHTML = "isoident.xml erfolgreich geladen.";
+
+		document.getElementById("status").style = "color:#FF0000";
+	
+		document.getElementById("status").innerHTML = "NOT SAVED";
+
+
+	};
+
+	reader.readAsText(input.files[0]);
+
 }

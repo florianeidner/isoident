@@ -38,6 +38,7 @@ var docSpec={
 
 				"signallib": {
 
+
 					menu: [{
 
 					caption: "Add a <signal>",
@@ -53,6 +54,8 @@ var docSpec={
 
 
 				"signal": {
+
+					collapsed: function(jsElement){return true},
 
 					menu: [{
 
@@ -112,6 +115,7 @@ var docSpec={
 
 				"messagelib": {
 
+
 					menu: [{
 
 					caption: "Add a <message>",
@@ -127,6 +131,8 @@ var docSpec={
 
 
 				"message": {
+
+					collapsed: function(jsElement){return true},
 
 					menu: [{
 
@@ -172,6 +178,7 @@ var docSpec={
 
 				"devicelib": {
 
+
 					menu: [{
 
 					caption: "Add a <device>",
@@ -187,6 +194,8 @@ var docSpec={
 
 
 				"device": {
+
+					collapsed: function(jsElement){return true},
 
 					menu: [{
 
@@ -234,6 +243,8 @@ var docSpec={
 
 				"level1": {
 
+					collapsed: function(jsElement){return true},
+
 					menu: [{
 
 					caption: "Add a <mean>",
@@ -249,6 +260,8 @@ var docSpec={
 
 
 				"mean": {
+
+					collapsed: function(jsElement){return true},
 
 					menu: [{
 
@@ -278,6 +291,8 @@ var docSpec={
 
 				"level2": {
 
+					collapsed: function(jsElement){return true},
+
 					menu: [{
 
 					caption: "Add a <range>",
@@ -293,6 +308,8 @@ var docSpec={
 
 
 				"range": {
+
+					collapsed: function(jsElement){return true},
 
 					menu: [{
 
@@ -316,6 +333,8 @@ var docSpec={
 
 				"logic": {
 
+					collapsed: function(jsElement){return true},
+
 					menu: [{
 
 					caption: "Add a <locon>",
@@ -331,6 +350,8 @@ var docSpec={
 
 
 				"locon": {
+
+					collapsed: function(jsElement){return true},
 
 					menu: [{
 
