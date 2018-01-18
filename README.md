@@ -1,21 +1,12 @@
 # isoident
 This module identifies participants and message on the ISOBUS network utilizing the address-claim procedure defined in ISO 11783-5. The detected participants and their messages will be saved in the configfile. Furthermore it can be an addition to the existing amcanlogger to adjust the CAN logging profile dynamically to the active devices.
 
-TODO:
-* ✓ Clean up (~~Memory Leaks~~, ~~CAN Filter~~, ~~Exceptions in datasets structure - utils_parse, line 408~~)
-* ✓ J1939 Integration (~~PGN~~, ~~SPN~~, ~~Manufacturer~~)
-* ✓ Add log file/ debug option
-* ✓ Additional Data in isoident.xml (~~lastSA~~, ~~status~~, ~~lastSeen~~, ~~class and industry in isoident.xml~~)
-* ✓ Identify messages from unknown sender (~~Restructure isoident.xml~~, ~~add method to handle unknown messages~~,~~isoident.xml generator~~)
-* ✓ Optimize Canlogger.xml-handling (~~No overwriting, ...~~)
-* ✓ Edit xml via web (~~Test nginx~~, ~~test Xonomy~~, ~~create basic docSpec~~ , ~~create web frame~~, ~~test on box~~) 
-* ✓ Update config section
-* Create database of signal details
-
 ## Build
 
 The module uses the Mini-XML library which is included in the repo or can be found there: https://michaelrsweet.github.io/mxml/mxml.html
+It needs to be added to the build machine beforehand. A description can be found on the above mentioned website.
 
+### Local machine
 Compiliation can be done for the local machine, manually via:
 
 `$ gcc -D _BSD_SOURCE -o isoident isoident.c utils_general.c utils_parse.c utils_xml.c -lmxml -pthread -lm -std=c99`
@@ -28,14 +19,14 @@ or via the included Makefile, executing:
 
 `$ make`
 
+### Cross-compiled
 Cross - Compiling for other Platforms, i.e. for an Cortex A7 system can be done utilizing the gcc-arm-linux-gnueabi toolchain, doing:
 
 `$ arm-linux-gnueabi-gcc -march=armv7 -D _BSD_SOURCE -o isoident-armv7 isoident.c utils_general.c utils_parse.c utils_xml.c mxml-2.10/mxml-attr.c mxml-2.10/mxml-entity.c mxml-2.10/mxml-file.c mxml-2.10/mxml-get.c mxml-2.10/mxml-index.c mxml-2.10/mxml-node.c mxml-2.10/mxml-search.c mxml-2.10/mxml-private.c mxml-2.10/mxml-set.c mxml-2.10/mxml-string.c -pthread -lm -std=c99 -fplan9-extensions -Wall -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-unused-variable -Wno-unused-but-set-variable -mthumb -static`
 
 ## Config
 
-The config or library file includes signals, messages, devices and evaluation parameters. Everytime a device or message is seen on the bus, the software writes an entry to the config file.
-The default name is isoident.xml.
+The config or library file (default: isoident.xml) includes signals, messages, devices and evaluation parameters. Everytime a device or message is seen on the bus, the software writes an entry to the config file.
 
 The file consists out of 4 sections:
 
@@ -80,9 +71,9 @@ There are command line options to specify different paths to the configfile, the
 
 `$ ./isoident -f /home/isoident.xml -g /home/amcanlogger/canlogger.xml -d /home/datasets/`
 
-* `-a VALUE`- Interval for sending address claims. 1 = once on startup, 0 = disabled (no sending via CAN interface).
-* `-c TYPE` - Sets the CAN interface to listen to. Can be i.e. can0, can1, vcan0.
-* `-d DIR`  - Custom path to the datasets used to identify the participants, messages and signals.
+* `-a VALUE`- Interval for sending address claims to update the list of participants on the Network. Regardless, the list is also updated whenever another devices send and address claim. Specific Values:  1 = once on startup, 0 = disabled (no sending via CAN interface).
+* `-c TYPE` - Sets the CAN interface to listen to. Values (depending on available interfaces): can0, can1, vcan0.
+* `-d DIR`  - Custom path to the datasets used to identify the participants, messages and signals. Path needs to end with "/"
 * `-f FILE` - Custom configfile. If not given, it takes the isoident.xml from the running dir.
 * `-g FILE` - If this option is given, logging via the amcanlogger is enabled. The path to the amcanlogger configfile needs to be provided.
 * `-h` - Shows the help prompt.
@@ -99,4 +90,23 @@ Errorlogging can be done by redirecting stderr to a file.
 
 `$ ./isoident 2>isoident_err.log`
 
-Included is the "S54isoident" startscript, that can be copied to  /etc/init.d/. It sets the default locations to the  /media/disk/isoident/ folder.
+
+## Tools
+
+
+### CB16 - hardware setup script & Webeditor
+Included in the builds is a setup script for the CB16 hardware module. The script copies all files to the required locations and configures the webserver to provide the webeditor for the isoident.xml.
+The script needs to be executed as root user.
+
+`$ sudo bash setup-cb16.sh`
+
+After the reboot, the isoident service is running in the background.
+
+### canSim
+
+To test the functionality on a device with enabled vcan0 interface. The canSim tool can be used to simulate a very basic ISOBUS communication.
+
+### dbc2dataset
+
+The datasets including the signal names (signals.csv) which is required decrypt SPNs to human-readable content are derived from ISO11783, J1939 and NEMA2000. Within the dbc2dataset folder, a python script is provided, that transform vector dbc files to a signal.csv that can be copied to the datasets folder.
+The script requires a "dataset.dbc" file in the running dir and will export to "signals.csv" in the same dir.
